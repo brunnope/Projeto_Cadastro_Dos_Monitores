@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<CentralDeInformacoes>
+  <todosOsAlunos>
+    <Aluno>
+      <nome>cicero brunno das neves pereira</nome>
+      <sexo>MASCULINO</sexo>
+      <matricula>202315020028</matricula>
+      <email>cicero.brunno@academico.ifpb.edu.br</email>
+      <senha>brunnin123</senha>
+    </Aluno>
+    <Aluno>
+      <nome>Matheus Cavalcanti de Freitas</nome>
+      <sexo>MASCULINO</sexo>
+      <matricula>202315020029</matricula>
+      <email>matheus.cavalcanti@academico.ifpb.edu.br</email>
+      <senha>matheus123</senha>
+    </Aluno>
+    <Aluno>
+      <nome>Gabriel Laet Moreno</nome>
+      <sexo>MASCULINO</sexo>
+      <matricula>202315020030</matricula>
+      <email>gabriel.laet@academico.ifpb.edu.br</email>
+      <senha>gabriel123</senha>
+    </Aluno>
+    <Aluno>
+      <nome>Brunno Pereira</nome>
+      <sexo>MASCULINO</sexo>
+      <matricula>202015020028</matricula>
+      <email>brunno.pereira@academico.ifpb.edu.br</email>
+      <senha>brunnin123</senha>
+    </Aluno>
+  </todosOsAlunos>
+  <todosOsEditais>
+    <EditalDeMonitoria>
+      <id>1695992481023</id>
+      <numeroEdital>1</numeroEdital>
+      <dataInicio>2023-10-10</dataInicio>
+      <dataFim>2023-10-20</dataFim>
+      <disciplinas>
+        <Disciplina>
+          <nome>portugues</nome>
+          <quantVagas>2</quantVagas>
+          <alunosInscritos/>
+        </Disciplina>
+        <Disciplina>
+          <nome>matematica</nome>
+          <quantVagas>2</quantVagas>
+          <alunosInscritos/>
+        </Disciplina>
+      </disciplinas>
+    </EditalDeMonitoria>
+    <EditalDeMonitoria>
+      <id>1695993027080</id>
+      <numeroEdital>2</numeroEdital>
+      <dataInicio>2023-09-28</dataInicio>
+      <dataFim>2023-10-10</dataFim>
+      <disciplinas>
+        <Disciplina>
+          <nome>mac</nome>
+          <quantVagas>0</quantVagas>
+          <alunosInscritos>
+            <Aluno reference="../../../../../../todosOsAlunos/Aluno"/>
+            <Aluno reference="../../../../../../todosOsAlunos/Aluno[2]"/>
+          </alunosInscritos>
+        </Disciplina>
+        <Disciplina>
+          <nome>p1</nome>
+          <quantVagas>0</quantVagas>
+          <alunosInscritos>
+            <Aluno reference="../../../../../../todosOsAlunos/Aluno"/>
+            <Aluno reference="../../../../../../todosOsAlunos/Aluno[3]"/>
+          </alunosInscritos>
+        </Disciplina>
+        <Disciplina>
+          <nome>p2</nome>
+          <quantVagas>1</quantVagas>
+          <alunosInscritos>
+            <Aluno reference="../../../../../../todosOsAlunos/Aluno[4]"/>
+          </alunosInscritos>
+        </Disciplina>
+      </disciplinas>
+    </EditalDeMonitoria>
+  </todosOsEditais>
+</CentralDeInformacoes>
