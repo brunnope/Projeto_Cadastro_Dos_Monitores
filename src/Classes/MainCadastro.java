@@ -172,12 +172,6 @@ public class MainCadastro {
 				geraRelatorios.obterComprovanteDeInscricoesAluno(matricula, id, central);
 				break;
 				
-			case "9":
-				for (EditalDeMonitoria edital1: central.getTodosOsEditais()) {
-					System.out.println(edital1.getId());
-				}
-				break;
-				
 			case "S":
 				System.out.println("Saindo...");
 				break;
