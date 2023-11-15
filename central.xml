@@ -2,35 +2,49 @@
 <Persistencia.CentralDeInformacoes>
   <todosOsAlunos>
     <Classes.Aluno>
-      <nome>Cicero Brunno das Neves Pereira</nome>
+      <nome>gabriel</nome>
       <sexo>MASCULINO</sexo>
-      <matricula>202315020028</matricula>
-      <email>cicero.brunno@academico.ifpb.edu.br</email>
-      <senha>brunno123</senha>
-    </Classes.Aluno>
-    <Classes.Aluno>
-      <nome>Anderson da Silva Santos</nome>
-      <sexo>MASCULINO</sexo>
-      <matricula>202315020023</matricula>
-      <email>anderson.silva@academico.ifpb.edu.br</email>
-      <senha>anderson123</senha>
+      <matricula>1231</matricula>
+      <email>gabriel@123</email>
+      <senha>123</senha>
     </Classes.Aluno>
   </todosOsAlunos>
   <todosOsEditais>
     <Classes.EditalDeMonitoria>
-      <id>1699820433716</id>
-      <numeroEdital>1</numeroEdital>
-      <dataInicio>2023-11-12</dataInicio>
-      <dataFim>2023-12-05</dataFim>
+      <id>1700076571256</id>
+      <numeroEdital>12</numeroEdital>
+      <dataInicio>2023-10-20</dataInicio>
+      <dataFim>2023-11-20</dataFim>
       <disciplinas>
         <Classes.Disciplina>
-          <nome>POO</nome>
-          <quantVagas>3</quantVagas>
+          <nome>matematica</nome>
+          <quantVagas>20</quantVagas>
           <alunosInscritos/>
         </Classes.Disciplina>
+      </disciplinas>
+    </Classes.EditalDeMonitoria>
+    <Classes.EditalDeMonitoria>
+      <id>1700076901144</id>
+      <numeroEdital>123</numeroEdital>
+      <dataInicio>2023-10-20</dataInicio>
+      <dataFim>2023-10-21</dataFim>
+      <disciplinas>
         <Classes.Disciplina>
-          <nome>Matematica</nome>
-          <quantVagas>3</quantVagas>
+          <nome>ptbr</nome>
+          <quantVagas>20</quantVagas>
+          <alunosInscritos/>
+        </Classes.Disciplina>
+      </disciplinas>
+    </Classes.EditalDeMonitoria>
+    <Classes.EditalDeMonitoria>
+      <id>1700077171687</id>
+      <numeroEdital>12</numeroEdital>
+      <dataInicio>2023-10-20</dataInicio>
+      <dataFim>2023-10-20</dataFim>
+      <disciplinas>
+        <Classes.Disciplina>
+          <nome>matem</nome>
+          <quantVagas>21</quantVagas>
           <alunosInscritos/>
         </Classes.Disciplina>
       </disciplinas>

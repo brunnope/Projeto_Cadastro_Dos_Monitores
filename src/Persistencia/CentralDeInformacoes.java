@@ -5,17 +5,21 @@ import java.util.ArrayList;
 import Classes.Aluno;
 import Classes.Disciplina;
 import Classes.EditalDeMonitoria;
+import Excecoes.AlunoJaMatriculadoException;
+import Excecoes.AlunoNaoEncontradoException;
+import Excecoes.EditalInvalidoException;
+import Excecoes.EditalNaoEncontradoException;
 
 public class CentralDeInformacoes {
 	private ArrayList<Aluno> todosOsAlunos = new ArrayList<Aluno>();
 	private ArrayList<EditalDeMonitoria> todosOsEditais = new ArrayList<EditalDeMonitoria>();
 	
 	
-	public boolean adicionarEdital(EditalDeMonitoria edital){
+	public boolean adicionarEdital(EditalDeMonitoria edital) throws EditalInvalidoException {
 		if (!(todosOsEditais.size() == 0)){
 			for (EditalDeMonitoria editais: todosOsEditais) {
 					if (editais.getId() == edital.getId()) {
-						return false;
+						throw new EditalInvalidoException();
 					}
 			}
 		}
@@ -23,16 +27,16 @@ public class CentralDeInformacoes {
 		return true;
 	}
 
-	public EditalDeMonitoria recuperarEditalPeloId(long id) {
+	public EditalDeMonitoria recuperarEditalPeloId(long id) throws EditalNaoEncontradoException{
 		for (EditalDeMonitoria edital: todosOsEditais) {
 			if (edital.getId() == id) {
 				return edital;
 			}
 		}
-		return null;
+		throw new EditalNaoEncontradoException();
 	}
 	
-	public ArrayList<Disciplina> recuperarInscriçõesDeUmAlunoEmUmEdital(String matricula, long id){
+	public ArrayList<Disciplina> recuperarInscriçõesDeUmAlunoEmUmEdital(String matricula, long id) throws AlunoNaoEncontradoException, EditalNaoEncontradoException{
 		boolean existeEdital = false;
 		boolean existeAluno = false;
 		ArrayList<Disciplina> disciplinasAluno = new ArrayList<Disciplina>();
@@ -60,21 +64,21 @@ public class CentralDeInformacoes {
 				}
 			}
 			if (existeEdital == false) {
-				return null;
+				throw new EditalNaoEncontradoException();
 			}
 		}else if (existeAluno && disciplinasAluno.isEmpty()){
 				return new ArrayList<Disciplina>();
-		}else if (!existeAluno){
-			return null;
+		}else if (existeAluno == false){
+			throw new AlunoNaoEncontradoException();
 		}
 		return  disciplinasAluno;
 	}
 	
-	public boolean adicionarAluno(Aluno a) {
+	public boolean adicionarAluno(Aluno a) throws AlunoJaMatriculadoException{
 		if (!todosOsAlunos.isEmpty()) {
 			for (Aluno aluno: todosOsAlunos) {
 				if (aluno.getMatricula().equals(a.getMatricula())){
-					return false;
+					throw new AlunoJaMatriculadoException();
 				}
 			}
 		}
@@ -82,13 +86,13 @@ public class CentralDeInformacoes {
 		return true;
 	}
 	
-	public Aluno recuperarAlunoPorMatricula(String numMatricula) {
+	public Aluno recuperarAlunoPorMatricula(String numMatricula) throws AlunoNaoEncontradoException {
 		for (Aluno a: todosOsAlunos) {
 			if (a.getMatricula().equals(numMatricula)) {
 				return a;
 			}
 		}
-		return null;
+		throw new AlunoNaoEncontradoException();
 	}
 	
 	
