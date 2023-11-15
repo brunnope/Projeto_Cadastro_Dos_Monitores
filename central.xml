@@ -3,17 +3,37 @@
   <todosOsAlunos>
     <Classes.Aluno>
       <nome>Cicero Brunno das Neves Pereira</nome>
-      <sexo>MASCULINO</sexo>
-      <matricula>202315020028</matricula>
       <email>cicero.brunno@academico.ifpb.edu.br</email>
       <senha>brunno123</senha>
+      <sexo>MASCULINO</sexo>
+      <matricula>202315020028</matricula>
     </Classes.Aluno>
     <Classes.Aluno>
       <nome>Anderson da Silva Santos</nome>
-      <sexo>MASCULINO</sexo>
-      <matricula>202315020023</matricula>
       <email>anderson.silva@academico.ifpb.edu.br</email>
       <senha>anderson123</senha>
+      <sexo>MASCULINO</sexo>
+      <matricula>202315020023</matricula>
+    </Classes.Aluno>
+    <Classes.Aluno>
+      <nome>anderson da silva santos</nome>
+      <email>abc@gmail.com</email>
+      <senha>1234</senha>
+      <sexo>MASCULINO</sexo>
+      <matricula>1</matricula>
+    </Classes.Aluno>
+    <Classes.Aluno>
+      <nome>michel</nome>
+      <email>michel@gmail.com</email>
+      <senha>1234</senha>
+      <sexo>MASCULINO</sexo>
+      <matricula>2</matricula>
+    </Classes.Aluno>
+    <Classes.Aluno>
+      <nome>gabriel laet</nome>
+      <email>gl@gmail.com</email>
+      <senha>123gabs</senha>
+      <matricula>6969</matricula>
     </Classes.Aluno>
   </todosOsAlunos>
   <todosOsEditais>
@@ -25,12 +45,27 @@
       <disciplinas>
         <Classes.Disciplina>
           <nome>POO</nome>
-          <quantVagas>3</quantVagas>
-          <alunosInscritos/>
+          <quantVagas>2</quantVagas>
+          <alunosInscritos>
+            <Classes.Aluno reference="../../../../../../todosOsAlunos/Classes.Aluno[3]"/>
+          </alunosInscritos>
         </Classes.Disciplina>
         <Classes.Disciplina>
           <nome>Matematica</nome>
           <quantVagas>3</quantVagas>
+          <alunosInscritos/>
+        </Classes.Disciplina>
+      </disciplinas>
+    </Classes.EditalDeMonitoria>
+    <Classes.EditalDeMonitoria>
+      <id>1699903294674</id>
+      <numeroEdital>1</numeroEdital>
+      <dataInicio>1111-11-11</dataInicio>
+      <dataFim>1112-11-11</dataFim>
+      <disciplinas>
+        <Classes.Disciplina>
+          <nome>POO</nome>
+          <quantVagas>5</quantVagas>
           <alunosInscritos/>
         </Classes.Disciplina>
       </disciplinas>
