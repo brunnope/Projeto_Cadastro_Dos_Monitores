@@ -8,6 +8,13 @@
       <email>gabriel@123</email>
       <senha>123</senha>
     </Classes.Aluno>
+    <Classes.Aluno>
+      <nome>gagaga</nome>
+      <sexo>MASCULINO</sexo>
+      <matricula>999</matricula>
+      <email>gaga@123</email>
+      <senha>9992</senha>
+    </Classes.Aluno>
   </todosOsAlunos>
   <todosOsEditais>
     <Classes.EditalDeMonitoria>
@@ -46,6 +53,35 @@
           <nome>matem</nome>
           <quantVagas>21</quantVagas>
           <alunosInscritos/>
+        </Classes.Disciplina>
+      </disciplinas>
+    </Classes.EditalDeMonitoria>
+    <Classes.EditalDeMonitoria>
+      <id>1700084481837</id>
+      <numeroEdital>123</numeroEdital>
+      <dataInicio>2023-10-20</dataInicio>
+      <dataFim>2023-10-21</dataFim>
+      <disciplinas>
+        <Classes.Disciplina>
+          <nome>ingles</nome>
+          <quantVagas>2</quantVagas>
+          <alunosInscritos/>
+        </Classes.Disciplina>
+      </disciplinas>
+    </Classes.EditalDeMonitoria>
+    <Classes.EditalDeMonitoria>
+      <id>1700239502803</id>
+      <numeroEdital>999</numeroEdital>
+      <dataInicio>2023-11-17</dataInicio>
+      <dataFim>2023-12-17</dataFim>
+      <disciplinas>
+        <Classes.Disciplina>
+          <nome>rht</nome>
+          <quantVagas>0</quantVagas>
+          <alunosInscritos>
+            <Classes.Aluno reference="../../../../../../todosOsAlunos/Classes.Aluno"/>
+            <Classes.Aluno reference="../../../../../../todosOsAlunos/Classes.Aluno[2]"/>
+          </alunosInscritos>
         </Classes.Disciplina>
       </disciplinas>
     </Classes.EditalDeMonitoria>

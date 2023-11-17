@@ -9,6 +9,7 @@ import Excecoes.AlunoJaMatriculadoException;
 import Excecoes.AlunoNaoEncontradoException;
 import Excecoes.EditalInvalidoException;
 import Excecoes.EditalNaoEncontradoException;
+import Excecoes.NenhumEditalCadastradoException;
 
 public class CentralDeInformacoes {
 	private ArrayList<Aluno> todosOsAlunos = new ArrayList<Aluno>();
@@ -104,12 +105,21 @@ public class CentralDeInformacoes {
 		todosOsAlunos = alunos;
 	}
 	
-	public ArrayList<EditalDeMonitoria> getTodosOsEditais() {
+	public ArrayList<EditalDeMonitoria> getTodosOsEditais(){
 		if (todosOsEditais == null) {
 	        return new ArrayList<EditalDeMonitoria>();
 	    } else {
 	        return todosOsEditais;
 	    }
+	}
+	
+	public void listarAlunos() throws AlunoNaoEncontradoException{
+		if(getTodosOsAlunos().size() == 0) {
+			throw new AlunoNaoEncontradoException();
+		}
+		for(Aluno a:getTodosOsAlunos()) {
+			System.out.println(a.toString());
+		}
 	}
 
 	public void setTodosOsEditais(ArrayList<EditalDeMonitoria> todosOsEditais) {

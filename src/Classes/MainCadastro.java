@@ -7,6 +7,8 @@ import java.util.Scanner;
 import Excecoes.AlunoJaInscritoException;
 import Excecoes.AlunoJaMatriculadoException;
 import Excecoes.AlunoNaoEncontradoException;
+import Excecoes.EditalInvalidoException;
+import Excecoes.EditalNaoEncontradoException;
 import Excecoes.InscricoesFinalizadaException;
 import Excecoes.InscricoesNaoAbertasException;
 import Persistencia.CentralDeInformacoes;
@@ -58,31 +60,27 @@ public class MainCadastro {
 
 
 			case "2":
-				if (central.getTodosOsAlunos().size() == 0) {
-					System.out.println("Nenhum Aluno Cadastrado no Momento");
-				}else{
-					for (Aluno a: central.getTodosOsAlunos()) {
-						System.out.println(a.toString());
-					}
+				try {
+					central.listarAlunos();
+				} catch (AlunoNaoEncontradoException e) {
+					System.out.println(e.getMessage());
 				}
+
 				System.out.println("<-----FIM-DE-LISTAGEM----->\n");
 				break;
 
 
 			case "3":
-				if (central.getTodosOsAlunos().size() == 0) {
-					System.out.println("Nenhum Aluno Cadastrado no Momento");
-				}else {
-					System.out.print("Matrícula do aluno: ");
-					matricula = leitor.nextLine();
-					System.out.println();
-					try {
-						Aluno aluno1 = central.recuperarAlunoPorMatricula(matricula);
-						System.out.println(aluno1.toString() + "\n");
-					}catch(AlunoNaoEncontradoException e) {
-						System.out.println(e.getMessage());
-					}
+				System.out.print("Matrícula do aluno: ");
+				matricula = leitor.nextLine();
+				System.out.println();
+				try {
+					Aluno aluno1 = central.recuperarAlunoPorMatricula(matricula);
+					System.out.println(aluno1.toString() + "\n");
+				}catch(AlunoNaoEncontradoException e) {
+					System.out.println(e.getMessage());
 				}
+
 				System.out.println("<-----FIM----->\n");
 				break;
 
@@ -114,12 +112,14 @@ public class MainCadastro {
 					System.out.println();
 
 				}
-				if (central.adicionarEdital(edital)) {
-					System.out.println("Edital cadastrado com sucesso!");
-				}else {
-					System.out.println("Edital já Cadastrado.");
+				try {
+					if (central.adicionarEdital(edital)) { 
+						System.out.println("Edital cadastrado com sucesso!");
+						System.out.println("<-----CADASTRO-FINALIZADO----->\n");
+					}
+				} catch (EditalInvalidoException e) {
+					System.out.println(e.getMessage());
 				}
-				System.out.println("<-----CADASTRO-FINALIZADO----->\n");
 				break;
 
 
@@ -130,49 +130,54 @@ public class MainCadastro {
 
 			case "6":
 			case "7":
-				if (central.getTodosOsEditais().size() == 0) {
-					System.out.println("Nenhum edital cadastrado no momento!\n");
-					continue;
-				}
 				System.out.print("Id do edital: ");
 				long id = Long.parseLong(leitor.nextLine());
 				if (opc.equals("6")) {
-					System.out.println("\n" + central.recuperarEditalPeloId(id).toString() + "\n");
-				}else {
-					if(central.recuperarEditalPeloId(id) == null) {
-						System.out.println("Edital Não Encontrado!\n");
-					}else {
-						EditalDeMonitoria edital1 = central.recuperarEditalPeloId(id);
-						
-						try {
-							if (edital1.jaAcabou()) {
-							}else {
-								System.out.print("Matrícula do aluno(a): ");
-								matricula = leitor.nextLine();
-								if (central.recuperarAlunoPorMatricula(matricula) == null) {
-									System.out.println("Aluno(a) Não Encontrado!\n");
-								} else {
-									Aluno aluno1 = central.recuperarAlunoPorMatricula(matricula);
-									System.out.print("Nome da disciplina: ");
-									String disciplina = leitor.nextLine();
-									try {
-										edital1.inscrever(aluno1, disciplina);
-										System.out.println("Aluno(a) cadastrado com sucesso!");
-										String mensagem = String.format("Olá, %s :) \n\n"
-												+ "Inscrição Confirmada: \n"
-												+ "Disciplina: %s \n\n"
-												+ "Att, Cordenação", aluno1.getNome(), disciplina);
-										Mensageiro.enviarEmail(aluno1.getEmail(), mensagem);
-									} catch (AlunoJaInscritoException | InscricoesFinalizadaException
-											| InscricoesNaoAbertasException e) {
-										System.out.println(e.getMessage());
-									}
-								}
-							}
-						} catch (InscricoesFinalizadaException e) {
-							System.out.println(e.getMessage());
-						}
+					try {
+						System.out.println("\n" + central.recuperarEditalPeloId(id).toString() + "\n");
+					} catch (EditalNaoEncontradoException e) {
+						System.out.println(e.getMessage());
 					}
+				}else {
+					EditalDeMonitoria edital1 = null;
+					try {
+						edital1 = central.recuperarEditalPeloId(id);
+					} catch (EditalNaoEncontradoException e) {
+						System.out.println(e.getMessage());
+					}
+
+					try {
+						if (edital1.jaAcabou()) {
+						}else {
+							System.out.print("Matrícula do aluno(a): ");
+							matricula = leitor.nextLine();
+							String disciplina = null;
+							Aluno aluno1 = null;
+							try {
+								aluno1 = central.recuperarAlunoPorMatricula(matricula);
+								System.out.print("Nome da disciplina: ");
+								disciplina = leitor.nextLine();
+							}catch(AlunoNaoEncontradoException e) {
+								System.out.println(e.getMessage());
+							}
+							try {
+								edital1.inscrever(aluno1, disciplina);
+								System.out.println("Aluno(a) cadastrado com sucesso!");
+								String mensagem = String.format("Olá, %s :) \n\n"
+										+ "Inscrição Confirmada: \n"
+										+ "Disciplina: %s \n\n"
+										+ "Att, Cordenação", aluno1.getNome(), disciplina);
+								Mensageiro.enviarEmail(aluno1.getEmail(), mensagem);
+							} catch (AlunoJaInscritoException | InscricoesFinalizadaException
+									| InscricoesNaoAbertasException e) {
+								System.out.println(e.getMessage());
+							}
+
+						}
+					} catch (InscricoesFinalizadaException e) {
+						System.out.println(e.getMessage());
+					}
+
 				}
 				System.out.println("<-----CADASTRO-FINALIZADO----->\n");
 				break;		
@@ -182,7 +187,11 @@ public class MainCadastro {
 				matricula = leitor.nextLine();
 				System.out.print("Id do edital: ");
 				id = Long.parseLong(leitor.nextLine());
-				geraRelatorios.obterComprovanteDeInscricoesAluno(matricula, id, central);
+				try {
+					geraRelatorios.obterComprovanteDeInscricoesAluno(matricula, id, central);
+				} catch (AlunoNaoEncontradoException | EditalNaoEncontradoException e) {
+					System.out.println(e.getMessage());
+				}
 				break;
 
 			case "9":
