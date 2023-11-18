@@ -19,46 +19,42 @@ public class MainCadastro {
 				try {
 					menu.cadastrarAluno();
 				} catch (AlunoJaMatriculadoException e) {
-					e.printStackTrace();
+					e.getMessage();
 				}
 				break;
 			case "2":
 				try {
 					menu.listarTodosAlunos();
 				} catch (NenhumAlunoCadastradoException e) {
-					e.printStackTrace();
+					e.getMessage();
 				}
 				break;
 			case "3":
 				try {
 					menu.exibirAlunoEspecifico();
 				} catch (AlunoNaoEncontradoException | NenhumAlunoCadastradoException e) {
-					
-					e.printStackTrace();
+					e.getMessage();
 				}
 				break;
 			case "4":
 				try {
 					menu.criarEdital();
 				} catch (EditalInvalidoException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					e.getMessage();
 				}
 				break;
 			case "5":
 				try {
 					menu.listarEditaisCadastrados();
 				} catch (NenhumEditalCadastradoExcecption e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					e.getMessage();
 				}
 				break;
 			case "6":
 				try {
 					menu.exibirEditalEspecifico();
 				} catch (EditalNaoEncontradoException | NenhumEditalCadastradoExcecption e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					e.getMessage();
 				}
 				break;
 			case "7":
@@ -66,16 +62,14 @@ public class MainCadastro {
 					menu.inscreverAlunoEdital();
 				} catch (EditalNaoEncontradoException | InscricoesFinalizadaException | AlunoNaoEncontradoException
 						| AlunoJaInscritoException | InscricoesNaoAbertasException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					e.getMessage();
 				}
 				break;		
 			case "8":
 				try {
 					menu.gerarRelatorioDeInscrição();
 				} catch (AlunoNaoEncontradoException | EditalNaoEncontradoException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					e.getMessage();
 				}
 				break;
 			case "9":
