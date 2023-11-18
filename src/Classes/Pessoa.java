@@ -10,6 +10,7 @@ public class Pessoa {
 		this.nome = nome;
 		this.email = email;
 		this.senha = senha;
+		this.sexo = sexo;
 	}
 	public Pessoa(String nome, String email, String senha) {
 		this.nome = nome;
