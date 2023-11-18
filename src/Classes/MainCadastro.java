@@ -1,9 +1,4 @@
 package Classes;
-
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Scanner;
-
 import Excecoes.AlunoJaInscritoException;
 import Excecoes.AlunoJaMatriculadoException;
 import Excecoes.AlunoNaoEncontradoException;
@@ -11,66 +6,40 @@ import Excecoes.EditalInvalidoException;
 import Excecoes.EditalNaoEncontradoException;
 import Excecoes.InscricoesFinalizadaException;
 import Excecoes.InscricoesNaoAbertasException;
-import Persistencia.CentralDeInformacoes;
-import Persistencia.Persistencia;
+import Excecoes.NenhumAlunoCadastradoException;
+import Excecoes.NenhumEditalCadastradoExcecption;
 
 public class MainCadastro {
 	public static void main(String[] args) {	
-		Persistencia dados = new Persistencia();
-		CentralDeInformacoes central = dados.recuperarCentral("central.xml");
-		GeradorDeRelatorios geraRelatorios = new GeradorDeRelatorios();
-
-		Scanner leitor = new Scanner(System.in);
-
+		MenuOpcoes menu = new MenuOpcoes();
 		String opc = null;
-		do {
-			System.out.println("1 - novo aluno");
-			System.out.println("2 - listar todos os alunos");
-			System.out.println("3 - exibir informações de um aluno específico");
-			System.out.println("4 - novo edital");
-			System.out.println("5 - informar quantidade de editais cadastrados");
-			System.out.println("6 - detalhar um edital específico");
-			System.out.println("7 - inscrever aluno em vaga de algum edital");
-			System.out.println("8 - gerar comprovante de todas as inscrisções do aluno em um edital");
-			System.out.println("S - sair");
-			opc = leitor.nextLine();
-			System.out.println();
-
+		do { opc = menu.escolherOpcao();
 			switch (opc.toUpperCase()) {
 			case "1":
-				System.out.print("Nome: ");
-				String nome = leitor.nextLine();
-				System.out.print("Sexo: ");
-				Sexo sexo = Sexo.valueOf(leitor.nextLine().toUpperCase());
-				System.out.print("Matrícula: ");
-				String matricula = leitor.nextLine();
-				System.out.print("Email: ");
-				String email = leitor.nextLine();
-				System.out.print("Senha: ");
-				String senha = leitor.nextLine();
-
-				Aluno aluno = new Aluno(nome, sexo, matricula, email, senha);
 				try {
-					central.adicionarAluno(aluno);
-					System.out.println("Aluno(a) Cadastrado(a) com sucesso!\n");
-				}catch (AlunoJaMatriculadoException e) {
-					System.out.println(e.getMessage());
+					menu.cadastrarAluno();
+				} catch (AlunoJaMatriculadoException e) {
+					e.getMessage();
 				}
 				break;
-
-
 			case "2":
 				try {
+<<<<<<< HEAD
 					central.listarAlunos();
 				} catch (AlunoNaoEncontradoException e) {
 					System.out.println(e.getMessage());
 				}
 
 				System.out.println("<-----FIM-DE-LISTAGEM----->\n");
+=======
+					menu.listarTodosAlunos();
+				} catch (NenhumAlunoCadastradoException e) {
+					e.getMessage();
+				}
+>>>>>>> anderson
 				break;
-
-
 			case "3":
+<<<<<<< HEAD
 				System.out.print("Matrícula do aluno: ");
 				matricula = leitor.nextLine();
 				System.out.println();
@@ -82,36 +51,21 @@ public class MainCadastro {
 				}
 
 				System.out.println("<-----FIM----->\n");
-				break;
-
-
-			case "4":
-				EditalDeMonitoria edital = new EditalDeMonitoria();
-				System.out.print("Número do edital: ");
-				edital.setNumeroEdital(leitor.nextLine());
-				System.out.print("Data de início: ");
-				LocalDate dataInicio = LocalDate.parse(leitor.nextLine(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-				edital.setDataInicio(dataInicio); 
-				System.out.print("Data de fim: ");
-				LocalDate dataFim = LocalDate.parse(leitor.nextLine(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-				edital.setDataFim(dataFim);
-
-				System.out.println("\nCadastro das Disciplinas\n");
-				String cont = "s";
-
-				while(cont.equalsIgnoreCase("s")) {
-					Disciplina disciplina = new Disciplina();
-					System.out.print("Nome: ");
-					disciplina.setNome(leitor.nextLine());
-					System.out.print("Quantidade de Vagas: ");
-					disciplina.setQuantVagas(Integer.parseInt(leitor.nextLine()));
-					edital.getDisciplinas().add(disciplina);
-					System.out.println("\nDisciplina Cadastrada");
-					System.out.print("Continuar[S/N]: ");
-					cont = leitor.nextLine();
-					System.out.println();
-
+=======
+				try {
+					menu.exibirAlunoEspecifico();
+				} catch (AlunoNaoEncontradoException | NenhumAlunoCadastradoException e) {
+					e.getMessage();
 				}
+>>>>>>> anderson
+				break;
+			case "4":
+				try {
+					menu.criarEdital();
+				} catch (EditalInvalidoException e) {
+					e.getMessage();
+				}
+<<<<<<< HEAD
 				try {
 					if (central.adicionarEdital(edital)) { 
 						System.out.println("Edital cadastrado com sucesso!");
@@ -120,16 +74,25 @@ public class MainCadastro {
 				} catch (EditalInvalidoException e) {
 					System.out.println(e.getMessage());
 				}
+=======
+>>>>>>> anderson
 				break;
-
-
 			case "5":
-				System.out.println("Editais Cadastrados: " + central.getTodosOsEditais().size()+ "\n");
+				try {
+					menu.listarEditaisCadastrados();
+				} catch (NenhumEditalCadastradoExcecption e) {
+					e.getMessage();
+				}
 				break;
-
-
 			case "6":
+				try {
+					menu.exibirEditalEspecifico();
+				} catch (EditalNaoEncontradoException | NenhumEditalCadastradoExcecption e) {
+					e.getMessage();
+				}
+				break;
 			case "7":
+<<<<<<< HEAD
 				System.out.print("Id do edital: ");
 				long id = Long.parseLong(leitor.nextLine());
 				if (opc.equals("6")) {
@@ -180,9 +143,17 @@ public class MainCadastro {
 
 				}
 				System.out.println("<-----CADASTRO-FINALIZADO----->\n");
+=======
+				try {
+					menu.inscreverAlunoEdital();
+				} catch (EditalNaoEncontradoException | InscricoesFinalizadaException | AlunoNaoEncontradoException
+						| AlunoJaInscritoException | InscricoesNaoAbertasException e) {
+					e.getMessage();
+				}
+>>>>>>> anderson
 				break;		
-
 			case "8":
+<<<<<<< HEAD
 				System.out.print("Matrícula do aluno: ");
 				matricula = leitor.nextLine();
 				System.out.print("Id do edital: ");
@@ -197,22 +168,26 @@ public class MainCadastro {
 			case "9":
 				for (EditalDeMonitoria edital1: central.getTodosOsEditais()) {
 					System.out.println(edital1.getId());
+=======
+				try {
+					menu.gerarRelatorioDeInscrição();
+				} catch (AlunoNaoEncontradoException | EditalNaoEncontradoException e) {
+					e.getMessage();
+>>>>>>> anderson
 				}
 				break;
-
+			case "9":
+				menu.recuperarIDEditais();
+				break;
 			case "S":
 				System.out.println("Saindo...");
 				break;
-
-
 			default:
 				System.out.println("Opção Inválida!\n");
 				continue;
 			}
-		} while (!opc.equalsIgnoreCase("S"));
-
-		System.out.println("<-----PROGRAMA-ENCERRADO----->");
-		dados.salvarCentral(central, "central.xml");
-		leitor.close();
+		}while (!opc.equalsIgnoreCase("S"));
+		
+		menu.salvarCentral();
 	}
 }
