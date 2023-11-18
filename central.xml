@@ -31,10 +31,23 @@
     </Classes.Aluno>
     <Classes.Aluno>
       <nome>gagaga</nome>
-      <sexo>MASCULINO</sexo>
-      <matricula>999</matricula>
       <email>gaga@123</email>
       <senha>9992</senha>
+      <sexo>MASCULINO</sexo>
+      <matricula>999</matricula>
+    </Classes.Aluno>
+    <Classes.Aluno>
+      <nome>gabriel</nome>
+      <email>992</email>
+      <senha>23</senha>
+      <matricula>99</matricula>
+    </Classes.Aluno>
+    <Classes.Aluno>
+      <nome>gabriel</nome>
+      <email>23</email>
+      <senha>54</senha>
+      <sexo>MASCULINO</sexo>
+      <matricula>994</matricula>
     </Classes.Aluno>
   </todosOsAlunos>
   <todosOsEditais>

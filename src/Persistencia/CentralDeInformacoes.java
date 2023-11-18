@@ -113,14 +113,6 @@ public class CentralDeInformacoes {
 	    }
 	}
 	
-	public void listarAlunos() throws AlunoNaoEncontradoException{
-		if(getTodosOsAlunos().size() == 0) {
-			throw new AlunoNaoEncontradoException();
-		}
-		for(Aluno a:getTodosOsAlunos()) {
-			System.out.println(a.toString());
-		}
-	}
 
 	public void setTodosOsEditais(ArrayList<EditalDeMonitoria> todosOsEditais) {
 		this.todosOsEditais = todosOsEditais;
