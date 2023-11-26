@@ -1,86 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Persistencia.CentralDeInformacoes>
-  <todosOsAlunos>
-    <Classes.Aluno>
-      <nome>Cicero Brunno das Neves Pereira</nome>
-      <email>cicero.brunno@academico.ifpb.edu.br</email>
-      <senha>brunno123</senha>
-      <sexo>MASCULINO</sexo>
-      <matricula>202315020028</matricula>
-    </Classes.Aluno>
-    <Classes.Aluno>
-      <nome>Anderson da Silva Santos</nome>
-      <email>anderson.silva@academico.ifpb.edu.br</email>
-      <senha>anderson123</senha>
-      <sexo>MASCULINO</sexo>
-      <matricula>202315020023</matricula>
-    </Classes.Aluno>
-    <Classes.Aluno>
-      <nome>anderson da silva santos</nome>
-      <email>abc@gmail.com</email>
+  <coordenador>
+    <Classes.Coordenador>
+      <nome>Cleyton souza</nome>
+      <email>cleyton@ifpb.edu.br</email>
       <senha>1234</senha>
-      <sexo>MASCULINO</sexo>
-      <matricula>1</matricula>
-    </Classes.Aluno>
-    <Classes.Aluno>
-      <nome>michel</nome>
-      <email>michel@gmail.com</email>
-      <senha>1234</senha>
-      <sexo>MASCULINO</sexo>
-      <matricula>2</matricula>
-    </Classes.Aluno>
-  </todosOsAlunos>
-  <todosOsEditais>
-    <Classes.EditalDeMonitoria>
-      <id>1699820433716</id>
-      <numeroEdital>1</numeroEdital>
-      <dataInicio>2023-11-12</dataInicio>
-      <dataFim>2023-12-05</dataFim>
-      <disciplinas>
-        <Classes.Disciplina>
-          <nome>POO</nome>
-          <quantVagas>2</quantVagas>
-          <alunosInscritos>
-            <Classes.Aluno reference="../../../../../../todosOsAlunos/Classes.Aluno[3]"/>
-          </alunosInscritos>
-        </Classes.Disciplina>
-        <Classes.Disciplina>
-          <nome>Matematica</nome>
-          <quantVagas>3</quantVagas>
-          <alunosInscritos/>
-        </Classes.Disciplina>
-      </disciplinas>
-    </Classes.EditalDeMonitoria>
-    <Classes.EditalDeMonitoria>
-      <id>1699903294674</id>
-      <numeroEdital>1</numeroEdital>
-      <dataInicio>1111-11-11</dataInicio>
-      <dataFim>1112-11-11</dataFim>
-      <disciplinas>
-        <Classes.Disciplina>
-          <nome>POO</nome>
-          <quantVagas>5</quantVagas>
-          <alunosInscritos/>
-        </Classes.Disciplina>
-      </disciplinas>
-    </Classes.EditalDeMonitoria>
-    <Classes.EditalDeMonitoria>
-      <id>1700268500986</id>
-      <numeroEdital>10</numeroEdital>
-      <dataInicio>2022-11-10</dataInicio>
-      <dataFim>2023-12-10</dataFim>
-      <disciplinas>
-        <Classes.Disciplina>
-          <nome>matematica</nome>
-          <quantVagas>5</quantVagas>
-          <alunosInscritos/>
-        </Classes.Disciplina>
-        <Classes.Disciplina>
-          <nome>poo</nome>
-          <quantVagas>5</quantVagas>
-          <alunosInscritos/>
-        </Classes.Disciplina>
-      </disciplinas>
-    </Classes.EditalDeMonitoria>
-  </todosOsEditais>
+    </Classes.Coordenador>
+  </coordenador>
+  <todosOsAlunos/>
+  <todosOsEditais/>
 </Persistencia.CentralDeInformacoes>

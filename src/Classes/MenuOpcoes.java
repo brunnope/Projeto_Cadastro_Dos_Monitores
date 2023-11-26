@@ -3,11 +3,15 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
+import com.itextpdf.text.log.SysoCounter;
+
 import Excecoes.AlunoJaInscritoException;
 import Excecoes.AlunoJaMatriculadoException;
 import Excecoes.AlunoNaoEncontradoException;
+import Excecoes.CredenciaisInvalidasException;
 import Excecoes.EditalInvalidoException;
 import Excecoes.EditalNaoEncontradoException;
+import Excecoes.EmailJaCadastradoException;
 import Excecoes.InscricoesFinalizadaException;
 import Excecoes.InscricoesNaoAbertasException;
 import Excecoes.NenhumAlunoCadastradoException;
@@ -35,15 +39,37 @@ public class MenuOpcoes {
 		return opc;
 
 	}
-	public void cadastrarAluno() throws AlunoJaMatriculadoException {
+	
+	public void cadastrarCoordenador() throws AlunoJaMatriculadoException, EmailJaCadastradoException {
+		if (central.getCoordenador().size() != 1) {
+		System.out.println("Iniciando Sistema...");
+		System.out.println("Cadastre um Coordenador Para iniciar o Sistema...");
+		System.out.print("Nome: ");
+		String nome = leitor.nextLine();
+		String email;
+		do {
+			System.out.print("Email: ");
+			email = leitor.nextLine();
+		} while (!CentralDeInformacoes.validarEmail(email));
+		System.out.print("Senha: ");
+		String senha = leitor.nextLine();
+		Coordenador c = new Coordenador(nome, email, senha);
+		central.adicionarCoordenador(c); 
+		System.out.println("Coordenador(a) Cadastrado(a) com sucesso!\n");
+		}
+	}
+	public void cadastrarAluno() throws AlunoJaMatriculadoException, EmailJaCadastradoException {
 		System.out.print("Nome: ");
 		String nome = leitor.nextLine();
 		System.out.print("Sexo: ");
 		Sexo sexo = Sexo.valueOf(leitor.nextLine().toUpperCase());
 		System.out.print("Matrícula: ");
 		String matricula = leitor.nextLine();
-		System.out.print("Email: ");
-		String email = leitor.nextLine();
+		String email;
+		do {
+			System.out.print("Email: ");
+			email = leitor.nextLine();
+		} while (!CentralDeInformacoes.validarEmail(email));
 		System.out.print("Senha: ");
 		String senha = leitor.nextLine();
 		Aluno aluno = new Aluno(nome, sexo, matricula, email, senha);
@@ -126,10 +152,10 @@ public class MenuOpcoes {
 	}
 	public void inscreverAlunoEdital() throws EditalNaoEncontradoException, InscricoesFinalizadaException,
 	AlunoNaoEncontradoException, AlunoJaInscritoException, InscricoesNaoAbertasException {
-
-		if(central.recuperarEditalPeloId(pedirID()) == null) {
+		long id = pedirID();
+		if(central.recuperarEditalPeloId(id) == null) {
 		}else {
-			EditalDeMonitoria edital1 = central.recuperarEditalPeloId(pedirID());
+			EditalDeMonitoria edital1 = central.recuperarEditalPeloId(id);
 			if (edital1.jaAcabou()) {
 			}else {
 				System.out.print("Matrícula do aluno(a): ");
@@ -168,5 +194,17 @@ public class MenuOpcoes {
 			System.out.println(edital1.getId());
 		}
 	}
-}
+	public Pessoa login(String email, String senha) throws NenhumAlunoCadastradoException, CredenciaisInvalidasException {
+		for (Coordenador c: central.getCoordenador()) {
+			if (c.getEmail().equals(email) && c.getSenha().equals(senha)) {
+				return c;
+			}
+		}
+		for(Aluno a: central.getTodosOsAlunos()) {
+			if (a.getEmail().equals(email) && a.getSenha().equals(senha)) {
+				return a;
+			}
+		}throw new CredenciaisInvalidasException();
+	}
 
+}
