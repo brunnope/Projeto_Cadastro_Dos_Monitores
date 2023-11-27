@@ -3,6 +3,10 @@ package Classes;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import Excecoes.AlunoJaInscritoException;
+import Excecoes.InscricoesFinalizadaException;
+import Excecoes.InscricoesNaoAbertasException;
+
 public class EditalDeMonitoria {
 	private long id;
 	private String numeroEdital;
@@ -29,13 +33,13 @@ public class EditalDeMonitoria {
 		id = System.currentTimeMillis();
 	}
 
-	public boolean inscrever(Aluno aluno, String nomeDisciplina) {
+	public boolean inscrever(Aluno aluno, String nomeDisciplina) throws AlunoJaInscritoException, InscricoesFinalizadaException, InscricoesNaoAbertasException {
 		if ((!jaAcabou()) && (status().equalsIgnoreCase("abertas"))) {
 			for (Disciplina disciplina: disciplinas) {
 				if(disciplina.getNome().equalsIgnoreCase(nomeDisciplina)) {
 					for (Aluno a: disciplina.getAlunosInscritos()) {
 						if(a.getMatricula().equalsIgnoreCase(aluno.getMatricula())) {
-							return false;
+							throw new AlunoJaInscritoException();
 						}
 					} 
 					if(disciplina.getQuantVagas() > 0) {
@@ -46,36 +50,42 @@ public class EditalDeMonitoria {
 					}
 				}
 			}
-		return false;		
+		throw new InscricoesFinalizadaException();		
 	}
 	
-	public boolean jaAcabou() {
+	public boolean jaAcabou() throws InscricoesFinalizadaException {
 		LocalDate dataAtual = LocalDate.now();
 		if (dataAtual.isBefore(dataFim)) {
 			return false;
 		}
-		return true;
+		throw new InscricoesFinalizadaException();
 	}
 	
-	public String status() {
+	public String status() throws InscricoesFinalizadaException, InscricoesNaoAbertasException {
 		LocalDate dataAtual = LocalDate.now();
 		if (jaAcabou()) {
-			return "encerradas";
+			throw new InscricoesFinalizadaException();
 		}else if(dataAtual.isBefore(dataInicio)) {
-			return "não abertas";
+			throw new InscricoesNaoAbertasException();
 		}
 		return "abertas";
 	}
 	
-	public String toString() {
+	public String toString(){
 		String printDisciplinas = ""; 
+		String printMensagemEdital  = "";
 		for(Disciplina disciplina: disciplinas) {
 			printDisciplinas += disciplina.getNome() + " - " + disciplina.getQuantVagas() + "\n";
 		}
-		return String.format("Edital de Monitoria %s \n"
-				+ "Disciplinas \n"
-				+ "%s"
-				+ "Inscrições %s", numeroEdital,printDisciplinas,status());
+		try {
+			printMensagemEdital = String.format("Edital de Monitoria %s \n"
+					+ "Disciplinas \n"
+					+ "%s"
+					+ "Inscrições %s", numeroEdital,printDisciplinas,status());
+		} catch (InscricoesFinalizadaException | InscricoesNaoAbertasException e) {
+			System.out.println(e.getMessage());
+		}
+		return printMensagemEdital;
 	}
 	
 	public long getId() {

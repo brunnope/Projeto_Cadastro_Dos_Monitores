@@ -12,10 +12,12 @@ import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 
+import Excecoes.AlunoNaoEncontradoException;
+import Excecoes.EditalNaoEncontradoException;
 import Persistencia.CentralDeInformacoes;
 
 public class GeradorDeRelatorios{
-	public void obterComprovanteDeInscricoesAluno(String matricula, long id, CentralDeInformacoes central) {
+	public void obterComprovanteDeInscricoesAluno(String matricula, long id, CentralDeInformacoes central) throws AlunoNaoEncontradoException, EditalNaoEncontradoException {
 		Document doc = new Document(PageSize.A4);
 		Aluno aluno = central.recuperarAlunoPorMatricula(matricula);
 		ArrayList<Disciplina> disciplinas = central.recuperarInscriçõesDeUmAlunoEmUmEdital(matricula, id);

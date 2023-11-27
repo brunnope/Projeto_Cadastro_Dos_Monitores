@@ -18,8 +18,9 @@ public class Persistencia {
 	}
 	
 	public void salvarCentral(CentralDeInformacoes central, String nomeArquivo) {
-		File arquivo = new File(nomeArquivo);
+		
 		try {
+			File arquivo = new File(nomeArquivo);
 			arquivo.createNewFile();
 			PrintWriter pw = new PrintWriter(arquivo);
 			String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n";

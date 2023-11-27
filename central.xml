@@ -1,36 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Persistencia.CentralDeInformacoes>
+  <coordenador>
+    <Classes.Coordenador>
+      <nome>Cleyton souza</nome>
+      <email>cleyton@ifpb.edu.br</email>
+      <senha>1234</senha>
+    </Classes.Coordenador>
+  </coordenador>
   <todosOsAlunos>
     <Classes.Aluno>
-      <nome>Cicero Brunno das Neves Pereira</nome>
+      <nome>gabriel</nome>
+      <email>123@123</email>
+      <senha>ui</senha>
       <sexo>MASCULINO</sexo>
-      <matricula>202315020028</matricula>
-      <email>cicero.brunno@academico.ifpb.edu.br</email>
-      <senha>brunno123</senha>
-    </Classes.Aluno>
-    <Classes.Aluno>
-      <nome>Anderson da Silva Santos</nome>
-      <sexo>MASCULINO</sexo>
-      <matricula>202315020023</matricula>
-      <email>anderson.silva@academico.ifpb.edu.br</email>
-      <senha>anderson123</senha>
+      <matricula>222</matricula>
     </Classes.Aluno>
   </todosOsAlunos>
   <todosOsEditais>
     <Classes.EditalDeMonitoria>
-      <id>1699820433716</id>
-      <numeroEdital>1</numeroEdital>
-      <dataInicio>2023-11-12</dataInicio>
-      <dataFim>2023-12-05</dataFim>
+      <id>1700322053780</id>
+      <numeroEdital>123</numeroEdital>
+      <dataInicio>2023-12-19</dataInicio>
+      <dataFim>2023-12-20</dataFim>
       <disciplinas>
         <Classes.Disciplina>
-          <nome>POO</nome>
-          <quantVagas>3</quantVagas>
-          <alunosInscritos/>
-        </Classes.Disciplina>
-        <Classes.Disciplina>
-          <nome>Matematica</nome>
-          <quantVagas>3</quantVagas>
+          <nome>ingles</nome>
+          <quantVagas>1</quantVagas>
           <alunosInscritos/>
         </Classes.Disciplina>
       </disciplinas>
