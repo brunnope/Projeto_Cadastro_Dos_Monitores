@@ -9,14 +9,20 @@ public class EditalDeMonitoria {
 	private LocalDate dataInicio;
 	private LocalDate dataFim;
 	private ArrayList<Disciplina> disciplinas = new ArrayList<Disciplina>();
+	private float pesoCRE;
+	private float pesoMedia;
+	//pode ser não calculado, calculado e final
+	private String resultado;
 	
 	
-	public EditalDeMonitoria(String numeroEdital, LocalDate dataInicio, LocalDate dataFim, ArrayList<Disciplina> disciplinas) {
+	public EditalDeMonitoria(String numeroEdital, LocalDate dataInicio, LocalDate dataFim, ArrayList<Disciplina> disciplinas, float pesoCRE, float pesoMedia) {
 		id = System.currentTimeMillis();
 		this.numeroEdital = numeroEdital;
 		this.dataInicio = dataInicio;
 		this.dataFim = dataFim;
 		this.disciplinas = disciplinas;
+		this.pesoCRE = pesoCRE;
+		this.pesoMedia = pesoMedia;
 	}
 	
 	public EditalDeMonitoria(){
@@ -106,5 +112,21 @@ public class EditalDeMonitoria {
 
 	public void setDisciplinas(ArrayList<Disciplina> disciplinas) {
 		this.disciplinas = disciplinas;
+	}
+	
+	public float getPesoCRE() {
+		return pesoCRE;
+	}
+	
+	public void setPesoCRE(float pesoCRE) {
+		this.pesoCRE = pesoCRE;
+	}
+	
+	public float getPesoMedia() {
+		return pesoMedia;
+	}
+	
+	public void setPesoMedia(float pesoMedia) {
+		this.pesoMedia = pesoMedia;
 	}
 }
