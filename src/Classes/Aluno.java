@@ -3,7 +3,7 @@ public class Aluno extends Pessoa{
 	private String matricula;
 	
 	public Aluno(String nome, Sexo sexo, String matricula, String email, String senha) {
-		super(nome, email, senha, sexo);
+		super(nome, sexo, email, senha);
 		this.matricula = matricula;
 		
 	}

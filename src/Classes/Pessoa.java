@@ -6,9 +6,10 @@ public class Pessoa {
 	private String senha;
 	private Sexo sexo;
 	
-	public Pessoa(String nome, String email, String senha, Sexo sexo) {
+	public Pessoa(String nome, Sexo sexo, String email, String senha) {
 		this.nome = nome;
 		this.email = email;
+		this.sexo = sexo;
 		this.senha = senha;
 		this.sexo = sexo;
 	}

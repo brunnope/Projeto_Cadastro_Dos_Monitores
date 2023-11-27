@@ -13,6 +13,7 @@ public class MainCadastro {
 		String usuario;
 		String senha;	
 		String opc = null;
+<<<<<<< HEAD
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("=== TELA DE LOGIN ===");
 		System.out.print("Usuário (email): ");
@@ -106,3 +107,82 @@ public class MainCadastro {
 	}
 }
 	
+=======
+        do {
+            opc = menu.escolherOpcao();
+
+            switch (opc.toUpperCase()) {
+                case "1":
+                    try {
+                        menu.cadastrarAluno();
+                    } catch (AlunoJaMatriculadoException e) {
+                    	System.out.println(e.getMessage());
+                    }
+                    break;
+                case "2":
+                    try {
+                        menu.listarTodosAlunos();
+                    } catch (NenhumAlunoCadastradoException e) {
+                        System.out.println(e.getMessage());
+                    }
+                    break;
+                case "3":
+                    try {
+                        menu.exibirAlunoEspecifico();
+                    } catch (AlunoNaoEncontradoException | NenhumAlunoCadastradoException e) {
+                    	System.out.println(e.getMessage());
+                    }
+                    break;
+                case "4":
+                    try {
+                        menu.criarEdital();
+                    } catch (EditalInvalidoException e) {
+                    	System.out.println(e.getMessage());
+                    }
+                    break;
+                case "5":
+                    try {
+                        menu.listarEditaisCadastrados();
+                    } catch (NenhumEditalCadastradoExcecption e) {
+                    	System.out.println(e.getMessage());
+                    }
+                    break;
+                case "6":
+                    try {
+                        menu.exibirEditalEspecifico();
+                    } catch (EditalNaoEncontradoException | NenhumEditalCadastradoExcecption e) {
+                    	System.out.println(e.getMessage());
+                    }
+                    break;
+                case "7":
+                    try {
+                        menu.inscreverAlunoEdital();
+                    } catch (EditalNaoEncontradoException | InscricoesFinalizadaException | AlunoNaoEncontradoException
+                            | AlunoJaInscritoException | InscricoesNaoAbertasException e) {
+                    	System.out.println(e.getMessage());
+                    }
+                    break;
+                case "8":
+                    try {
+                        menu.gerarRelatorioDeInscrição();
+                    } catch (AlunoNaoEncontradoException | EditalNaoEncontradoException e) {
+                    	System.out.println(e.getMessage());
+                    }
+                    break;
+                case "9":
+                    menu.recuperarIDEditais();
+                    break;
+                case "S":
+                    System.out.println("Saindo...");
+                    break;
+                default:
+                    System.out.println("Opção Inválida!\n");
+                    continue;
+            }
+        } while (!opc.equalsIgnoreCase("S"));
+
+        menu.salvarCentral();
+    }
+}
+
+>>>>>>> gabriel

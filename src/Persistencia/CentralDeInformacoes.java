@@ -10,11 +10,15 @@ import Excecoes.AlunoJaMatriculadoException;
 import Excecoes.AlunoNaoEncontradoException;
 import Excecoes.EditalInvalidoException;
 import Excecoes.EditalNaoEncontradoException;
+<<<<<<< HEAD
 import Excecoes.EmailJaCadastradoException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
+=======
+import Excecoes.NenhumEditalCadastradoException;
+>>>>>>> gabriel
 
 public class CentralDeInformacoes {
 	private ArrayList<Coordenador> coordenador = new ArrayList<Coordenador>();
@@ -148,14 +152,20 @@ public class CentralDeInformacoes {
 	public void setTodosOsAlunos(ArrayList<Aluno> alunos) {
 		todosOsAlunos = alunos;
 	}
+<<<<<<< HEAD
 
 	public ArrayList<EditalDeMonitoria> getTodosOsEditais() {
+=======
+	
+	public ArrayList<EditalDeMonitoria> getTodosOsEditais(){
+>>>>>>> gabriel
 		if (todosOsEditais == null) {
 			return new ArrayList<EditalDeMonitoria>();
 		} else {
 			return todosOsEditais;
 		}
 	}
+	
 
 	public void setTodosOsEditais(ArrayList<EditalDeMonitoria> todosOsEditais) {
 		this.todosOsEditais = todosOsEditais;

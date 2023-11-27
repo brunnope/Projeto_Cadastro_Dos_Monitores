@@ -17,6 +17,7 @@ import Excecoes.EditalNaoEncontradoException;
 import Persistencia.CentralDeInformacoes;
 
 public class GeradorDeRelatorios{
+
 	public void obterComprovanteDeInscricoesAluno(String matricula, long id, CentralDeInformacoes central) throws AlunoNaoEncontradoException, EditalNaoEncontradoException {
 		Document doc = new Document(PageSize.A4);
 		Aluno aluno = central.recuperarAlunoPorMatricula(matricula);
