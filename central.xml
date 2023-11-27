@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Persistencia.CentralDeInformacoes>
-<<<<<<< HEAD
   <coordenador>
     <Classes.Coordenador>
       <nome>Cleyton souza</nome>
@@ -8,9 +7,6 @@
       <senha>1234</senha>
     </Classes.Coordenador>
   </coordenador>
-  <todosOsAlunos/>
-  <todosOsEditais/>
-=======
   <todosOsAlunos>
     <Classes.Aluno>
       <nome>gabriel</nome>
@@ -35,5 +31,4 @@
       </disciplinas>
     </Classes.EditalDeMonitoria>
   </todosOsEditais>
->>>>>>> gabriel
 </Persistencia.CentralDeInformacoes>

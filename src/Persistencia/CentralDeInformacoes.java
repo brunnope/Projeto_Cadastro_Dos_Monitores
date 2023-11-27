@@ -10,15 +10,11 @@ import Excecoes.AlunoJaMatriculadoException;
 import Excecoes.AlunoNaoEncontradoException;
 import Excecoes.EditalInvalidoException;
 import Excecoes.EditalNaoEncontradoException;
-<<<<<<< HEAD
 import Excecoes.EmailJaCadastradoException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-=======
-import Excecoes.NenhumEditalCadastradoException;
->>>>>>> gabriel
 
 public class CentralDeInformacoes {
 	private ArrayList<Coordenador> coordenador = new ArrayList<Coordenador>();
@@ -34,21 +30,20 @@ public class CentralDeInformacoes {
 
 		return matcher.matches();
 	}
-	public boolean emailExiste(String email) {
+	public boolean emailExiste(String email) throws EmailJaCadastradoException {
 		for (Aluno aluno : todosOsAlunos) {
 			if (aluno.getEmail().equalsIgnoreCase(email)) {
-				return true;
+				throw new EmailJaCadastradoException();
 			}
 		}
-
 		for (Coordenador coord : coordenador) {
 			if (coord.getEmail().equalsIgnoreCase(email)) {
-				return true;
+				throw new EmailJaCadastradoException();
 			}
-		}
 
-		return false;
+		}return false;
 	}
+
 
 	public boolean adicionarCoordenador(Coordenador c) {
 		if (coordenador.isEmpty()) {
@@ -119,17 +114,18 @@ public class CentralDeInformacoes {
 		}
 		return  disciplinasAluno;
 	}
-
-	public boolean adicionarAluno(Aluno a) throws AlunoJaMatriculadoException, EmailJaCadastradoException{
-		if (!todosOsAlunos.isEmpty()) {
-			for (Aluno aluno: todosOsAlunos) {
-				if (aluno.getMatricula().equals(a.getMatricula())){
-					throw new AlunoJaMatriculadoException();
-
-				}	else if(emailExiste(aluno.getEmail())) {
-					throw new EmailJaCadastradoException();
-				}
+	public boolean verificarMatricula(String matricula) throws AlunoJaMatriculadoException {
+		for (Aluno aluno: todosOsAlunos) {
+			if (aluno.getMatricula().equals(matricula)){
+				throw new AlunoJaMatriculadoException();
 			}
+
+		}return false;
+	}
+	public boolean adicionarAluno (Aluno a) throws AlunoJaMatriculadoException, EmailJaCadastradoException{
+		if (!todosOsAlunos.isEmpty() || !coordenador.isEmpty()) {
+			verificarMatricula(a.getMatricula());
+		    emailExiste(a.getEmail()); 
 		}
 		todosOsAlunos.add(a);
 		return true;
@@ -152,20 +148,14 @@ public class CentralDeInformacoes {
 	public void setTodosOsAlunos(ArrayList<Aluno> alunos) {
 		todosOsAlunos = alunos;
 	}
-<<<<<<< HEAD
 
 	public ArrayList<EditalDeMonitoria> getTodosOsEditais() {
-=======
-	
-	public ArrayList<EditalDeMonitoria> getTodosOsEditais(){
->>>>>>> gabriel
 		if (todosOsEditais == null) {
 			return new ArrayList<EditalDeMonitoria>();
 		} else {
 			return todosOsEditais;
 		}
 	}
-	
 
 	public void setTodosOsEditais(ArrayList<EditalDeMonitoria> todosOsEditais) {
 		this.todosOsEditais = todosOsEditais;

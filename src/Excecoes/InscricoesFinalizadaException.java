@@ -13,7 +13,7 @@ public class InscricoesFinalizadaException extends Exception{
 	}
 	
 	public String getMessage() {
-		return "Edital indisponivel";
+		return "Período de inscrição se encontra fechado";
 	}
 	
 	public String getErroModificado() {

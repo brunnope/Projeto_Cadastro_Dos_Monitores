@@ -21,10 +21,9 @@ import Persistencia.Persistencia;
 
 public class MenuOpcoes {
 	private Persistencia dados = new Persistencia();
-	private GeradorDeRelatorios geraRelatorios = new GeradorDeRelatorios();
+	GeradorDeRelatorios geraRelatorios = new GeradorDeRelatorios();
 	private CentralDeInformacoes central = dados.recuperarCentral("central.xml");
-	private Scanner leitor = new Scanner(System.in);
-
+	Scanner leitor = new Scanner(System.in);
 	public String escolherOpcao() {
 		System.out.println("1 - novo aluno");
 		System.out.println("2 - listar todos os alunos");
@@ -41,7 +40,6 @@ public class MenuOpcoes {
 
 	}
 	
-<<<<<<< HEAD
 	public void cadastrarCoordenador() throws AlunoJaMatriculadoException, EmailJaCadastradoException {
 		if (central.getCoordenador().size() != 1) {
 		System.out.println("Iniciando Sistema...");
@@ -61,9 +59,6 @@ public class MenuOpcoes {
 		}
 	}
 	public void cadastrarAluno() throws AlunoJaMatriculadoException, EmailJaCadastradoException {
-=======
-	public void cadastrarAluno() throws AlunoJaMatriculadoException {
->>>>>>> gabriel
 		System.out.print("Nome: ");
 		String nome = leitor.nextLine();
 		System.out.print("Sexo: ");
@@ -91,7 +86,6 @@ public class MenuOpcoes {
 		}
 		System.out.println("<-----FIM-DE-LISTAGEM----->\n");	
 	}
-	
 	public void exibirAlunoEspecifico() throws AlunoNaoEncontradoException, NenhumAlunoCadastradoException {
 		if (central.getTodosOsAlunos().size() == 0) {
 			throw new NenhumAlunoCadastradoException();
@@ -104,7 +98,6 @@ public class MenuOpcoes {
 			System.out.println("<-----FIM----->\n");
 		}
 	} 
-	
 	public void adicionarDisciplinaEdital(EditalDeMonitoria e) {
 		String opc = "s";
 		while(opc.equalsIgnoreCase("s")) {
@@ -121,7 +114,6 @@ public class MenuOpcoes {
 
 		}
 	}
-	
 	public void criarEdital() throws EditalInvalidoException {
 		EditalDeMonitoria edital = new EditalDeMonitoria();
 		System.out.print("Número do edital: ");
@@ -152,14 +144,12 @@ public class MenuOpcoes {
 		long id = Long.parseLong(leitor.nextLine());
 		return id;
 	}
-	
 	public void exibirEditalEspecifico() throws EditalNaoEncontradoException, NenhumEditalCadastradoExcecption {
 		if (central.getTodosOsEditais().size() == 0) {
 			throw new NenhumEditalCadastradoExcecption();
 		}
 		System.out.println("\n" + central.recuperarEditalPeloId(pedirID()).toString() + "\n");
 	}
-	
 	public void inscreverAlunoEdital() throws EditalNaoEncontradoException, InscricoesFinalizadaException,
 	AlunoNaoEncontradoException, AlunoJaInscritoException, InscricoesNaoAbertasException {
 		long id = pedirID();
@@ -189,19 +179,16 @@ public class MenuOpcoes {
 			}
 		}System.out.println("<-----CADASTRO-FINALIZADO----->\n");
 	}
-	
 	public void gerarRelatorioDeInscrição() throws AlunoNaoEncontradoException, EditalNaoEncontradoException {
 		System.out.print("Matrícula do aluno: ");
 		String matricula = leitor.nextLine();
 		System.out.print("Id do edital: ");
 		geraRelatorios.obterComprovanteDeInscricoesAluno(matricula, pedirID(), central);
 	}
-	
 	public void salvarCentral() {
 		dados.salvarCentral(central, "central.xml");
 		System.out.println("<-----PROGRAMA-ENCERRADO----->");
 	}
-	
 	public void recuperarIDEditais() {
 		for (EditalDeMonitoria edital1: central.getTodosOsEditais()) {
 			System.out.println(edital1.getId());
