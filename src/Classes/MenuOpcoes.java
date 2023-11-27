@@ -32,7 +32,7 @@ public class MenuOpcoes {
 		System.out.println("5 - informar quantidade de editais cadastrados");
 		System.out.println("6 - detalhar um edital específico");
 		System.out.println("7 - inscrever aluno em vaga de algum edital");
-		System.out.println("8 - gerar comprovante de todas as inscrisções do aluno em um edital");
+		System.out.println("8 - gerar comprovante de todas as inscrições do aluno em um edital");
 		System.out.println("S - sair");
 		System.out.println();
 		String opc = leitor.nextLine();
