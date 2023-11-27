@@ -182,7 +182,6 @@ public class MenuOpcoes {
 	public void gerarRelatorioDeInscrição() throws AlunoNaoEncontradoException, EditalNaoEncontradoException {
 		System.out.print("Matrícula do aluno: ");
 		String matricula = leitor.nextLine();
-		System.out.print("Id do edital: ");
 		geraRelatorios.obterComprovanteDeInscricoesAluno(matricula, pedirID(), central);
 	}
 	public void salvarCentral() {
