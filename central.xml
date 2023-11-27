@@ -35,5 +35,18 @@
         </Classes.Disciplina>
       </disciplinas>
     </Classes.EditalDeMonitoria>
+    <Classes.EditalDeMonitoria>
+      <id>1701022290770</id>
+      <numeroEdital>3</numeroEdital>
+      <dataInicio>2023-11-26</dataInicio>
+      <dataFim>2023-11-30</dataFim>
+      <disciplinas>
+        <Classes.Disciplina>
+          <nome>ingles</nome>
+          <quantVagas>3</quantVagas>
+          <alunosInscritos/>
+        </Classes.Disciplina>
+      </disciplinas>
+    </Classes.EditalDeMonitoria>
   </todosOsEditais>
 </Persistencia.CentralDeInformacoes>
