@@ -26,11 +26,11 @@ public class Utilidades {
 		}
 	
 	public Pessoa login(String email, String senha, CentralDeInformacoes central) throws NenhumAlunoCadastradoException, CredenciaisInvalidasException {
-		for (Coordenador c: central.getCoordenador()) {
+		Coordenador c = central.getCoordenador();
 			if (c.getEmail().equals(email) && c.getSenha().equals(senha)) {
 				return c;
 			}
-		}
+		
 		for(Aluno a: central.getTodosOsAlunos()) {
 			if (a.getEmail().equals(email) && a.getSenha().equals(senha)) {
 				return a;

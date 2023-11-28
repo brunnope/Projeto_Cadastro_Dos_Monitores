@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Persistencia.CentralDeInformacoes>
   <coordenador>
-    <Classes.Coordenador>
-      <nome>Cleyton Souza</nome>
-      <email>Cleyton.Souza@ifpb.edu.br</email>
-      <senha>12345678</senha>
-    </Classes.Coordenador>
+    <nome>Cleyton souza</nome>
+    <email>cleyton.souza@ifpb.edu.br</email>
+    <senha>12345678</senha>
   </coordenador>
   <todosOsAlunos/>
   <todosOsEditais/>

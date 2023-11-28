@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
 
 
 public class CentralDeInformacoes {
-	private ArrayList<Coordenador> coordenador = new ArrayList<Coordenador>();
+	private Coordenador coordenador = null;
 	private ArrayList<Aluno> todosOsAlunos = new ArrayList<Aluno>();
 	private ArrayList<EditalDeMonitoria> todosOsEditais = new ArrayList<EditalDeMonitoria>();
 
@@ -41,19 +41,15 @@ public class CentralDeInformacoes {
 				throw new EmailJaCadastradoException();
 			}
 		}
-		for (Coordenador coord : coordenador) {
-			if (coord.getEmail().equalsIgnoreCase(email)) {
+			if (coordenador.getEmail().equalsIgnoreCase(email)) {
 				throw new EmailJaCadastradoException();
-			}
-
 		}return false;
 	}
 
 
 	public boolean adicionarCoordenador(Coordenador c) {
-		if (coordenador.isEmpty()) {
-			if(coordenador.add(c));
-			JOptionPane.showInternalMessageDialog(null, "pegadinha do malandro");
+		if (coordenador == null) {
+			coordenador = c;
 			return true;
 		} else {
 			return false;
@@ -129,7 +125,7 @@ public class CentralDeInformacoes {
 		}return false;
 	}
 	public boolean adicionarAluno (Aluno a) throws AlunoJaMatriculadoException, EmailJaCadastradoException{
-		if (!todosOsAlunos.isEmpty() || !coordenador.isEmpty()) {
+		if (!todosOsAlunos.isEmpty()) {
 			verificarMatricula(a.getMatricula());
 		    emailExiste(a.getEmail()); 
 		}
@@ -166,7 +162,7 @@ public class CentralDeInformacoes {
 	public void setTodosOsEditais(ArrayList<EditalDeMonitoria> todosOsEditais) {
 		this.todosOsEditais = todosOsEditais;
 	}
-	public ArrayList<Coordenador> getCoordenador() {
+	public Coordenador getCoordenador() {
 		return coordenador;
 	}
 }
