@@ -1,4 +1,4 @@
-package Telas.Coordenador;
+package Telas.Aluno;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -10,6 +10,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 import Classes.Disciplina;
@@ -25,15 +26,14 @@ import Telas.FabricaComponentes.FabricaJLabel;
 import Telas.FabricaComponentes.FabricaJMenuBar;
 import Telas.FabricaComponentes.FabricaJTextField;
 
-public class TelaDetalharEditalEncerrado extends TelaPadrao{
+public class TelaDetalharEditalAberto extends TelaPadrao{
 	private Persistencia dados = new Persistencia();
 	private CentralDeInformacoes central = dados.recuperarCentral("central.xml");
 	//apagar id
 	private EditalDeMonitoria edital;
 
-
-	public TelaDetalharEditalEncerrado() {
-		super("DETALHES EDITAL ENCERRADO");
+	public TelaDetalharEditalAberto() {
+		super("DETALHES EDITAL ABERTO");
 		configurarComponentes();
 		setVisible(true);
 	}
@@ -54,7 +54,7 @@ public class TelaDetalharEditalEncerrado extends TelaPadrao{
 	}
 	
 	private void adicionarMenuBar() {
-		JMenuBar mOpcoes = FabricaJMenuBar.MenuCoordenador();
+		JMenuBar mOpcoes = FabricaJMenuBar.MenuAluno();
 		setJMenuBar(mOpcoes);
 	}
 
@@ -65,12 +65,8 @@ public class TelaDetalharEditalEncerrado extends TelaPadrao{
 		lTitulo = FabricaJLabel.criarJLabel("EDITAL", 440, 150, 180, 30, Color.BLACK, 30);
 		add(lTitulo);
 		
-		JLabel lIdEdital = FabricaJLabel.criarJLabel("ID Edital", 297, 227, 100, 30, Color.BLACK, 12);
-		add(lIdEdital);
-		
 		JLabel lNumEdital = FabricaJLabel.criarJLabel("Número Edital", 297, 280, 100, 30, Color.BLACK, 12);
 		add(lNumEdital);
-		
 		
 		JLabel lDataInicio = FabricaJLabel.criarJLabel("Data de Inicio", 295, 335, 150, 30, Color.BLACK, 12);
 		add(lDataInicio);
@@ -78,20 +74,18 @@ public class TelaDetalharEditalEncerrado extends TelaPadrao{
 		JLabel lDataFim = FabricaJLabel.criarJLabel("Data Final", 458, 335, 150, 30, Color.BLACK, 12);
 		add(lDataFim);
 		
-		JLabel lPesoCRE = FabricaJLabel.criarJLabel("Peso CRE Aluno", 297, 505, 200, 30, Color.BLACK, 12);
+		JLabel lSelecione = FabricaJLabel.criarJLabel("Selecione uma ou mais disciplinas", 295, 395, 200, 30, Color.BLACK, 12);
+		add(lSelecione);
+		
+		JLabel lPesoCRE = FabricaJLabel.criarJLabel("Seu CRE", 297, 525, 200, 30, Color.BLACK, 12);
 		add(lPesoCRE);
 		
-		JLabel lPesoMedia = FabricaJLabel.criarJLabel("Peso Média Aluno", 459, 505, 200, 30, Color.BLACK, 12);
+		JLabel lPesoMedia = FabricaJLabel.criarJLabel("Sua Média", 459, 525, 200, 30, Color.BLACK, 12);
 		add(lPesoMedia);
 
 	}
 	
 	private void adicionarTextFields() {
-		JTextField tIdEdital = FabricaJTextField.criarJTextField(325, 253, 282, 30, Color.WHITE, Color.BLACK, 12, Color.GRAY);
-		tIdEdital.setText(Long.toString(edital.getId()));
-		tIdEdital.setEditable(false);
-		add(tIdEdital);
-		
 		JTextField tNumEdital = FabricaJTextField.criarJTextField(325, 305, 282, 30, Color.WHITE, Color.BLACK, 12, Color.GRAY);
 		tNumEdital.setText(edital.getNumeroEdital());
 		tNumEdital.setEditable(false);
@@ -113,17 +107,13 @@ public class TelaDetalharEditalEncerrado extends TelaPadrao{
 		fDataFim.setHorizontalAlignment(JFormattedTextField.CENTER);
 		add(fDataFim);
 		
-		JTextField fPesoCRE = FabricaJTextField.criarJTextField(325, 530, 120, 30, Color.WHITE, Color.BLACK, 12, Color.GRAY);
-		fPesoCRE.setText(Float.toString(edital.getPesoCRE()));
-		fPesoCRE.setEditable(false);
-		fPesoCRE.setToolTipText("No máximo 2 dígitos");
-		add(fPesoCRE);
+		JTextField fCRE = FabricaJTextField.criarJTextField(325, 550, 120, 30, Color.WHITE, Color.BLACK, 12, Color.GRAY);
+		fCRE.setToolTipText("No máximo 3 dígitos");
+		add(fCRE);
 		
-		JTextField fPesoMedia = FabricaJTextField.criarJTextField(487, 530, 120, 30, Color.WHITE, Color.BLACK, 12, Color.GRAY);
-		fPesoMedia.setText(Float.toString(edital.getPesoMedia()));
-		fPesoMedia.setEditable(false);
-		fPesoMedia.setToolTipText("No máximo 2 dígitos");
-		add(fPesoMedia);
+		JTextField fMedia = FabricaJTextField.criarJTextField(487, 550, 120, 30, Color.WHITE, Color.BLACK, 12, Color.GRAY);
+		fMedia.setToolTipText("No máximo 3 dígitos");
+		add(fMedia);
 		
 	}
 	
@@ -150,26 +140,22 @@ public class TelaDetalharEditalEncerrado extends TelaPadrao{
 		        return false;
 		    }
 		};
-		//permite apenas uma seleção
+		//permite mais de uma seleção
+		tableDisciplinas.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		JScrollPane rolagemTabela = new JScrollPane(tableDisciplinas);
-		rolagemTabela.setBounds(295, 400, 315, 100);
+		rolagemTabela.setBounds(295, 420, 315, 100);
 		add(rolagemTabela);
-		
 	}
 	
 	private void adicionarButtons() {
-		JButton bVoltar = FabricaJButton.criarJButton("Voltar", 298, 610, 150, 30, Color.GREEN, Color.WHITE, 12);
+		JButton bVoltar = FabricaJButton.criarJButton("Voltar", 293, 610, 150, 30, Color.GREEN, Color.WHITE, 12);
 		add(bVoltar);
 		
-		JButton bResultados = FabricaJButton.criarJButton("Resultados", 455, 610, 150, 30, Color.GREEN, Color.WHITE, 12);
-		add(bResultados);
-		
+		JButton bInscrever = FabricaJButton.criarJButton("Inscrever-se", 457, 610, 150, 30, Color.GREEN, Color.WHITE, 12);
+		add(bInscrever);
 	}
 
-	private void adicionarIcones() {
-		JLabel iconeId = FabricaIcones.criarIcone(FabricaImagens.CADASTRAR, 283, 253, 50, 30);
-		add(iconeId);
-		
+	private void adicionarIcones() {		
 		JLabel iconeNumero = FabricaIcones.criarIcone(FabricaImagens.CADASTRAR, 283, 305, 50, 30);
 		add(iconeNumero);
 		
@@ -180,10 +166,10 @@ public class TelaDetalharEditalEncerrado extends TelaPadrao{
 		add(iconeDataFim);
 		
 		
-		JLabel iconePesoCRE = FabricaIcones.criarIcone(FabricaImagens.PESO, 283, 530, 50, 30);
+		JLabel iconePesoCRE = FabricaIcones.criarIcone(FabricaImagens.PESO, 283, 550, 50, 30);
 		add(iconePesoCRE);
 		
-		JLabel iconePesoMedia = FabricaIcones.criarIcone(FabricaImagens.PESO, 445, 530, 50, 30);
+		JLabel iconePesoMedia = FabricaIcones.criarIcone(FabricaImagens.PESO, 445, 550, 50, 30);
 		add(iconePesoMedia);
 		
 		JLabel iconeIf = FabricaIcones.criarIcone(FabricaImagens.IF, 350, 100, 70, 94);
@@ -195,7 +181,7 @@ public class TelaDetalharEditalEncerrado extends TelaPadrao{
 		
 	}
 	public static void main(String[] args) {
-		TelaDetalharEditalEncerrado t = new TelaDetalharEditalEncerrado();
-		}
+		TelaDetalharEditalAberto t = new TelaDetalharEditalAberto();
+	}
 
 }

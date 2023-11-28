@@ -19,6 +19,7 @@ import javax.swing.text.MaskFormatter;
 
 import Classes.Disciplina;
 import Classes.EditalDeMonitoria;
+import Excecoes.EditalNaoEncontradoException;
 import Persistencia.CentralDeInformacoes;
 import Persistencia.Persistencia;
 import Telas.FabricaImagens;
@@ -33,7 +34,7 @@ public class TelaDetalharEditalAberto extends TelaPadrao{
 	private Persistencia dados = new Persistencia();
 	private CentralDeInformacoes central = dados.recuperarCentral("central.xml");
 	//apagar id
-	private EditalDeMonitoria edital = central.recuperarEditalPeloId(central.getTodosOsEditais().get(0).getId());
+	private EditalDeMonitoria edital;
 
 	public TelaDetalharEditalAberto() {
 		super("DETALHES EDITAL ABERTO");
@@ -42,6 +43,12 @@ public class TelaDetalharEditalAberto extends TelaPadrao{
 	}
 
 	public void configurarComponentes() {
+		try {
+			edital = central.recuperarEditalPeloId(central.getTodosOsEditais().get(0).getId());
+		} catch (EditalNaoEncontradoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		adicionarMenuBar();
 		adicionarLabels();
 		adicionarTextFields();
@@ -161,7 +168,7 @@ public class TelaDetalharEditalAberto extends TelaPadrao{
 		JButton bClonar = FabricaJButton.criarJButton("Clonar", 400, 610, 100, 30, Color.GREEN, Color.WHITE, 12);
 		add(bClonar);
 		
-		JButton bEncerrar = FabricaJButton.criarJButton("Encerrar", 507, 610, 100, 30, Color.GREEN, Color.WHITE, 12);
+		JButton bEncerrar = FabricaJButton.criarJButton("Gerar Resultado", 507, 610, 100, 30, Color.GREEN, Color.WHITE, 12);
 		add(bEncerrar);
 	}
 
@@ -195,6 +202,6 @@ public class TelaDetalharEditalAberto extends TelaPadrao{
 	}
 	public static void main(String[] args) {
 		TelaDetalharEditalAberto t = new TelaDetalharEditalAberto();
-		}
+	}
 
 }

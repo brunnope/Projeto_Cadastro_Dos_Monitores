@@ -12,6 +12,8 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 import Classes.EditalDeMonitoria;
+import Excecoes.InscricoesFinalizadaException;
+import Excecoes.InscricoesNaoAbertasException;
 import Persistencia.CentralDeInformacoes;
 import Persistencia.Persistencia;
 import Telas.FabricaComponentes.FabricaIcones;
@@ -61,7 +63,15 @@ public class TelaVisualizarEditais extends TelaPadrao{
 			linha[0] = edital.getNumeroEdital();
 			linha[1] = edital.getDataInicio();
 			linha[2] = edital.getDataFim();
-			linha[3] = edital.status();
+			try {
+				linha[3] = edital.status();
+			} catch (InscricoesFinalizadaException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InscricoesNaoAbertasException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			mEditais.addRow(linha);
 		}
 
@@ -88,16 +98,14 @@ public class TelaVisualizarEditais extends TelaPadrao{
 	}
 	
 	private void adicionarButtons() {
-		JButton bGerarResultado = FabricaJButton.criarJButton("Gerar Resultado", 298, 630, 150, 30, Color.GREEN, Color.WHITE, 12);
-		add(bGerarResultado);
 		
-		JButton bVisualizar = FabricaJButton.criarJButton("Visualizar", 455, 630, 150, 30, Color.GREEN, Color.WHITE, 12);
+		JButton bVisualizar = FabricaJButton.criarJButton("Visualizar", 350, 630, 200, 30, Color.GREEN, Color.WHITE, 12);
 		add(bVisualizar);
 		
 	}
 
 	private void adicionarIcones() {
-		JLabel iconeIf = FabricaIcones.criarIcone(FabricaImagens.IF, 350, 160, 70, 94);
+		JLabel iconeIf = FabricaIcones.criarIcone(FabricaImagens.IF, 330, 100, 70, 94);
 		add(iconeIf);
 		
 		JLabel imagemFundo = FabricaIcones.criarIcone(FabricaImagens.TELA_LOGIN, 0, 0, 900, 800);

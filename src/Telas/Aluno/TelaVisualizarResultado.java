@@ -1,15 +1,13 @@
-package Telas.Coordenador;
+package Telas.Aluno;
 
 import java.awt.Color;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
-import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import Classes.Disciplina;
@@ -19,19 +17,20 @@ import Persistencia.CentralDeInformacoes;
 import Persistencia.Persistencia;
 import Telas.FabricaImagens;
 import Telas.TelaPadrao;
+import Telas.Coordenador.TelaDetalhesResultado;
 import Telas.FabricaComponentes.FabricaIcones;
 import Telas.FabricaComponentes.FabricaJButton;
 import Telas.FabricaComponentes.FabricaJLabel;
 import Telas.FabricaComponentes.FabricaJMenuBar;
-import Telas.FabricaComponentes.FabricaJTextField;
 
-public class TelaDetalhesResultado extends TelaPadrao{
+public class TelaVisualizarResultado extends TelaPadrao{
+
 	private Persistencia dados = new Persistencia();
 	private CentralDeInformacoes central = dados.recuperarCentral("central.xml");
 	//apagar id
 	private EditalDeMonitoria edital;
 	
-	public TelaDetalhesResultado() {
+	public TelaVisualizarResultado() {
 		super("DETALHES RESULTADO");
 		configurarComponentes();
 		setVisible(true);
@@ -92,14 +91,8 @@ public class TelaDetalhesResultado extends TelaPadrao{
 	}
 	
 	private void adicionarButtons() {
-		JButton bFecharEdital = FabricaJButton.criarJButton("Fechar Edital", 293, 610, 315, 30, Color.GREEN, Color.WHITE, 12);
-		add(bFecharEdital);
-		
-		JButton bEnviarEmail = FabricaJButton.criarJButton("Enviar Email", 293, 650, 150, 30, Color.GREEN, Color.WHITE, 12);
-		add(bEnviarEmail);
-		
-		JButton bGerarPDF = FabricaJButton.criarJButton("Gerar PDF", 458, 650, 150, 30, Color.GREEN, Color.WHITE, 12);
-		add(bGerarPDF);
+		JButton bDesistir = FabricaJButton.criarJButton("Desistir", 350, 630, 200, 30, Color.GREEN, Color.WHITE, 12);
+		add(bDesistir);
 	}
 
 	private void adicionarIcones() {
@@ -113,7 +106,7 @@ public class TelaDetalhesResultado extends TelaPadrao{
 		
 	}
 	public static void main(String[] args) {
-		TelaDetalhesResultado t = new TelaDetalhesResultado();
+		TelaVisualizarResultado t = new TelaVisualizarResultado();
 	}
 
 }

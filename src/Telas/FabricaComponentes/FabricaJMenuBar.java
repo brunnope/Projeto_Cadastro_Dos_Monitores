@@ -9,7 +9,7 @@ import Telas.FabricaImagens;
 public class FabricaJMenuBar {
 	
 	public static JMenuBar MenuCoordenador() {
-		JMenuBar barraMenu = new JMenuBar();
+		JMenuBar barraMenuCoordenador = new JMenuBar();
 		
 		JMenu mOpcoes = new JMenu("Opções");
 		JMenuItem inicio = new JMenuItem("Início", FabricaImagens.INICIO);
@@ -36,10 +36,32 @@ public class FabricaJMenuBar {
 		mConfigurações.add(editarCadastroAluno);
 		
 		
-		barraMenu.add(mOpcoes);
-		barraMenu.add(mConfigurações);
+		barraMenuCoordenador.add(mOpcoes);
+		barraMenuCoordenador.add(mConfigurações);
 		
-		return barraMenu;
+		return barraMenuCoordenador;
+		
+	}
+	
+	public static JMenuBar MenuAluno() {
+		JMenuBar barraAluno = new JMenuBar();
+		
+		JMenu mOpcoes = new JMenu("Opções");
+		JMenuItem inicio = new JMenuItem("Início", FabricaImagens.INICIO);
+		mOpcoes.add(inicio);
+		
+		JMenuItem visualizarEdital = new JMenuItem("Visualizar Edital", FabricaImagens.VISUALIZAR);
+		mOpcoes.add(visualizarEdital);
+		
+		JMenuItem todosAlunos = new JMenuItem("Editar Informações", FabricaImagens.LISTAR);
+		mOpcoes.add(todosAlunos);
+		
+		JMenuItem sair = new JMenuItem("Sair", FabricaImagens.SAIR);
+		mOpcoes.add(sair);
+		
+		barraAluno.add(mOpcoes);
+		
+		return barraAluno;
 		
 	}
 	
