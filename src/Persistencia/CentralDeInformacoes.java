@@ -10,9 +10,12 @@ import Excecoes.AlunoJaMatriculadoException;
 import Excecoes.AlunoNaoEncontradoException;
 import Excecoes.EditalInvalidoException;
 import Excecoes.EditalNaoEncontradoException;
+import Excecoes.EmailInvalidoException;
 import Excecoes.EmailJaCadastradoException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import javax.swing.JOptionPane;
 
 
 
@@ -23,11 +26,13 @@ public class CentralDeInformacoes {
 
 
 
-	public static boolean validarEmail(String login) {
+	public static boolean validarEmail(String login) throws EmailInvalidoException {
 		String padraoEmail = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
 		Pattern pattern = Pattern.compile(padraoEmail, Pattern.CASE_INSENSITIVE);
 		Matcher matcher = pattern.matcher(login);
-
+		if (!matcher.matches()) {
+			throw new EmailInvalidoException();
+		}
 		return matcher.matches();
 	}
 	public boolean emailExiste(String email) throws EmailJaCadastradoException {
@@ -47,7 +52,8 @@ public class CentralDeInformacoes {
 
 	public boolean adicionarCoordenador(Coordenador c) {
 		if (coordenador.isEmpty()) {
-			coordenador.add(c);
+			if(coordenador.add(c));
+			JOptionPane.showInternalMessageDialog(null, "pegadinha do malandro");
 			return true;
 		} else {
 			return false;

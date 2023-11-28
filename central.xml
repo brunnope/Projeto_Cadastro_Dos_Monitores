@@ -2,46 +2,11 @@
 <Persistencia.CentralDeInformacoes>
   <coordenador>
     <Classes.Coordenador>
-      <nome>Cleyton souza</nome>
-      <email>cleyton@ifpb.edu.br</email>
-      <senha>1234</senha>
+      <nome>Cleyton Souza</nome>
+      <email>Cleyton.Souza@ifpb.edu.br</email>
+      <senha>12345678</senha>
     </Classes.Coordenador>
   </coordenador>
-  <todosOsAlunos>
-    <Classes.Aluno>
-      <nome>gabriel</nome>
-      <email>123@123</email>
-      <senha>ui</senha>
-      <sexo>MASCULINO</sexo>
-      <matricula>222</matricula>
-    </Classes.Aluno>
-  </todosOsAlunos>
-  <todosOsEditais>
-    <Classes.EditalDeMonitoria>
-      <id>1700322053780</id>
-      <numeroEdital>123</numeroEdital>
-      <dataInicio>2023-12-19</dataInicio>
-      <dataFim>2023-12-20</dataFim>
-      <disciplinas>
-        <Classes.Disciplina>
-          <nome>ingles</nome>
-          <quantVagas>1</quantVagas>
-          <alunosInscritos/>
-        </Classes.Disciplina>
-      </disciplinas>
-    </Classes.EditalDeMonitoria>
-    <Classes.EditalDeMonitoria>
-      <id>1701022290770</id>
-      <numeroEdital>3</numeroEdital>
-      <dataInicio>2023-11-26</dataInicio>
-      <dataFim>2023-11-30</dataFim>
-      <disciplinas>
-        <Classes.Disciplina>
-          <nome>ingles</nome>
-          <quantVagas>3</quantVagas>
-          <alunosInscritos/>
-        </Classes.Disciplina>
-      </disciplinas>
-    </Classes.EditalDeMonitoria>
-  </todosOsEditais>
+  <todosOsAlunos/>
+  <todosOsEditais/>
 </Persistencia.CentralDeInformacoes>

@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import Classes.Aluno;
@@ -13,6 +14,8 @@ import Classes.Coordenador;
 import Classes.Pessoa;
 import Excecoes.CredenciaisInvalidasException;
 import Excecoes.NenhumAlunoCadastradoException;
+import Telas.Aluno.TelaHomeAluno;
+import Telas.Coordenador.TelaHomeCoordenador;
 import Telas.FabricaComponentes.*;
 
 public class TelaLogin extends TelaPadrao{
@@ -71,20 +74,16 @@ public class TelaLogin extends TelaPadrao{
 				String login = tLogin.getText();
 				String senha = tSenha.getText();
 				try {
-					Pessoa pessoaLogada = menu.login(login, senha);
+					Pessoa pessoaLogada = getUtil().login(login, senha, getCentral());
 					if (pessoaLogada != null) {
-						System.out.println("Login bem-sucedido para " + pessoaLogada.getNome() + "!\n");
+						dispose();
 						if (pessoaLogada instanceof Coordenador) {
-							//codigo coordenador
+							TelaHomeCoordenador t = new TelaHomeCoordenador();
 						}else if (pessoaLogada instanceof Aluno);
-						//codigo aluno	
+							TelaHomeAluno t = new TelaHomeAluno();
 					}
-				} catch (NenhumAlunoCadastradoException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				} catch (CredenciaisInvalidasException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+				} catch (NenhumAlunoCadastradoException | CredenciaisInvalidasException e1) {
+					JOptionPane.showMessageDialog(bLogin, e1.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE, null);		
 				}
 			}
 		});
@@ -94,6 +93,12 @@ public class TelaLogin extends TelaPadrao{
 		
 		JButton bCadastrar = FabricaJButton.criarJButton("Cadastrar-se", 454, 530, 115, 30, Color.GREEN, Color.WHITE, 12);
 		add(bCadastrar);
+		bCadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				TelaCadastro t = new TelaCadastro();
+			}
+		});
 	}
 	
 	private void adicionarIcones() {
@@ -112,7 +117,4 @@ public class TelaLogin extends TelaPadrao{
 		add(imagemFundo);
 	}
 	
-	public static void main(String[] args) {
-		TelaLogin t = new TelaLogin();
-	}
 }
