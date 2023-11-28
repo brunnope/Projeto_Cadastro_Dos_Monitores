@@ -3,6 +3,7 @@ package Classes;
 import Excecoes.CredenciaisInvalidasException;
 import Excecoes.EmailDiferenteException;
 import Excecoes.EmailInvalidoException;
+import Excecoes.EmailNaoEncontradoException;
 import Excecoes.NenhumAlunoCadastradoException;
 import Excecoes.SenhaDiferenteException;
 import Excecoes.SenhaMuitoPequenaException;
@@ -10,17 +11,17 @@ import Persistencia.CentralDeInformacoes;
 import Telas.TelaLogin;
 
 public class Utilidades {
-	public Coordenador cadastrarCoordenador(String n, String e1, String e2, String s1, String s2) throws EmailDiferenteException,
+	public Coordenador cadastrarCoordenador(String nome, String email1, String email2, String senha1, String senha2) throws EmailDiferenteException,
 	SenhaDiferenteException, EmailInvalidoException, SenhaMuitoPequenaException {
-		CentralDeInformacoes.validarEmail(e1);
-			if (!e1.equals(e2)) {
+		CentralDeInformacoes.validarEmail(email1);
+			if (!email1.equals(email2)) {
 				throw new EmailDiferenteException();
-			}else if(s1.length() < 8){
+			}else if(senha1.length() < 8){
 				throw new SenhaMuitoPequenaException();
-			}else if (!s1.equals(s2)) {
+			}else if (!senha1.equals(senha2)) {
 				throw new SenhaDiferenteException();
 			}else {
-				Coordenador c = new Coordenador(n, e1, s1);
+				Coordenador c = new Coordenador(nome, email1, senha1);
 				return c;
 				}
 		}
@@ -37,6 +38,13 @@ public class Utilidades {
 			}
 		}throw new CredenciaisInvalidasException();
 	}
+	
+	public void recuperarSenhaPorEmail(CentralDeInformacoes c, String email) throws EmailNaoEncontradoException {
+		CentralDeInformacoes central = c;
+		String senha = central.recuperarSenhaPeloEmail(email);
+		Mensageiro.enviarEmail(email, "Sua senha atual é: " + senha);
+	}
+	
 	public static void main(String[] args) {
 		TelaLogin t = new TelaLogin();
 	}

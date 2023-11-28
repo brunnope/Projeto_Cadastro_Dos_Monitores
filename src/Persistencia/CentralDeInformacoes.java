@@ -12,6 +12,8 @@ import Excecoes.EditalInvalidoException;
 import Excecoes.EditalNaoEncontradoException;
 import Excecoes.EmailInvalidoException;
 import Excecoes.EmailJaCadastradoException;
+import Excecoes.EmailNaoEncontradoException;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -25,7 +27,6 @@ public class CentralDeInformacoes {
 	private ArrayList<EditalDeMonitoria> todosOsEditais = new ArrayList<EditalDeMonitoria>();
 
 
-
 	public static boolean validarEmail(String login) throws EmailInvalidoException {
 		String padraoEmail = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
 		Pattern pattern = Pattern.compile(padraoEmail, Pattern.CASE_INSENSITIVE);
@@ -35,6 +36,7 @@ public class CentralDeInformacoes {
 		}
 		return matcher.matches();
 	}
+	
 	public boolean emailExiste(String email) throws EmailJaCadastradoException {
 		for (Aluno aluno : todosOsAlunos) {
 			if (aluno.getEmail().equalsIgnoreCase(email)) {
@@ -141,7 +143,19 @@ public class CentralDeInformacoes {
 		}
 		throw new AlunoNaoEncontradoException();
 	}
-
+	
+	public String recuperarSenhaPeloEmail (String email) throws EmailNaoEncontradoException {
+		if (coordenador.getEmail().equalsIgnoreCase(email)) {
+			return coordenador.getSenha();
+		} else {
+			for (Aluno aluno: todosOsAlunos) {
+				if (aluno.getEmail().equalsIgnoreCase(email)) {
+					return aluno.getSenha();
+				}
+			}
+		}
+		throw new EmailNaoEncontradoException();
+	}
 
 	public ArrayList<Aluno> getTodosOsAlunos() {
 		return todosOsAlunos;

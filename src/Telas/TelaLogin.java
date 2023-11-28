@@ -14,6 +14,7 @@ import Classes.Coordenador;
 import Classes.Pessoa;
 import Excecoes.CredenciaisInvalidasException;
 import Excecoes.NenhumAlunoCadastradoException;
+import Telas.Aluno.TelaCadastroAluno;
 import Telas.Aluno.TelaHomeAluno;
 import Telas.Coordenador.TelaHomeCoordenador;
 import Telas.FabricaComponentes.*;
@@ -78,9 +79,9 @@ public class TelaLogin extends TelaPadrao{
 					if (pessoaLogada != null) {
 						dispose();
 						if (pessoaLogada instanceof Coordenador) {
-							TelaHomeCoordenador t = new TelaHomeCoordenador();
+							new TelaHomeCoordenador();
 						}else if (pessoaLogada instanceof Aluno){
-							TelaHomeAluno t = new TelaHomeAluno();
+							new TelaHomeAluno();
 						}
 					}
 				} catch (NenhumAlunoCadastradoException | CredenciaisInvalidasException e1) {
@@ -91,20 +92,25 @@ public class TelaLogin extends TelaPadrao{
 		
 		JButton bEsqueciSenha = FabricaJButton.criarJButton("Esqueci a Senha", 336, 530, 115, 30, Color.GREEN, Color.WHITE, 12);
 		add(bEsqueciSenha);
+		bEsqueciSenha.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new TelaEsqueciSenha();
+			}
+		});
 		
 		JButton bCadastrar = FabricaJButton.criarJButton("Cadastrar-se", 454, 530, 115, 30, Color.GREEN, Color.WHITE, 12);
 		add(bCadastrar);
 		bCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				TelaCadastro t = new TelaCadastro();
+				new TelaCadastroAluno();
 			}
 		});
 	}
 	
 	private void adicionarIcones() {
-		
-		
 		JLabel iconeLogin = FabricaIcones.criarIcone(FabricaImagens.LOGIN, 328, 375, 50, 30);
 		add(iconeLogin);
 		

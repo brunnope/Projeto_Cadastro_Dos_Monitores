@@ -28,6 +28,7 @@ import Telas.FabricaComponentes.FabricaIcones;
 import Telas.FabricaComponentes.FabricaJButton;
 import Telas.FabricaComponentes.FabricaJComboBox;
 import Telas.FabricaComponentes.FabricaJLabel;
+import Telas.FabricaComponentes.FabricaJOptionPane;
 import Telas.FabricaComponentes.FabricaJTextField;
 
 public class TelaCadastroCoordenador extends TelaPadrao{
@@ -46,24 +47,19 @@ public class TelaCadastroCoordenador extends TelaPadrao{
 	public void configurarComponentes() {
 		adicionarLabels();
 		adicionarTextFields();
-		adicionarComboBox();
 		adicionarButtons();
 		adicionarIcones();
-
 	}
 
 	private void adicionarLabels() {
-		JLabel lTitulo = FabricaJLabel.criarJLabel("CADASTRO", 380, 130, 200, 30, Color.BLACK, 30);
+		JLabel lTitulo = FabricaJLabel.criarJLabel("CADASTRO", 380, 150, 200, 30, Color.BLACK, 30);
 		add(lTitulo);
 
-		lTitulo = FabricaJLabel.criarJLabel("COORDENADOR", 380, 170, 245, 30, Color.BLACK, 30);
+		lTitulo = FabricaJLabel.criarJLabel("COORDENADOR", 380, 190, 245, 30, Color.BLACK, 30);
 		add(lTitulo);
 
-		JLabel lNome = FabricaJLabel.criarJLabel("Nome Completo", 292, 225, 100, 30, Color.BLACK, 12);
+		JLabel lNome = FabricaJLabel.criarJLabel("Nome Completo", 292, 285, 100, 30, Color.BLACK, 12);
 		add(lNome);
-
-		JLabel lGenero = FabricaJLabel.criarJLabel("Gênero", 292, 285, 70, 30, Color.BLACK, 12);
-		add(lGenero);
 
 		JLabel lEmail = FabricaJLabel.criarJLabel("Endereço de e-mail", 292, 345, 150, 30, Color.BLACK, 12);
 		add(lEmail);
@@ -79,16 +75,9 @@ public class TelaCadastroCoordenador extends TelaPadrao{
 	}
 
 	private void adicionarTextFields() {
-		tNome = FabricaJTextField.criarJTextField(325, 250, 282, 30, Color.WHITE, Color.BLACK, 12, Color.GRAY);
+		tNome = FabricaJTextField.criarJTextField(325, 310, 282, 30, Color.WHITE, Color.BLACK, 12, Color.GRAY);
 		tNome.setToolTipText("Escreva seu nome completo!");
 		add(tNome);
-
-		MaskFormatter mascara = null;
-		try {
-			mascara = new MaskFormatter("############");
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
 
 		tEmail = FabricaJTextField.criarJTextField(325, 370, 282, 30, Color.WHITE, Color.BLACK, 12, Color.GRAY);
 		tEmail.setToolTipText("Exemplo: brunno@academico.ifpb.edu.br");
@@ -97,7 +86,6 @@ public class TelaCadastroCoordenador extends TelaPadrao{
 		tConfirmaEmail = FabricaJTextField.criarJTextField(325, 430, 282, 30, Color.WHITE, Color.BLACK, 12, Color.GRAY);
 		tConfirmaEmail.setToolTipText("Exemplo: brunno@academico.ifpb.edu.br");
 		add(tConfirmaEmail);
-
 
 		tSenha = FabricaJTextField.criarJPasswordField(325, 490, 282, 30, Color.WHITE, Color.BLACK, 12, Color.GRAY);
 		tSenha.setToolTipText("Exemplo: brunno123");
@@ -108,13 +96,6 @@ public class TelaCadastroCoordenador extends TelaPadrao{
 		add(tConfirmaSenha);
 	}
 
-	private void adicionarComboBox() {
-		String[] opcoes = {"Masculino","Feminino"};
-		JComboBox<String> cGenero = FabricaJComboBox.criarJComboBpx(opcoes, 325, 310, 120, 30, Color.WHITE, Color.BLACK, 12);
-		add(cGenero);
-	}
-
-
 	private void adicionarButtons() {
 		JButton bCadastrar = FabricaJButton.criarJButton("Cadastrar", 372, 610, 155, 30, Color.GREEN, Color.WHITE, 12);
 		add(bCadastrar);
@@ -122,29 +103,26 @@ public class TelaCadastroCoordenador extends TelaPadrao{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				if(tNome.getText().isBlank() || tEmail.getText().isBlank() || tConfirmaEmail.getText().isBlank() || tSenha.getText().isBlank() || tConfirmaSenha.getText().isBlank()) {
+					FabricaJOptionPane.criarMsgErro("Preencha os campos vazios");					
+				}else {
 					try {
-						getCentral().adicionarCoordenador(getUtil().cadastrarCoordenador(tNome.getText(), tEmail.getText(), tConfirmaEmail.getText(),
+						getCentral().adicionarCoordenador(getUtil().cadastrarCoordenador(tNome.getText().trim(), tEmail.getText().trim(), tConfirmaEmail.getText().trim(),
 								tSenha.getText(), tConfirmaSenha.getText()));
 						getDados().salvarCentral(getCentral(), "central.xml");
 						dispose();
 						TelaLogin t = new TelaLogin();
 					} catch (EmailDiferenteException | SenhaDiferenteException | EmailInvalidoException | SenhaMuitoPequenaException e1) {
-						JOptionPane.showMessageDialog(bCadastrar, e1.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE, null);		
+						FabricaJOptionPane.criarMsgErro(e1.getMessage());
 					}
-					
-					
-				}
-			
+				}			
+			}
 		});
 	}
 
 	private void adicionarIcones() {
-		JLabel iconeNome = FabricaIcones.criarIcone(FabricaImagens.LOGIN, 283, 250, 50, 30);
+		JLabel iconeNome = FabricaIcones.criarIcone(FabricaImagens.LOGIN, 283, 310, 50, 30);
 		add(iconeNome);
-
-		JLabel iconeGenero = FabricaIcones.criarIcone(FabricaImagens.GENERO, 283, 310, 50, 30);
-		add(iconeGenero);
 
 		JLabel iconeEmail = FabricaIcones.criarIcone(FabricaImagens.EMAIL, 283, 370, 50, 30);
 		add(iconeEmail);
@@ -158,7 +136,7 @@ public class TelaCadastroCoordenador extends TelaPadrao{
 		JLabel iconeConfirmacaoSenha = FabricaIcones.criarIcone(FabricaImagens.SENHA, 283, 550, 50, 30);
 		add(iconeConfirmacaoSenha);
 
-		JLabel iconeIf = FabricaIcones.criarIcone(FabricaImagens.IF, 290, 110, 70, 94);
+		JLabel iconeIf = FabricaIcones.criarIcone(FabricaImagens.IF, 290, 130, 70, 94);
 		add(iconeIf);
 
 		JLabel imagemFundo = FabricaIcones.criarIcone(FabricaImagens.TELA_LOGIN, 0, 0, 900, 800);

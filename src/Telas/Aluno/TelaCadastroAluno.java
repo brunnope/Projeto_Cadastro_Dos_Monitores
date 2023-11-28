@@ -1,4 +1,4 @@
-package Telas;
+package Telas.Aluno;
 
 import java.awt.Color;
 import java.text.ParseException;
@@ -10,15 +10,17 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
+import Telas.FabricaImagens;
+import Telas.TelaPadrao;
 import Telas.FabricaComponentes.FabricaIcones;
 import Telas.FabricaComponentes.FabricaJButton;
 import Telas.FabricaComponentes.FabricaJComboBox;
 import Telas.FabricaComponentes.FabricaJLabel;
 import Telas.FabricaComponentes.FabricaJTextField;
 
-public class TelaCadastro extends TelaPadrao{
+public class TelaCadastroAluno extends TelaPadrao{
 
-	public TelaCadastro() {
+	public TelaCadastroAluno() {
 		super("CADASTRO");
 		getContentPane().setBackground(Color.BLACK);
 		configurarComponentes();
@@ -35,7 +37,10 @@ public class TelaCadastro extends TelaPadrao{
 	}
 
 	private void adicionarLabels() {
-		JLabel lTitulo = FabricaJLabel.criarJLabel("CADASTRO", 380, 150, 200, 30, Color.BLACK, 30);
+		JLabel lTitulo = FabricaJLabel.criarJLabel("CADASTRO", 380, 120, 200, 30, Color.BLACK, 30);
+		add(lTitulo);
+		
+		lTitulo = FabricaJLabel.criarJLabel("ALUNO", 380, 160, 200, 30, Color.BLACK, 30);
 		add(lTitulo);
 		
 		JLabel lNome = FabricaJLabel.criarJLabel("Nome Completo", 292, 225, 100, 30, Color.BLACK, 12);
@@ -96,6 +101,7 @@ public class TelaCadastro extends TelaPadrao{
 	private void adicionarComboBox() {
 		String[] opcoes = {"Masculino","Feminino"};
 		JComboBox<String> cGenero = FabricaJComboBox.criarJComboBpx(opcoes, 487, 310, 120, 30, Color.WHITE, Color.BLACK, 12);
+		String d = opcoes[cGenero.getSelectedIndex()];
 		add(cGenero);
 	}
 	
@@ -135,6 +141,5 @@ public class TelaCadastro extends TelaPadrao{
 		
 		JLabel imagemFundo = FabricaIcones.criarIcone(FabricaImagens.TELA_LOGIN, 0, 0, 900, 800);
 		add(imagemFundo);
-	}
-	
+	}	
 }
