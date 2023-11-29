@@ -19,7 +19,7 @@ import Telas.FabricaComponentes.FabricaJMenuBar;
 import Telas.FabricaComponentes.FabricaJTextField;
 
 public class TelaCadastroEdital extends TelaPadrao{
-
+	
 	public TelaCadastroEdital() {
 		super("CADASTRO EDITAL");
 		configurarComponentes();
@@ -34,8 +34,9 @@ public class TelaCadastroEdital extends TelaPadrao{
 		adicionarIcones();
 	}
 	
-	private void adicionarMenuBar() {
-		JMenuBar mOpcoes = FabricaJMenuBar.MenuCoordenador();
+	private void adicionarMenuBar() 
+	{
+		JMenuBar mOpcoes = FabricaJMenuBar.MenuCoordenador(this);
 		setJMenuBar(mOpcoes);
 	}
 

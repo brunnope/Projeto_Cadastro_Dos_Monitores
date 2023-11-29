@@ -79,9 +79,9 @@ public class TelaLogin extends TelaPadrao{
 					if (pessoaLogada != null) {
 						dispose();
 						if (pessoaLogada instanceof Coordenador) {
-							new TelaHomeCoordenador();
+							TelaHomeCoordenador t = new TelaHomeCoordenador();
 						}else if (pessoaLogada instanceof Aluno){
-							new TelaHomeAluno();
+							TelaHomeAluno t = new TelaHomeAluno();
 						}
 					}
 				} catch (NenhumAlunoCadastradoException | CredenciaisInvalidasException e1) {

@@ -54,7 +54,7 @@ public class TelaDetalharEditalAberto extends TelaPadrao{
 	}
 	
 	private void adicionarMenuBar() {
-		JMenuBar mOpcoes = FabricaJMenuBar.MenuAluno();
+		JMenuBar mOpcoes = FabricaJMenuBar.MenuAluno(this);
 		setJMenuBar(mOpcoes);
 	}
 

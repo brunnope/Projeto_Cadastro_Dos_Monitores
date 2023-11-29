@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Persistencia.CentralDeInformacoes>
   <coordenador>
-    <nome>cleyton souza</nome>
-    <email>cleyton@gmail.com</email>
-    <senha>12345678</senha>
+    <nome>Cleyton Souza</nome>
+    <email>Cleyton.Souza@iffb.edu.br</email>
+    <senha>cleyton123</senha>
   </coordenador>
   <todosOsAlunos>
     <Classes.Aluno>
-      <nome>cicero brunno das neves pereira</nome>
+      <nome>Anderson da Silva Santos</nome>
+      <email>anderson.santos.10@academico.ifpb.edu.br</email>
+      <senha>gostoso123</senha>
+      <sexo>MASCULINO</sexo>
+      <matricula>202315220023</matricula>
+    </Classes.Aluno>
+    <Classes.Aluno>
+      <nome>Cicero Brunno Das Neves</nome>
       <email>cicero.brunno@academico.ifpb.edu.br</email>
-      <senha>12345678</senha>
+      <senha>bruninho123</senha>
       <sexo>MASCULINO</sexo>
-      <matricula>202315520028</matricula>
+      <matricula>202315220015</matricula>
     </Classes.Aluno>
     <Classes.Aluno>
-      <nome>gabriel laet</nome>
-      <email>gabriel@gmail.com</email>
-      <senha>12345678</senha>
+      <nome>Gabriel Laet Freire Moreno</nome>
+      <email>gabriel.laet@academico.ifpb.edu.br</email>
+      <senha>gabizindagalera</senha>
       <sexo>MASCULINO</sexo>
-      <matricula>202015020024</matricula>
+      <matricula>202315220028</matricula>
     </Classes.Aluno>
     <Classes.Aluno>
-      <nome>marombeiro</nome>
-      <email>aipapai@gmail.com</email>
-      <senha>chupapau</senha>
+      <nome>Shaolin Matador de Porco</nome>
+      <email>ShaolinMatadorDePorco@porco.com</email>
+      <senha>matadordeporco</senha>
       <sexo>MASCULINO</sexo>
-      <matricula>999999999999</matricula>
-    </Classes.Aluno>
-    <Classes.Aluno>
-      <nome>pau na tora</nome>
-      <email>paunatora@gmail.com</email>
-      <senha>paunatora</senha>
-      <sexo>MASCULINO</sexo>
-      <matricula>111111111111</matricula>
+      <matricula>696969696969</matricula>
     </Classes.Aluno>
   </todosOsAlunos>
   <todosOsEditais/>
