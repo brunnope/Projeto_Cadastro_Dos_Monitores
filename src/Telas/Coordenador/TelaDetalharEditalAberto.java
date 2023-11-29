@@ -58,7 +58,7 @@ public class TelaDetalharEditalAberto extends TelaPadrao{
 	}
 	
 	private void adicionarMenuBar() {
-		JMenuBar mOpcoes = FabricaJMenuBar.MenuCoordenador();
+		JMenuBar mOpcoes = FabricaJMenuBar.MenuCoordenador(this);
 		setJMenuBar(mOpcoes);
 	}
 
@@ -97,10 +97,9 @@ public class TelaDetalharEditalAberto extends TelaPadrao{
 		add(tIdEdital);
 		
 		JTextField tNumEdital = FabricaJTextField.criarJTextField(325, 305, 282, 30, Color.WHITE, Color.BLACK, 12, Color.GRAY);
-		tNumEdital.setText(edital.getNumeroEdital());
+		tNumEdital.setText(Float.toString(edital.getNumeroEdital()));
 		tNumEdital.setEditable(false);
 		add(tNumEdital);
-		
 		
 		JTextField fDataInicio = FabricaJTextField.criarJTextField(325, 360, 120, 30, Color.WHITE, Color.BLACK, 12, Color.GRAY);
 		fDataInicio.setText(edital.getDataInicio().toString());

@@ -4,12 +4,13 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import Excecoes.AlunoJaInscritoException;
+import Excecoes.DisciplinaJaCadastradaException;
 import Excecoes.InscricoesFinalizadaException;
 import Excecoes.InscricoesNaoAbertasException;
 
 public class EditalDeMonitoria {
 	private long id;
-	private String numeroEdital;
+	private float numeroEdital;
 	private LocalDate dataInicio;
 	private LocalDate dataFim;
 	private ArrayList<Disciplina> disciplinas = new ArrayList<Disciplina>();
@@ -18,8 +19,16 @@ public class EditalDeMonitoria {
 	//pode ser não calculado, calculado e final
 	private String resultado;
 	
+	public EditalDeMonitoria(float numeroEdital, LocalDate dataInicio, LocalDate dataFim,  float pesoCRE, float pesoMedia) {
+		id = System.currentTimeMillis();
+		this.numeroEdital = numeroEdital;
+		this.dataInicio = dataInicio;
+		this.dataFim = dataFim;
+		this.pesoCRE = pesoCRE;
+		this.pesoMedia = pesoMedia;
+	}
 	
-	public EditalDeMonitoria(String numeroEdital, LocalDate dataInicio, LocalDate dataFim, ArrayList<Disciplina> disciplinas, float pesoCRE, float pesoMedia) {
+	public EditalDeMonitoria(float numeroEdital, LocalDate dataInicio, LocalDate dataFim, ArrayList<Disciplina> disciplinas, float pesoCRE, float pesoMedia) {
 		id = System.currentTimeMillis();
 		this.numeroEdital = numeroEdital;
 		this.dataInicio = dataInicio;
@@ -31,6 +40,19 @@ public class EditalDeMonitoria {
 	
 	public EditalDeMonitoria(){
 		id = System.currentTimeMillis();
+	}
+	public EditalDeMonitoria getInstancia() {
+		return this;
+	}
+	
+	public void inscreverDisciplina(String nomeDisciplina, int quantRemuneradas, int quantVoluntarios) throws DisciplinaJaCadastradaException {
+		for(Disciplina d:disciplinas) {
+			if(d.getNome().equalsIgnoreCase(nomeDisciplina)) {
+				throw new DisciplinaJaCadastradaException();
+			}
+		}
+		Disciplina disciplina = new Disciplina(nomeDisciplina, quantRemuneradas, quantVoluntarios);
+		getDisciplinas().add(disciplina);
 	}
 
 	public boolean inscrever(Aluno aluno, String nomeDisciplina) throws AlunoJaInscritoException, InscricoesFinalizadaException, InscricoesNaoAbertasException {
@@ -92,11 +114,11 @@ public class EditalDeMonitoria {
 		return id;
 	}
 
-	public String getNumeroEdital() {
+	public float getNumeroEdital() {
 		return numeroEdital;
 	}
 
-	public void setNumeroEdital(String numeroEdital) {
+	public void setNumeroEdital(float numeroEdital) {
 		this.numeroEdital = numeroEdital;
 	}
 

@@ -36,6 +36,7 @@ public class Utilidades {
 		}
 	}
 	
+	
 	public Coordenador cadastrarCoordenador(String nome, String email1, String email2, String senha1, String senha2) throws EmailDiferenteException,
 	SenhaDiferenteException, EmailInvalidoException, SenhaMuitoPequenaException {
 		CentralDeInformacoes.validarEmail(email1);
