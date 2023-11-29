@@ -190,5 +190,29 @@
       <pesoCRE>0.3</pesoCRE>
       <pesoMedia>0.7</pesoMedia>
     </Classes.EditalDeMonitoria>
+    <Classes.EditalDeMonitoria>
+      <id>1701300672032</id>
+      <numeroEdital>12.0</numeroEdital>
+      <dataInicio>1313-12-13</dataInicio>
+      <dataFim>1315-11-13</dataFim>
+      <disciplinas>
+        <Classes.Disciplina>
+          <nome>1313</nome>
+          <quantVagas>0</quantVagas>
+          <alunosInscritos/>
+          <quantDeVagasRemuneradas>1</quantDeVagasRemuneradas>
+          <quantDeVagasVoluntarias>1</quantDeVagasVoluntarias>
+        </Classes.Disciplina>
+        <Classes.Disciplina>
+          <nome>oi</nome>
+          <quantVagas>0</quantVagas>
+          <alunosInscritos/>
+          <quantDeVagasRemuneradas>2</quantDeVagasRemuneradas>
+          <quantDeVagasVoluntarias>2</quantDeVagasVoluntarias>
+        </Classes.Disciplina>
+      </disciplinas>
+      <pesoCRE>0.5</pesoCRE>
+      <pesoMedia>0.5</pesoMedia>
+    </Classes.EditalDeMonitoria>
   </todosOsEditais>
 </Persistencia.CentralDeInformacoes>
