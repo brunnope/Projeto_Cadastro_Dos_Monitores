@@ -70,11 +70,11 @@ public class TelaCadastroDisciplina extends TelaPadrao{
 	}
 	
 	private void adicionarButtons() {
-		JButton bSalvarAdicionar = FabricaJButton.criarJButton("Sair", 30, 225, 155, 30, Color.GREEN, Color.WHITE, 12);
-		add(bSalvarAdicionar);
+		JButton bSair = FabricaJButton.criarJButton("Sair", 30, 225, 155, 30, Color.GREEN, Color.WHITE, 12);
+		add(bSair);
 		
-		JButton bSalvar = FabricaJButton.criarJButton("Adicionar", 189, 225, 155, 30, Color.GREEN, Color.WHITE, 12);
-		add(bSalvar);
+		JButton bAdicionar = FabricaJButton.criarJButton("Adicionar", 189, 225, 155, 30, Color.GREEN, Color.WHITE, 12);
+		add(bAdicionar);
 	}
 
 	private void adicionarIcones() {

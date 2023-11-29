@@ -120,12 +120,16 @@ public class TelaCadastroEdital extends TelaPadrao{
 		
 	}
 	
+	
 	private void adicionarButtons() {
 		JButton bSalvarAdicionar = FabricaJButton.criarJButton("Adicionar mais Disciplinas", 293, 610, 155, 30, Color.GREEN, Color.WHITE, 12);
 		add(bSalvarAdicionar);
 		
 		JButton bSalvar = FabricaJButton.criarJButton("Salvar", 452, 610, 155, 30, Color.GREEN, Color.WHITE, 12);
 		add(bSalvar);
+		
+		JButton bVoltar = FabricaJButton.criarJButton("Voltar", 293, 650, 313, 30, Color.GREEN, Color.WHITE, 12);
+		add(bVoltar);
 	}
 
 	private void adicionarIcones() {

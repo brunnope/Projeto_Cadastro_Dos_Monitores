@@ -6,7 +6,6 @@ public class Disciplina {
 	private int quantVagas;
 	private ArrayList<Aluno> alunosInscritos = new ArrayList<Aluno>();
 	
-	
 	public String getNome() {
 		return nome;
 	}
