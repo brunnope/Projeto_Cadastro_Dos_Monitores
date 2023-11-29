@@ -37,4 +37,6 @@ public class FabricaImagens {
 	
 	public static final ImageIcon PESO = new ImageIcon("src/Icones/peso.png");
 	
+	public static final ImageIcon CERTO = new ImageIcon("src/Icones/certo.png");
+	
 }

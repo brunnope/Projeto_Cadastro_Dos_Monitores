@@ -1,10 +1,39 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Persistencia.CentralDeInformacoes>
   <coordenador>
-    <nome>Cleyton Jonas</nome>
+    <nome>cleyton souza</nome>
     <email>cleyton@gmail.com</email>
     <senha>12345678</senha>
   </coordenador>
-  <todosOsAlunos/>
+  <todosOsAlunos>
+    <Classes.Aluno>
+      <nome>cicero brunno das neves pereira</nome>
+      <email>cicero.brunno@academico.ifpb.edu.br</email>
+      <senha>12345678</senha>
+      <sexo>MASCULINO</sexo>
+      <matricula>202315520028</matricula>
+    </Classes.Aluno>
+    <Classes.Aluno>
+      <nome>gabriel laet</nome>
+      <email>gabriel@gmail.com</email>
+      <senha>12345678</senha>
+      <sexo>MASCULINO</sexo>
+      <matricula>202015020024</matricula>
+    </Classes.Aluno>
+    <Classes.Aluno>
+      <nome>marombeiro</nome>
+      <email>aipapai@gmail.com</email>
+      <senha>chupapau</senha>
+      <sexo>MASCULINO</sexo>
+      <matricula>999999999999</matricula>
+    </Classes.Aluno>
+    <Classes.Aluno>
+      <nome>pau na tora</nome>
+      <email>paunatora@gmail.com</email>
+      <senha>paunatora</senha>
+      <sexo>MASCULINO</sexo>
+      <matricula>111111111111</matricula>
+    </Classes.Aluno>
+  </todosOsAlunos>
   <todosOsEditais/>
 </Persistencia.CentralDeInformacoes>

@@ -1,6 +1,8 @@
 package Telas.Aluno;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.ParseException;
 
 import javax.swing.JButton;
@@ -10,18 +12,36 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
+import Excecoes.AlunoJaMatriculadoException;
+import Excecoes.CamposVaziosException;
+import Excecoes.EmailDiferenteException;
+import Excecoes.EmailInvalidoException;
+import Excecoes.EmailJaCadastradoException;
+import Excecoes.SenhaDiferenteException;
+import Excecoes.SenhaMuitoPequenaException;
 import Telas.FabricaImagens;
+import Telas.TelaLogin;
 import Telas.TelaPadrao;
 import Telas.FabricaComponentes.FabricaIcones;
 import Telas.FabricaComponentes.FabricaJButton;
 import Telas.FabricaComponentes.FabricaJComboBox;
 import Telas.FabricaComponentes.FabricaJLabel;
+import Telas.FabricaComponentes.FabricaJOptionPane;
 import Telas.FabricaComponentes.FabricaJTextField;
 
 public class TelaCadastroAluno extends TelaPadrao{
-
+	
+	private JTextField tNome;
+	private JTextField tEmail;
+	private JTextField tConfirmaEmail;
+	private JTextField tSenha;
+	private JTextField tConfirmaSenha;
+	private JFormattedTextField fMatricula;
+	private JComboBox<String> cGenero;
+	String[] opcoes = {"Masculino","Feminino"};
+	
 	public TelaCadastroAluno() {
-		super("CADASTRO");
+		super("CADASTRO ALUNO");
 		getContentPane().setBackground(Color.BLACK);
 		configurarComponentes();
 		setVisible(true);
@@ -66,7 +86,7 @@ public class TelaCadastroAluno extends TelaPadrao{
 	}
 	
 	private void adicionarTextFields() {
-		JTextField tNome = FabricaJTextField.criarJTextField(325, 250, 282, 30, Color.WHITE, Color.BLACK, 12, Color.GRAY);
+		tNome = FabricaJTextField.criarJTextField(325, 250, 282, 30, Color.WHITE, Color.BLACK, 12, Color.GRAY);
 		tNome.setToolTipText("Escreva seu nome completo!");
 		add(tNome);
 		
@@ -76,32 +96,30 @@ public class TelaCadastroAluno extends TelaPadrao{
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		JFormattedTextField fMatricula = FabricaJTextField.criarJFormattedTextField(mascara, 325, 310, 120, 30, Color.WHITE, Color.BLACK, 12, Color.GRAY);
-		fMatricula.setToolTipText("Apenas números");
+		fMatricula = FabricaJTextField.criarJFormattedTextField(mascara, 325, 310, 120, 30, Color.WHITE, Color.BLACK, 12, Color.GRAY);
+		fMatricula.setToolTipText("Apenas números (12)");
 		add(fMatricula);
 		
-		JTextField tEmail = FabricaJTextField.criarJTextField(325, 370, 282, 30, Color.WHITE, Color.BLACK, 12, Color.GRAY);
+		tEmail = FabricaJTextField.criarJTextField(325, 370, 282, 30, Color.WHITE, Color.BLACK, 12, Color.GRAY);
 		tEmail.setToolTipText("Exemplo: brunno@academico.ifpb.edu.br");
 		add(tEmail);
 		
-		JTextField tConfirmacaoEmail = FabricaJTextField.criarJTextField(325, 430, 282, 30, Color.WHITE, Color.BLACK, 12, Color.GRAY);
-		tConfirmacaoEmail.setToolTipText("Exemplo: brunno@academico.ifpb.edu.br");
-		add(tConfirmacaoEmail);
+		tConfirmaEmail = FabricaJTextField.criarJTextField(325, 430, 282, 30, Color.WHITE, Color.BLACK, 12, Color.GRAY);
+		tConfirmaEmail.setToolTipText("Exemplo: brunno@academico.ifpb.edu.br");
+		add(tConfirmaEmail);
 		
 		
-		JTextField tSenha = FabricaJTextField.criarJPasswordField(325, 490, 282, 30, Color.WHITE, Color.BLACK, 12, Color.GRAY);
+		tSenha = FabricaJTextField.criarJPasswordField(325, 490, 282, 30, Color.WHITE, Color.BLACK, 12, Color.GRAY);
 		tSenha.setToolTipText("Exemplo: brunno123");
 		add(tSenha);
 		
-		JTextField tConfirmaSenha = FabricaJTextField.criarJPasswordField(325, 550, 282, 30, Color.WHITE, Color.BLACK, 12, Color.GRAY);
+		tConfirmaSenha = FabricaJTextField.criarJPasswordField(325, 550, 282, 30, Color.WHITE, Color.BLACK, 12, Color.GRAY);
 		tConfirmaSenha.setToolTipText("Exemplo: brunno123");
 		add(tConfirmaSenha);
 	}
 	
 	private void adicionarComboBox() {
-		String[] opcoes = {"Masculino","Feminino"};
-		JComboBox<String> cGenero = FabricaJComboBox.criarJComboBpx(opcoes, 487, 310, 120, 30, Color.WHITE, Color.BLACK, 12);
-		String d = opcoes[cGenero.getSelectedIndex()];
+		cGenero = FabricaJComboBox.criarJComboBpx(opcoes, 487, 310, 120, 30, Color.WHITE, Color.BLACK, 12);
 		add(cGenero);
 	}
 	
@@ -109,9 +127,35 @@ public class TelaCadastroAluno extends TelaPadrao{
 	private void adicionarButtons() {
 		JButton bVoltar = FabricaJButton.criarJButton("Voltar", 293, 610, 155, 30, Color.GREEN, Color.WHITE, 12);
 		add(bVoltar);
+		bVoltar.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				new TelaLogin();
+			}
+		});
 		
 		JButton bCadastrar = FabricaJButton.criarJButton("Cadastrar", 452, 610, 155, 30, Color.GREEN, Color.WHITE, 12);
 		add(bCadastrar);
+		bCadastrar.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				
+					try {
+						getCentral().adicionarAluno(getUtil().cadastrarAluno(tNome.getText(), tEmail.getText(), tConfirmaEmail.getText(),
+								tSenha.getText(), tConfirmaSenha.getText(), fMatricula.getText(), opcoes[cGenero.getSelectedIndex()]));
+						getDados().salvarCentral(getCentral(), "central.xml");
+						FabricaJOptionPane.criarMsgValido("Cadastrado realizado com sucesso!");
+						dispose();
+						new TelaLogin();
+					} catch (EmailDiferenteException | SenhaDiferenteException | EmailInvalidoException | SenhaMuitoPequenaException | AlunoJaMatriculadoException | EmailJaCadastradoException | CamposVaziosException e1) {
+						FabricaJOptionPane.criarMsgErro(e1.getMessage());		
+					}
+					
+					
+				}
+			
+		});
+	
 	}
 
 	private void adicionarIcones() {

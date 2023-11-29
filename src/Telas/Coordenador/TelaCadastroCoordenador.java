@@ -110,6 +110,7 @@ public class TelaCadastroCoordenador extends TelaPadrao{
 						getCentral().adicionarCoordenador(getUtil().cadastrarCoordenador(tNome.getText().trim(), tEmail.getText().trim(), tConfirmaEmail.getText().trim(),
 								tSenha.getText(), tConfirmaSenha.getText()));
 						getDados().salvarCentral(getCentral(), "central.xml");
+						FabricaJOptionPane.criarMsgValido("Cadastrado realizado com sucesso!");
 						dispose();
 						TelaLogin t = new TelaLogin();
 					} catch (EmailDiferenteException | SenhaDiferenteException | EmailInvalidoException | SenhaMuitoPequenaException e1) {
