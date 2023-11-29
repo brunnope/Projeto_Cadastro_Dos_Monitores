@@ -1,6 +1,8 @@
 package Telas.Coordenador;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -8,6 +10,7 @@ import javax.swing.JMenuBar;
 
 import Telas.FabricaImagens;
 import Telas.TelaPadrao;
+import Telas.TelaVisualizarEditais;
 import Telas.FabricaComponentes.FabricaIcones;
 import Telas.FabricaComponentes.FabricaJButton;
 import Telas.FabricaComponentes.FabricaJLabel;
@@ -44,9 +47,24 @@ public class TelaHomeCoordenador extends TelaPadrao{
 		JButton bCadastrar = FabricaJButton.criarJButton("Cadastrar Novo Edital", 325, 385, 250, 40, Color.GREEN, Color.WHITE, 12);
 		add(bCadastrar);
 		
+		bCadastrar.addActionListener(new ActionListener() {
+			
+			
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new TelaCadastroEdital();
+			}
+		});
+		
 		JButton bVisualizar = FabricaJButton.criarJButton("Visualizar Editais", 325, 435, 250, 40, Color.GREEN, Color.WHITE, 12);
 		add(bVisualizar);
-		
+		bVisualizar.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new TelaVisualizarEditais();
+			}
+		});
 		
 		JButton bTodosAlunos = FabricaJButton.criarJButton("Todos os Alunos", 325, 485, 250, 40, Color.GREEN, Color.WHITE, 12);
 		add(bTodosAlunos);

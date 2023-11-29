@@ -13,6 +13,7 @@ import Excecoes.EditalNaoEncontradoException;
 import Excecoes.EmailInvalidoException;
 import Excecoes.EmailJaCadastradoException;
 import Excecoes.EmailNaoEncontradoException;
+import Excecoes.NumeroDoEditalJaExistenteException;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -20,13 +21,20 @@ import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 
-
 public class CentralDeInformacoes {
 	private Coordenador coordenador = null;
 	private ArrayList<Aluno> todosOsAlunos = new ArrayList<Aluno>();
 	private ArrayList<EditalDeMonitoria> todosOsEditais = new ArrayList<EditalDeMonitoria>();
 
-
+	public boolean editalExiste(EditalDeMonitoria edital) throws NumeroDoEditalJaExistenteException {
+		for(EditalDeMonitoria e:todosOsEditais) {
+			if(e.getNumeroEdital().equals(edital.getNumeroEdital())) {
+				throw new NumeroDoEditalJaExistenteException();				
+			}
+		}
+		return true;
+	}
+	
 	public static boolean validarEmail(String login) throws EmailInvalidoException {
 		String padraoEmail = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
 		Pattern pattern = Pattern.compile(padraoEmail, Pattern.CASE_INSENSITIVE);

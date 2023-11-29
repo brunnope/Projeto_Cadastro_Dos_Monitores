@@ -20,6 +20,7 @@ import Telas.FabricaComponentes.FabricaIcones;
 import Telas.FabricaComponentes.FabricaJButton;
 import Telas.FabricaComponentes.FabricaJLabel;
 import Telas.FabricaComponentes.FabricaJMenuBar;
+import Telas.FabricaComponentes.FabricaJOptionPane;
 
 public class TelaVisualizarEditais extends TelaPadrao{
 	private Persistencia dados = new Persistencia();
@@ -66,11 +67,9 @@ public class TelaVisualizarEditais extends TelaPadrao{
 			try {
 				linha[3] = edital.status();
 			} catch (InscricoesFinalizadaException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				FabricaJOptionPane.criarMsgErro(e.getMessage());
 			} catch (InscricoesNaoAbertasException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				FabricaJOptionPane.criarMsgErro(e.getMessage());
 			}
 			mEditais.addRow(linha);
 		}

@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import Excecoes.AlunoJaInscritoException;
+import Excecoes.DisciplinaJaCadastradaException;
 import Excecoes.InscricoesFinalizadaException;
 import Excecoes.InscricoesNaoAbertasException;
 
@@ -18,6 +19,14 @@ public class EditalDeMonitoria {
 	//pode ser não calculado, calculado e final
 	private String resultado;
 	
+	public EditalDeMonitoria(String numeroEdital, LocalDate dataInicio, LocalDate dataFim,  float pesoCRE, float pesoMedia) {
+		id = System.currentTimeMillis();
+		this.numeroEdital = numeroEdital;
+		this.dataInicio = dataInicio;
+		this.dataFim = dataFim;
+		this.pesoCRE = pesoCRE;
+		this.pesoMedia = pesoMedia;
+	}
 	
 	public EditalDeMonitoria(String numeroEdital, LocalDate dataInicio, LocalDate dataFim, ArrayList<Disciplina> disciplinas, float pesoCRE, float pesoMedia) {
 		id = System.currentTimeMillis();
@@ -31,6 +40,19 @@ public class EditalDeMonitoria {
 	
 	public EditalDeMonitoria(){
 		id = System.currentTimeMillis();
+	}
+	public EditalDeMonitoria getInstancia() {
+		return this;
+	}
+	
+	public void inscreverDisciplina(String nomeDisciplina, int quantRemuneradas, int quantVoluntarios) throws DisciplinaJaCadastradaException {
+		for(Disciplina d:disciplinas) {
+			if(d.getNome().equalsIgnoreCase(nomeDisciplina)) {
+				throw new DisciplinaJaCadastradaException();
+			}
+		}
+		Disciplina disciplina = new Disciplina(nomeDisciplina, quantRemuneradas, quantVoluntarios);
+		getDisciplinas().add(disciplina);
 	}
 
 	public boolean inscrever(Aluno aluno, String nomeDisciplina) throws AlunoJaInscritoException, InscricoesFinalizadaException, InscricoesNaoAbertasException {
