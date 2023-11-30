@@ -52,108 +52,13 @@
       </disciplinas>
       <pesoCRE>10.0</pesoCRE>
       <pesoMedia>10.0</pesoMedia>
+      <numMaxInscricoes>0</numMaxInscricoes>
     </Classes.EditalDeMonitoria>
     <Classes.EditalDeMonitoria>
-      <id>1701287671861</id>
-      <numeroEdital>3.0</numeroEdital>
-      <dataInicio>2023-12-12</dataInicio>
-      <dataFim>2024-12-01</dataFim>
-      <disciplinas>
-        <Classes.Disciplina>
-          <nome>poo</nome>
-          <quantVagas>0</quantVagas>
-          <alunosInscritos/>
-          <quantDeVagasRemuneradas>1</quantDeVagasRemuneradas>
-          <quantDeVagasVoluntarias>3</quantDeVagasVoluntarias>
-        </Classes.Disciplina>
-      </disciplinas>
-      <pesoCRE>1.0</pesoCRE>
-      <pesoMedia>3.0</pesoMedia>
-    </Classes.EditalDeMonitoria>
-    <Classes.EditalDeMonitoria>
-      <id>1701287823746</id>
-      <numeroEdital>5.0</numeroEdital>
-      <dataInicio>2023-12-11</dataInicio>
-      <dataFim>2023-12-25</dataFim>
-      <disciplinas>
-        <Classes.Disciplina>
-          <nome>matematica</nome>
-          <quantVagas>0</quantVagas>
-          <alunosInscritos/>
-          <quantDeVagasRemuneradas>12</quantDeVagasRemuneradas>
-          <quantDeVagasVoluntarias>12</quantDeVagasVoluntarias>
-        </Classes.Disciplina>
-        <Classes.Disciplina>
-          <nome>portugues</nome>
-          <quantVagas>0</quantVagas>
-          <alunosInscritos/>
-          <quantDeVagasRemuneradas>12</quantDeVagasRemuneradas>
-          <quantDeVagasVoluntarias>12</quantDeVagasVoluntarias>
-        </Classes.Disciplina>
-        <Classes.Disciplina>
-          <nome>ingles</nome>
-          <quantVagas>0</quantVagas>
-          <alunosInscritos/>
-          <quantDeVagasRemuneradas>12</quantDeVagasRemuneradas>
-          <quantDeVagasVoluntarias>12</quantDeVagasVoluntarias>
-        </Classes.Disciplina>
-      </disciplinas>
-      <pesoCRE>12.0</pesoCRE>
-      <pesoMedia>12.0</pesoMedia>
-    </Classes.EditalDeMonitoria>
-    <Classes.EditalDeMonitoria>
-      <id>1701296492056</id>
-      <numeroEdital>123.0</numeroEdital>
-      <dataInicio>1212-12-12</dataInicio>
-      <dataFim>1212-12-12</dataFim>
-      <disciplinas>
-        <Classes.Disciplina>
-          <nome>poo</nome>
-          <quantVagas>0</quantVagas>
-          <alunosInscritos/>
-          <quantDeVagasRemuneradas>1</quantDeVagasRemuneradas>
-          <quantDeVagasVoluntarias>3</quantDeVagasVoluntarias>
-        </Classes.Disciplina>
-        <Classes.Disciplina>
-          <nome>mat</nome>
-          <quantVagas>0</quantVagas>
-          <alunosInscritos/>
-          <quantDeVagasRemuneradas>12</quantDeVagasRemuneradas>
-          <quantDeVagasVoluntarias>12</quantDeVagasVoluntarias>
-        </Classes.Disciplina>
-      </disciplinas>
-      <pesoCRE>0.1</pesoCRE>
-      <pesoMedia>0.9</pesoMedia>
-    </Classes.EditalDeMonitoria>
-    <Classes.EditalDeMonitoria>
-      <id>1701298307815</id>
-      <numeroEdital>1.1</numeroEdital>
-      <dataInicio>3123-12-12</dataInicio>
-      <dataFim>3222-11-12</dataFim>
-      <disciplinas>
-        <Classes.Disciplina>
-          <nome>poo</nome>
-          <quantVagas>0</quantVagas>
-          <alunosInscritos/>
-          <quantDeVagasRemuneradas>1</quantDeVagasRemuneradas>
-          <quantDeVagasVoluntarias>2</quantDeVagasVoluntarias>
-        </Classes.Disciplina>
-        <Classes.Disciplina>
-          <nome>matematica</nome>
-          <quantVagas>0</quantVagas>
-          <alunosInscritos/>
-          <quantDeVagasRemuneradas>23</quantDeVagasRemuneradas>
-          <quantDeVagasVoluntarias>12</quantDeVagasVoluntarias>
-        </Classes.Disciplina>
-      </disciplinas>
-      <pesoCRE>0.1</pesoCRE>
-      <pesoMedia>0.9</pesoMedia>
-    </Classes.EditalDeMonitoria>
-    <Classes.EditalDeMonitoria>
-      <id>1701298884922</id>
-      <numeroEdital>100.0</numeroEdital>
-      <dataInicio>2000-12-12</dataInicio>
-      <dataFim>2023-11-12</dataFim>
+      <id>1701307869644</id>
+      <numeroEdital>2.0</numeroEdital>
+      <dataInicio>2222-12-12</dataInicio>
+      <dataFim>2223-12-12</dataFim>
       <disciplinas>
         <Classes.Disciplina>
           <nome>poo</nome>
@@ -163,48 +68,50 @@
           <quantDeVagasVoluntarias>2</quantDeVagasVoluntarias>
         </Classes.Disciplina>
       </disciplinas>
-      <pesoCRE>0.9</pesoCRE>
-      <pesoMedia>0.1</pesoMedia>
+      <pesoCRE>1.0</pesoCRE>
+      <pesoMedia>0.0</pesoMedia>
+      <numMaxInscricoes>1</numMaxInscricoes>
     </Classes.EditalDeMonitoria>
     <Classes.EditalDeMonitoria>
-      <id>1701299122043</id>
-      <numeroEdital>1011.0</numeroEdital>
+      <id>1701307959011</id>
+      <numeroEdital>12.0</numeroEdital>
+      <dataInicio>1222-12-12</dataInicio>
+      <dataFim>1223-12-12</dataFim>
+      <disciplinas>
+        <Classes.Disciplina>
+          <nome>poo</nome>
+          <quantVagas>0</quantVagas>
+          <alunosInscritos/>
+          <quantDeVagasRemuneradas>1</quantDeVagasRemuneradas>
+          <quantDeVagasVoluntarias>2</quantDeVagasVoluntarias>
+        </Classes.Disciplina>
+      </disciplinas>
+      <pesoCRE>0.1</pesoCRE>
+      <pesoMedia>0.9</pesoMedia>
+      <numMaxInscricoes>2</numMaxInscricoes>
+    </Classes.EditalDeMonitoria>
+    <Classes.EditalDeMonitoria>
+      <id>1701308636377</id>
+      <numeroEdital>13.0</numeroEdital>
       <dataInicio>2222-12-12</dataInicio>
       <dataFim>2223-12-12</dataFim>
       <disciplinas>
         <Classes.Disciplina>
-          <nome>oi</nome>
+          <nome>poo</nome>
           <quantVagas>0</quantVagas>
           <alunosInscritos/>
           <quantDeVagasRemuneradas>3</quantDeVagasRemuneradas>
           <quantDeVagasVoluntarias>3</quantDeVagasVoluntarias>
         </Classes.Disciplina>
         <Classes.Disciplina>
-          <nome>matematica</nome>
+          <nome>portugues</nome>
           <quantVagas>0</quantVagas>
           <alunosInscritos/>
-          <quantDeVagasRemuneradas>1</quantDeVagasRemuneradas>
-          <quantDeVagasVoluntarias>1</quantDeVagasVoluntarias>
-        </Classes.Disciplina>
-      </disciplinas>
-      <pesoCRE>0.3</pesoCRE>
-      <pesoMedia>0.7</pesoMedia>
-    </Classes.EditalDeMonitoria>
-    <Classes.EditalDeMonitoria>
-      <id>1701300672032</id>
-      <numeroEdital>12.0</numeroEdital>
-      <dataInicio>1313-12-13</dataInicio>
-      <dataFim>1315-11-13</dataFim>
-      <disciplinas>
-        <Classes.Disciplina>
-          <nome>1313</nome>
-          <quantVagas>0</quantVagas>
-          <alunosInscritos/>
-          <quantDeVagasRemuneradas>1</quantDeVagasRemuneradas>
-          <quantDeVagasVoluntarias>1</quantDeVagasVoluntarias>
+          <quantDeVagasRemuneradas>2</quantDeVagasRemuneradas>
+          <quantDeVagasVoluntarias>2</quantDeVagasVoluntarias>
         </Classes.Disciplina>
         <Classes.Disciplina>
-          <nome>oi</nome>
+          <nome>portugues2</nome>
           <quantVagas>0</quantVagas>
           <alunosInscritos/>
           <quantDeVagasRemuneradas>2</quantDeVagasRemuneradas>
@@ -213,6 +120,7 @@
       </disciplinas>
       <pesoCRE>0.5</pesoCRE>
       <pesoMedia>0.5</pesoMedia>
+      <numMaxInscricoes>2</numMaxInscricoes>
     </Classes.EditalDeMonitoria>
   </todosOsEditais>
 </Persistencia.CentralDeInformacoes>
