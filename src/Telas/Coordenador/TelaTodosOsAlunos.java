@@ -13,8 +13,6 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 import Classes.Aluno;
-import Persistencia.CentralDeInformacoes;
-import Persistencia.Persistencia;
 import Telas.FabricaImagens;
 import Telas.TelaPadrao;
 import Telas.FabricaComponentes.FabricaIcones;
@@ -24,8 +22,7 @@ import Telas.FabricaComponentes.FabricaJMenuBar;
 import Telas.FabricaComponentes.FabricaJTextField;
 
 public class TelaTodosOsAlunos extends TelaPadrao{
-	private Persistencia dados = new Persistencia();
-	private CentralDeInformacoes central = dados.recuperarCentral("central.xml");
+	private JTable tableAlunos;
 	
 	public TelaTodosOsAlunos() {
 		super("TODOS OS ALUNOS");
@@ -71,7 +68,7 @@ public class TelaTodosOsAlunos extends TelaPadrao{
 		mAlunos.addColumn("Aluno(a)");
 		mAlunos.addColumn("Matrícula");
 		
-		ArrayList<Aluno> alunos = central.getTodosOsAlunos();
+		ArrayList<Aluno> alunos = getCentral().getTodosOsAlunos();
 		for(Aluno aluno: alunos) {
 			Object[] linha = new Object[2];
 			linha[0] = aluno.getNome();
@@ -81,7 +78,7 @@ public class TelaTodosOsAlunos extends TelaPadrao{
 		
 
 		// Torna todas as células não editáveis
-		JTable tableAlunos = new JTable(mAlunos) {
+		tableAlunos = new JTable(mAlunos) {
 
 			public boolean isCellEditable(int row, int column) {
 		        return false;

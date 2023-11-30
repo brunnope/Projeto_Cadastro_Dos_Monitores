@@ -122,8 +122,11 @@ public class TelaCadastroDisciplina extends TelaPadrao{
 		
 		JLabel iconeVagaVoluntario = FabricaIcones.criarIcone(FabricaImagens.INFO, 182, 165, 50, 30);
 		add(iconeVagaVoluntario);
-				
 		
+	}
+	
+	public static void main(String[] args) {
+		TelaCadastroEdital t = new TelaCadastroEdital();
 	}
 
 }

@@ -1,6 +1,8 @@
 package Telas;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -12,10 +14,13 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 import Classes.EditalDeMonitoria;
+import Excecoes.EditalNaoEncontradoException;
 import Excecoes.InscricoesFinalizadaException;
 import Excecoes.InscricoesNaoAbertasException;
 import Persistencia.CentralDeInformacoes;
 import Persistencia.Persistencia;
+import Telas.Aluno.TelaDetalharEditalAberto;
+import Telas.Coordenador.TelaDetalharEditalEncerrado;
 import Telas.FabricaComponentes.FabricaIcones;
 import Telas.FabricaComponentes.FabricaJButton;
 import Telas.FabricaComponentes.FabricaJLabel;
@@ -23,8 +28,7 @@ import Telas.FabricaComponentes.FabricaJMenuBar;
 import Telas.FabricaComponentes.FabricaJOptionPane;
 
 public class TelaVisualizarEditais extends TelaPadrao{
-	private Persistencia dados = new Persistencia();
-	private CentralDeInformacoes central = dados.recuperarCentral("central.xml");
+	private JTable tableEditais;
 	
 	public TelaVisualizarEditais() {
 		super("VISUALIZAR TODOS OS EDITAIS");
@@ -58,24 +62,26 @@ public class TelaVisualizarEditais extends TelaPadrao{
 		mEditais.addColumn("Inscrições");
 		mEditais.addColumn("Resultado");
 		
-		ArrayList<EditalDeMonitoria> editais = central.getTodosOsEditais();
+		ArrayList<EditalDeMonitoria> editais = getCentral().getTodosOsEditais();
 		for(EditalDeMonitoria edital: editais) {
-			Object[] linha = new Object[4];
+			Object[] linha = new Object[5];
 			linha[0] = edital.getNumeroEdital();
 			linha[1] = edital.getDataInicio();
 			linha[2] = edital.getDataFim();
 			try {
 				linha[3] = edital.status();
 			} catch (InscricoesFinalizadaException e) {
-				FabricaJOptionPane.criarMsgErro(e.getMessage());
+				linha[3] = "finalizadas";
 			} catch (InscricoesNaoAbertasException e) {
-				FabricaJOptionPane.criarMsgErro(e.getMessage());
+				linha[3] = "não abertas";
 			}
+			linha[4] = "não calculado";
+			edital.setResultado("não calculado");
 			mEditais.addRow(linha);
 		}
 
 		// Torna todas as células não editáveis
-		JTable tableEditais = new JTable(mEditais) {
+			tableEditais = new JTable(mEditais) {
 			private static final long serialVersionUID = 1L;
 
 			@Override
@@ -97,10 +103,27 @@ public class TelaVisualizarEditais extends TelaPadrao{
 	}
 	
 	private void adicionarButtons() {
-		
 		JButton bVisualizar = FabricaJButton.criarJButton("Visualizar", 350, 630, 200, 30, Color.GREEN, Color.WHITE, 12);
 		add(bVisualizar);
-		
+		bVisualizar.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				EditalDeMonitoria edital = null;
+				try {
+					edital = getCentral().getTodosOsEditais().get(tableEditais.getSelectedRow());
+							
+					edital.status();
+					dispose();
+					new TelaDetalharEditalAberto();
+				}catch (InscricoesFinalizadaException e2) {
+					dispose();
+					new TelaDetalharEditalEncerrado(edital);
+				} catch (InscricoesNaoAbertasException e3) {
+					FabricaJOptionPane.criarMsgErro(e3.getMessage());
+				}
+				
+			}
+		});
 	}
 
 	private void adicionarIcones() {

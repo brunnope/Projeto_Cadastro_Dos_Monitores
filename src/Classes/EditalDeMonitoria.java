@@ -16,16 +16,19 @@ public class EditalDeMonitoria {
 	private ArrayList<Disciplina> disciplinas = new ArrayList<Disciplina>();
 	private float pesoCRE;
 	private float pesoMedia;
+	private int numMaxInscricoes;
+
 	//pode ser não calculado, calculado e final
 	private String resultado;
 	
-	public EditalDeMonitoria(float numeroEdital, LocalDate dataInicio, LocalDate dataFim,  float pesoCRE, float pesoMedia) {
+	public EditalDeMonitoria(float numeroEdital, LocalDate dataInicio, LocalDate dataFim,  float pesoCRE, float pesoMedia, int numMaxInscricoes) {
 		id = System.currentTimeMillis();
 		this.numeroEdital = numeroEdital;
 		this.dataInicio = dataInicio;
 		this.dataFim = dataFim;
 		this.pesoCRE = pesoCRE;
 		this.pesoMedia = pesoMedia;
+		this.numMaxInscricoes = numMaxInscricoes;
 	}
 	
 	public EditalDeMonitoria(float numeroEdital, LocalDate dataInicio, LocalDate dataFim, ArrayList<Disciplina> disciplinas, float pesoCRE, float pesoMedia) {
@@ -160,5 +163,21 @@ public class EditalDeMonitoria {
 	
 	public void setPesoMedia(float pesoMedia) {
 		this.pesoMedia = pesoMedia;
+	}
+	
+	public int getNumMaxInscricoes() {
+		return numMaxInscricoes;
+	}
+
+	public void setNumMaxInscricoes(int numMaxInscricoes) {
+		this.numMaxInscricoes = numMaxInscricoes;
+	}
+
+	public String getResultado() {
+		return resultado;
+	}
+
+	public void setResultado(String resultado) {
+		this.resultado = resultado;
 	}
 }
