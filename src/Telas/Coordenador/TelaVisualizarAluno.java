@@ -119,5 +119,4 @@ public class TelaVisualizarAluno extends TelaPadrao{
 		TelaVisualizarAluno t = new TelaVisualizarAluno();
 	}
 
-
 }

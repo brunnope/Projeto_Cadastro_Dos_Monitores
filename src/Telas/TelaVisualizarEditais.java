@@ -11,6 +11,7 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
+import Classes.Coordenador;
 import Classes.EditalDeMonitoria;
 import Excecoes.InscricoesFinalizadaException;
 import Excecoes.InscricoesNaoAbertasException;
@@ -22,9 +23,6 @@ import Telas.FabricaComponentes.FabricaJLabel;
 import Telas.FabricaComponentes.FabricaJMenuBar;
 
 public class TelaVisualizarEditais extends TelaPadrao{
-	private Persistencia dados = new Persistencia();
-	private CentralDeInformacoes central = dados.recuperarCentral("central.xml");
-	
 	public TelaVisualizarEditais() {
 		super("VISUALIZAR TODOS OS EDITAIS");
 		configurarComponentes();
@@ -38,6 +36,11 @@ public class TelaVisualizarEditais extends TelaPadrao{
 		adicionarTable();
 		adicionarButtons();
 		adicionarIcones();
+		if (getUsuario() instanceof Coordenador) {
+			adicionarMenuBar();
+		}else {
+			adicionarMenuBarAluno();
+		}
 	}
 	
 	private void adicionarLabels() {
@@ -57,7 +60,7 @@ public class TelaVisualizarEditais extends TelaPadrao{
 		mEditais.addColumn("Inscrições");
 		mEditais.addColumn("Resultado");
 		
-		ArrayList<EditalDeMonitoria> editais = central.getTodosOsEditais();
+		ArrayList<EditalDeMonitoria> editais = getCentral().getTodosOsEditais();
 		for(EditalDeMonitoria edital: editais) {
 			Object[] linha = new Object[4];
 			linha[0] = edital.getNumeroEdital();
@@ -94,6 +97,10 @@ public class TelaVisualizarEditais extends TelaPadrao{
 
 	private void adicionarMenuBar() {
 		JMenuBar mOpcoes = FabricaJMenuBar.MenuCoordenador(this);
+		setJMenuBar(mOpcoes);
+	}
+	private void adicionarMenuBarAluno() {
+		JMenuBar mOpcoes = FabricaJMenuBar.MenuAluno(this);
 		setJMenuBar(mOpcoes);
 	}
 	

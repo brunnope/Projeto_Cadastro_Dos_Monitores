@@ -27,4 +27,8 @@ public class Aluno extends Pessoa{
 	public String getMatricula() {
 		return matricula;
 	}
+	
+	public void setMatricula(String m) {
+		matricula = m;
+	}
 }
