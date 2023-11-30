@@ -1,6 +1,8 @@
 package Telas.Coordenador;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -15,10 +17,12 @@ import javax.swing.table.DefaultTableModel;
 import Classes.Aluno;
 import Telas.FabricaImagens;
 import Telas.TelaPadrao;
+import Telas.Aluno.TelaEditarInformacoesAluno;
 import Telas.FabricaComponentes.FabricaIcones;
 import Telas.FabricaComponentes.FabricaJButton;
 import Telas.FabricaComponentes.FabricaJLabel;
 import Telas.FabricaComponentes.FabricaJMenuBar;
+import Telas.FabricaComponentes.FabricaJOptionPane;
 import Telas.FabricaComponentes.FabricaJTextField;
 
 public class TelaTodosOsAlunos extends TelaPadrao{
@@ -95,6 +99,14 @@ public class TelaTodosOsAlunos extends TelaPadrao{
 	private void adicionarButtons() {		
 		JButton bEditar = FabricaJButton.criarJButton("Editar", 293, 660, 150, 30, Color.GREEN, Color.WHITE, 12);
 		add(bEditar);
+		bEditar.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				Aluno l = getCentral().getTodosOsAlunos().get(tableAlunos.getSelectedRow());
+				new TelaEditarInformacoesAluno(l);
+			}
+		});
 		
 		JButton bVisualizar = FabricaJButton.criarJButton("Visualizar", 458, 660, 150, 30, Color.GREEN, Color.WHITE, 12);
 		add(bVisualizar);

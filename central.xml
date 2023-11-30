@@ -7,16 +7,16 @@
   </coordenador>
   <todosOsAlunos>
     <Classes.Aluno>
-      <nome>Anderson da Silva Santos</nome>
-      <email>anderson.santos.10@academico.ifpb.edu.br</email>
-      <senha>gostoso123</senha>
+      <nome>Anderson da Silva</nome>
+      <email>anderson.santos@academico.ifpb.edu.br</email>
+      <senha>anderson123</senha>
       <sexo>MASCULINO</sexo>
       <matricula>202315220023</matricula>
     </Classes.Aluno>
     <Classes.Aluno>
-      <nome>Cicero Brunno Das Neves</nome>
+      <nome>Cicero Brunno das Neves</nome>
       <email>cicero.brunno@academico.ifpb.edu.br</email>
-      <senha>bruninho123</senha>
+      <senha>brunnoelegal</senha>
       <sexo>MASCULINO</sexo>
       <matricula>202315220015</matricula>
     </Classes.Aluno>

@@ -13,7 +13,6 @@ import Classes.Aluno;
 import Classes.Coordenador;
 import Classes.Pessoa;
 import Excecoes.CredenciaisInvalidasException;
-import Excecoes.NenhumAlunoCadastradoException;
 import Telas.Aluno.TelaCadastroAluno;
 import Telas.Aluno.TelaHomeAluno;
 import Telas.Coordenador.TelaHomeCoordenador;
@@ -70,21 +69,21 @@ public class TelaLogin extends TelaPadrao{
 		add(bLogin);
 		bLogin.addActionListener(new ActionListener() {
 			
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				String login = tLogin.getText();
 				String senha = tSenha.getText();
 				try {
-					Pessoa pessoaLogada = getUtil().login(login, senha, getCentral());
-					if (pessoaLogada != null) {
+					TelaPadrao.setUsuario((getUtil().login(login, senha, getCentral())));   
+					Pessoa usuario = TelaPadrao.getUsuario();
+					if (usuario != null) {
 						dispose();
-						if (pessoaLogada instanceof Coordenador) {
+						if (usuario instanceof Coordenador) {
 							new TelaHomeCoordenador();
-						}else if (pessoaLogada instanceof Aluno){
+						}else if (usuario instanceof Aluno){
 							new TelaHomeAluno();
 						}
 					}
-				} catch (NenhumAlunoCadastradoException | CredenciaisInvalidasException e1) {
+				} catch (CredenciaisInvalidasException e1) {
 					JOptionPane.showMessageDialog(bLogin, e1.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE, null);		
 				}
 			}

@@ -13,6 +13,7 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
+import Classes.Coordenador;
 import Classes.EditalDeMonitoria;
 import Excecoes.EditalNaoEncontradoException;
 import Excecoes.InscricoesFinalizadaException;
@@ -43,6 +44,11 @@ public class TelaVisualizarEditais extends TelaPadrao{
 		adicionarTable();
 		adicionarButtons();
 		adicionarIcones();
+		if (getUsuario() instanceof Coordenador) {
+			adicionarMenuBar();
+		}else {
+			adicionarMenuBarAluno();
+		}
 	}
 	
 	private void adicionarLabels() {
@@ -99,6 +105,10 @@ public class TelaVisualizarEditais extends TelaPadrao{
 
 	private void adicionarMenuBar() {
 		JMenuBar mOpcoes = FabricaJMenuBar.MenuCoordenador(this);
+		setJMenuBar(mOpcoes);
+	}
+	private void adicionarMenuBarAluno() {
+		JMenuBar mOpcoes = FabricaJMenuBar.MenuAluno(this);
 		setJMenuBar(mOpcoes);
 	}
 	

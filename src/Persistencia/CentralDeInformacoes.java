@@ -44,15 +44,15 @@ public class CentralDeInformacoes {
 		}
 		return matcher.matches();
 	}
-	
+
 	public boolean emailExiste(String email) throws EmailJaCadastradoException {
 		for (Aluno aluno : todosOsAlunos) {
 			if (aluno.getEmail().equalsIgnoreCase(email)) {
 				throw new EmailJaCadastradoException();
 			}
 		}
-			if (coordenador.getEmail().equalsIgnoreCase(email)) {
-				throw new EmailJaCadastradoException();
+		if (coordenador.getEmail().equalsIgnoreCase(email)) {
+			throw new EmailJaCadastradoException();
 		}return false;
 	}
 
@@ -134,10 +134,20 @@ public class CentralDeInformacoes {
 
 		}return false;
 	}
+	public boolean verificarMatricula(Aluno a, String matricula) throws AlunoJaMatriculadoException {
+		for (Aluno aluno: todosOsAlunos) {
+			if (aluno != a) {
+				if (aluno.getMatricula().equals(matricula)){
+					throw new AlunoJaMatriculadoException();
+				}
+			}
+
+		}return false;
+	}
 	public boolean adicionarAluno (Aluno a) throws AlunoJaMatriculadoException, EmailJaCadastradoException{
 		if (!todosOsAlunos.isEmpty()) {
 			verificarMatricula(a.getMatricula());
-		    emailExiste(a.getEmail()); 
+			emailExiste(a.getEmail()); 
 		}
 		todosOsAlunos.add(a);
 		return true;
@@ -151,7 +161,7 @@ public class CentralDeInformacoes {
 		}
 		throw new AlunoNaoEncontradoException();
 	}
-	
+
 	public String recuperarSenhaPeloEmail (String email) throws EmailNaoEncontradoException {
 		if (coordenador.getEmail().equalsIgnoreCase(email)) {
 			return coordenador.getSenha();
