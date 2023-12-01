@@ -2,13 +2,13 @@
 <Persistencia.CentralDeInformacoes>
   <coordenador>
     <nome>Cleyton Souza</nome>
-    <email>Cleyton.Souza@iffb.edu.br</email>
+    <email>Cleyton.Souza@ifpb.edu.br</email>
     <senha>cleyton123</senha>
   </coordenador>
   <todosOsAlunos>
     <Classes.Aluno>
-      <nome>Anderson da Silva</nome>
-      <email>anderson.santos@academico.ifpb.edu.br</email>
+      <nome>Anderson da Silva Santos</nome>
+      <email>anderson@gmail.com</email>
       <senha>anderson123</senha>
       <sexo>MASCULINO</sexo>
       <matricula>202315220023</matricula>
@@ -28,99 +28,87 @@
       <matricula>202315220028</matricula>
     </Classes.Aluno>
     <Classes.Aluno>
-      <nome>Shaolin Matador de Porco</nome>
-      <email>ShaolinMatadorDePorco@porco.com</email>
-      <senha>matadordeporco</senha>
+      <nome>Pau na tora</nome>
+      <email>pauNaTora@gmail.com</email>
+      <senha>pau12345</senha>
       <sexo>MASCULINO</sexo>
       <matricula>696969696969</matricula>
     </Classes.Aluno>
   </todosOsAlunos>
   <todosOsEditais>
     <Classes.EditalDeMonitoria>
-      <id>1701287360002</id>
-      <numeroEdital>1.0</numeroEdital>
-      <dataInicio>2023-12-12</dataInicio>
-      <dataFim>2024-12-11</dataFim>
-      <disciplinas>
-        <Classes.Disciplina>
-          <nome>poo</nome>
-          <quantVagas>0</quantVagas>
-          <alunosInscritos/>
-          <quantDeVagasRemuneradas>3</quantDeVagasRemuneradas>
-          <quantDeVagasVoluntarias>3</quantDeVagasVoluntarias>
-        </Classes.Disciplina>
-      </disciplinas>
-      <pesoCRE>10.0</pesoCRE>
-      <pesoMedia>10.0</pesoMedia>
-      <numMaxInscricoes>0</numMaxInscricoes>
-    </Classes.EditalDeMonitoria>
-    <Classes.EditalDeMonitoria>
-      <id>1701307869644</id>
-      <numeroEdital>2.0</numeroEdital>
-      <dataInicio>2222-12-12</dataInicio>
-      <dataFim>2223-12-12</dataFim>
+      <id>1701385597772</id>
+      <numeroEdital>200.0</numeroEdital>
+      <dataInicio>2023-12-11</dataInicio>
+      <dataFim>2023-12-12</dataFim>
       <disciplinas>
         <Classes.Disciplina>
           <nome>poo</nome>
           <quantVagas>0</quantVagas>
           <alunosInscritos/>
           <quantDeVagasRemuneradas>2</quantDeVagasRemuneradas>
-          <quantDeVagasVoluntarias>2</quantDeVagasVoluntarias>
+          <quantDeVagasVoluntarias>3</quantDeVagasVoluntarias>
+        </Classes.Disciplina>
+        <Classes.Disciplina>
+          <nome>matematica</nome>
+          <quantVagas>0</quantVagas>
+          <alunosInscritos/>
+          <quantDeVagasRemuneradas>2</quantDeVagasRemuneradas>
+          <quantDeVagasVoluntarias>1</quantDeVagasVoluntarias>
         </Classes.Disciplina>
       </disciplinas>
-      <pesoCRE>1.0</pesoCRE>
-      <pesoMedia>0.0</pesoMedia>
-      <numMaxInscricoes>1</numMaxInscricoes>
+      <pesoCRE>0.1</pesoCRE>
+      <pesoMedia>0.9</pesoMedia>
+      <numMaxInscricoes>9</numMaxInscricoes>
+      <resultado>não calculado</resultado>
+      <status>não abertas</status>
     </Classes.EditalDeMonitoria>
     <Classes.EditalDeMonitoria>
-      <id>1701307959011</id>
-      <numeroEdital>12.0</numeroEdital>
-      <dataInicio>1222-12-12</dataInicio>
-      <dataFim>1223-12-12</dataFim>
+      <id>1701395382682</id>
+      <numeroEdital>1.0</numeroEdital>
+      <dataInicio>2023-12-10</dataInicio>
+      <dataFim>2023-12-11</dataFim>
       <disciplinas>
         <Classes.Disciplina>
           <nome>poo</nome>
+          <quantVagas>0</quantVagas>
+          <alunosInscritos/>
+          <quantDeVagasRemuneradas>2</quantDeVagasRemuneradas>
+          <quantDeVagasVoluntarias>3</quantDeVagasVoluntarias>
+        </Classes.Disciplina>
+        <Classes.Disciplina>
+          <nome>matematica</nome>
+          <quantVagas>0</quantVagas>
+          <alunosInscritos/>
+          <quantDeVagasRemuneradas>2</quantDeVagasRemuneradas>
+          <quantDeVagasVoluntarias>2</quantDeVagasVoluntarias>
+        </Classes.Disciplina>
+      </disciplinas>
+      <pesoCRE>0.7</pesoCRE>
+      <pesoMedia>0.3</pesoMedia>
+      <numMaxInscricoes>3</numMaxInscricoes>
+      <resultado>não calculado</resultado>
+      <status>não abertas</status>
+    </Classes.EditalDeMonitoria>
+    <Classes.EditalDeMonitoria>
+      <id>1701395431867</id>
+      <numeroEdital>2.0</numeroEdital>
+      <dataInicio>2023-11-29</dataInicio>
+      <dataFim>2024-01-01</dataFim>
+      <disciplinas>
+        <Classes.Disciplina>
+          <nome>lingua inglesa</nome>
           <quantVagas>0</quantVagas>
           <alunosInscritos/>
           <quantDeVagasRemuneradas>1</quantDeVagasRemuneradas>
           <quantDeVagasVoluntarias>2</quantDeVagasVoluntarias>
         </Classes.Disciplina>
       </disciplinas>
-      <pesoCRE>0.1</pesoCRE>
-      <pesoMedia>0.9</pesoMedia>
-      <numMaxInscricoes>2</numMaxInscricoes>
-    </Classes.EditalDeMonitoria>
-    <Classes.EditalDeMonitoria>
-      <id>1701308636377</id>
-      <numeroEdital>13.0</numeroEdital>
-      <dataInicio>2222-12-12</dataInicio>
-      <dataFim>2223-12-12</dataFim>
-      <disciplinas>
-        <Classes.Disciplina>
-          <nome>poo</nome>
-          <quantVagas>0</quantVagas>
-          <alunosInscritos/>
-          <quantDeVagasRemuneradas>3</quantDeVagasRemuneradas>
-          <quantDeVagasVoluntarias>3</quantDeVagasVoluntarias>
-        </Classes.Disciplina>
-        <Classes.Disciplina>
-          <nome>portugues</nome>
-          <quantVagas>0</quantVagas>
-          <alunosInscritos/>
-          <quantDeVagasRemuneradas>2</quantDeVagasRemuneradas>
-          <quantDeVagasVoluntarias>2</quantDeVagasVoluntarias>
-        </Classes.Disciplina>
-        <Classes.Disciplina>
-          <nome>portugues2</nome>
-          <quantVagas>0</quantVagas>
-          <alunosInscritos/>
-          <quantDeVagasRemuneradas>2</quantDeVagasRemuneradas>
-          <quantDeVagasVoluntarias>2</quantDeVagasVoluntarias>
-        </Classes.Disciplina>
-      </disciplinas>
       <pesoCRE>0.5</pesoCRE>
       <pesoMedia>0.5</pesoMedia>
       <numMaxInscricoes>2</numMaxInscricoes>
+      <resultado>não calculado</resultado>
+      <status>abertas</status>
     </Classes.EditalDeMonitoria>
   </todosOsEditais>
 </Persistencia.CentralDeInformacoes>
