@@ -17,7 +17,6 @@ import Persistencia.CentralDeInformacoes;
 import Persistencia.Persistencia;
 import Telas.FabricaImagens;
 import Telas.TelaPadrao;
-import Telas.Coordenador.TelaDetalhesResultado;
 import Telas.FabricaComponentes.FabricaIcones;
 import Telas.FabricaComponentes.FabricaJButton;
 import Telas.FabricaComponentes.FabricaJLabel;

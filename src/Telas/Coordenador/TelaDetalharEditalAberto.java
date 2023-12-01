@@ -24,31 +24,25 @@ import Persistencia.CentralDeInformacoes;
 import Persistencia.Persistencia;
 import Telas.FabricaImagens;
 import Telas.TelaPadrao;
+import Telas.TelaVisualizarEditais;
 import Telas.FabricaComponentes.FabricaIcones;
 import Telas.FabricaComponentes.FabricaJButton;
 import Telas.FabricaComponentes.FabricaJLabel;
 import Telas.FabricaComponentes.FabricaJMenuBar;
+import Telas.FabricaComponentes.FabricaJOptionPane;
 import Telas.FabricaComponentes.FabricaJTextField;
 
 public class TelaDetalharEditalAberto extends TelaPadrao{
-	private Persistencia dados = new Persistencia();
-	private CentralDeInformacoes central = dados.recuperarCentral("central.xml");
-	//apagar id
 	private EditalDeMonitoria edital;
 
-	public TelaDetalharEditalAberto() {
+	public TelaDetalharEditalAberto(EditalDeMonitoria edital) {
 		super("DETALHES EDITAL ABERTO");
+		this.edital = edital;
 		configurarComponentes();
 		setVisible(true);
 	}
 
 	public void configurarComponentes() {
-		try {
-			edital = central.recuperarEditalPeloId(central.getTodosOsEditais().get(0).getId());
-		} catch (EditalNaoEncontradoException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		adicionarMenuBar();
 		adicionarLabels();
 		adicionarTextFields();
@@ -141,7 +135,7 @@ public class TelaDetalharEditalAberto extends TelaPadrao{
 		for(Disciplina disciplina: disciplinas) {
 			Object[] linha = new Object[3];
 			linha[0] = disciplina.getNome();
-			linha[1] = disciplina.getQuantVagas();
+			linha[1] = (disciplina.getQuantDeVagasRemuneradas() + disciplina.getQuantDeVagasVoluntarias());
 			linha[2] = disciplina.getAlunosInscritos().size();
 			mDisciplinas.addRow(linha);
 		}
@@ -163,12 +157,52 @@ public class TelaDetalharEditalAberto extends TelaPadrao{
 	private void adicionarButtons() {
 		JButton bEditar = FabricaJButton.criarJButton("Editar", 293, 610, 100, 30, Color.GREEN, Color.WHITE, 12);
 		add(bEditar);
+		bEditar.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new TelaEditarEdital(edital);
+			}
+		});
 		
 		JButton bClonar = FabricaJButton.criarJButton("Clonar", 400, 610, 100, 30, Color.GREEN, Color.WHITE, 12);
 		add(bClonar);
+		bClonar.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		
 		
 		JButton bEncerrar = FabricaJButton.criarJButton("Gerar Resultado", 507, 610, 100, 30, Color.GREEN, Color.WHITE, 12);
 		add(bEncerrar);
+		bEncerrar.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				if (edital.getStatus().equals("abertas")) {
+					//chama o método de calcular rank
+					edital.setResultado("calculado");
+					edital.setStatus("encerradas");
+					FabricaJOptionPane.criarMsgValido("Resultado Calculado!");
+					getDados().salvarCentral(getCentral(), "central.xml");
+					dispose();
+					new TelaVisualizarEditais();
+				}else {
+					FabricaJOptionPane.criarMsgErro("Inscrições não estão abertas!");
+				}
+			}
+		});
+		
+		JButton bVoltar = FabricaJButton.criarJButton("Voltar", 293, 650, 314, 30, Color.GREEN, Color.WHITE, 12);
+		add(bVoltar);
+		bVoltar.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new TelaVisualizarEditais();
+			}
+		});
 	}
 
 	private void adicionarIcones() {
@@ -197,10 +231,5 @@ public class TelaDetalharEditalAberto extends TelaPadrao{
 		JLabel imagemFundo = FabricaIcones.criarIcone(FabricaImagens.TELA_LOGIN, 0, 0, 900, 800);
 		add(imagemFundo);
 		
-		
 	}
-	public static void main(String[] args) {
-		TelaDetalharEditalAberto t = new TelaDetalharEditalAberto();
-	}
-
 }

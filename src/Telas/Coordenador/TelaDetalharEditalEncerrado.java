@@ -134,6 +134,7 @@ public class TelaDetalharEditalEncerrado extends TelaPadrao{
 			linha[2] = disciplina.getAlunosInscritos().size();
 			mDisciplinas.addRow(linha);
 		}
+		
 
 		// Torna todas as células não editáveis
 		JTable tableDisciplinas = new JTable(mDisciplinas) {

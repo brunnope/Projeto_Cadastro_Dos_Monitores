@@ -27,10 +27,10 @@ public  abstract class TelaPadrao extends JFrame{
 	public Utilidades getUtil() {
 		return util;
 	}
-	public static Persistencia getDados () {
+	public Persistencia getDados () {
 		return dados;
 	}
-	public static CentralDeInformacoes getCentral() {
+	public CentralDeInformacoes getCentral() {
 		return central;
 	}
 	public static Pessoa getUsuario() {

@@ -18,15 +18,11 @@ import Classes.Coordenador;
 import Classes.Sexo;
 import Excecoes.AlunoJaMatriculadoException;
 import Excecoes.CamposVaziosException;
-import Excecoes.EmailDiferenteException;
 import Excecoes.EmailInvalidoException;
 import Excecoes.EmailJaCadastradoException;
-import Excecoes.SenhaDiferenteException;
 import Excecoes.SenhaMuitoPequenaException;
 import Telas.FabricaImagens;
-import Telas.TelaLogin;
 import Telas.TelaPadrao;
-import Telas.Coordenador.TelaHomeCoordenador;
 import Telas.Coordenador.TelaTodosOsAlunos;
 import Telas.FabricaComponentes.FabricaIcones;
 import Telas.FabricaComponentes.FabricaJButton;
@@ -185,9 +181,9 @@ public class TelaEditarInformacoesAluno extends TelaPadrao{
 			public void actionPerformed(ActionEvent e) {
 
 				try {
-					getUtil().editarAluno(aluno, tNome.getText(), tNovoEmail.getText(), tNovaSenha.getText(),
+					getUtil().editarAluno(getCentral(), aluno, tNome.getText(), tNovoEmail.getText(), tNovaSenha.getText(),
 							fMatricula.getText(), opcoes[cGenero.getSelectedIndex()]);
-					TelaPadrao.getDados().salvarCentral(TelaPadrao.getCentral(), "central.xml");
+					getDados().salvarCentral(getCentral(), "central.xml");
 					FabricaJOptionPane.criarMsgValido("Edição feita com sucesso!");
 					dispose();
 					if (getUsuario() instanceof Aluno) {

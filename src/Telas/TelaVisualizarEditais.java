@@ -15,12 +15,10 @@ import javax.swing.table.DefaultTableModel;
 
 import Classes.Coordenador;
 import Classes.EditalDeMonitoria;
-import Excecoes.EditalNaoEncontradoException;
 import Excecoes.InscricoesFinalizadaException;
 import Excecoes.InscricoesNaoAbertasException;
-import Persistencia.CentralDeInformacoes;
-import Persistencia.Persistencia;
 import Telas.Aluno.TelaDetalharEditalAberto;
+import Telas.Aluno.TelaVisualizarResultado;
 import Telas.Coordenador.TelaDetalharEditalEncerrado;
 import Telas.FabricaComponentes.FabricaIcones;
 import Telas.FabricaComponentes.FabricaJButton;
@@ -30,6 +28,7 @@ import Telas.FabricaComponentes.FabricaJOptionPane;
 
 public class TelaVisualizarEditais extends TelaPadrao{
 	private JTable tableEditais;
+	private EditalDeMonitoria edital;
 	
 	public TelaVisualizarEditais() {
 		super("VISUALIZAR TODOS OS EDITAIS");
@@ -74,15 +73,22 @@ public class TelaVisualizarEditais extends TelaPadrao{
 			linha[0] = edital.getNumeroEdital();
 			linha[1] = edital.getDataInicio();
 			linha[2] = edital.getDataFim();
-			try {
-				linha[3] = edital.status();
-			} catch (InscricoesFinalizadaException e) {
-				linha[3] = "finalizadas";
-			} catch (InscricoesNaoAbertasException e) {
-				linha[3] = "não abertas";
+			
+			if ((edital.getStatus() != null) && (edital.getStatus().equals("encerradas"))) {
+				linha[3] = edital.getStatus();
+			}else {
+				try {
+					//calcula no momento
+					edital.status();
+					edital.setStatus("abertas");;
+				} catch (InscricoesFinalizadaException e) {
+					edital.setStatus("finalizadas");
+				} catch (InscricoesNaoAbertasException e) {
+					edital.setStatus("não abertas");
+				}
+				linha[3] = edital.getStatus();
 			}
-			linha[4] = "não calculado";
-			edital.setResultado("não calculado");
+			linha[4] = edital.getResultado();
 			mEditais.addRow(linha);
 		}
 
@@ -118,32 +124,48 @@ public class TelaVisualizarEditais extends TelaPadrao{
 		bVisualizar.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				EditalDeMonitoria edital = null;
-				try {
+				if (tableEditais.getSelectedRow() == -1){
+					FabricaJOptionPane.criarMsgErro("Selecione algum Edital!");
+				}else {
 					edital = getCentral().getTodosOsEditais().get(tableEditais.getSelectedRow());
-							
-					edital.status();
-					dispose();
-					new TelaDetalharEditalAberto();
-				}catch (InscricoesFinalizadaException e2) {
-					dispose();
-					new TelaDetalharEditalEncerrado(edital);
-				} catch (InscricoesNaoAbertasException e3) {
-					FabricaJOptionPane.criarMsgErro(e3.getMessage());
+					if (edital.getResultado().equals("calculado") && edital.getStatus().equals("finalizadas")) {
+						if (getUsuario() instanceof Coordenador) {
+							dispose();
+							new Telas.Coordenador.TelaDetalhesResultado();
+						}else {
+							dispose();
+							new TelaVisualizarResultado();
+						}
+					}else {
+						try {						
+							edital.status();
+							dispose();
+							if (getUsuario() instanceof Coordenador) {
+								new Telas.Coordenador.TelaDetalharEditalAberto(edital);
+							}else {
+								new TelaDetalharEditalAberto(edital);
+							}
+						}catch (InscricoesFinalizadaException e2) {
+							if (getUsuario() instanceof Coordenador) {
+								dispose();
+								new TelaDetalharEditalEncerrado(edital);
+							}else {
+								FabricaJOptionPane.criarMsgErro(e2.getMessage());
+							}
+						} catch (InscricoesNaoAbertasException e3) {
+							FabricaJOptionPane.criarMsgErro(e3.getMessage());
+						}
+					}	
 				}
-				
 			}
 		});
 	}
 
 	private void adicionarIcones() {
-		JLabel iconeIf = FabricaIcones.criarIcone(FabricaImagens.IF, 330, 100, 70, 94);
+		JLabel iconeIf = FabricaIcones.criarIcone(FabricaImagens.IF, 330, 150, 70, 94);
 		add(iconeIf);
 		
 		JLabel imagemFundo = FabricaIcones.criarIcone(FabricaImagens.TELA_LOGIN, 0, 0, 900, 800);
 		add(imagemFundo);
-	}
-	public static void main(String[] args) {
-		TelaVisualizarEditais t = new TelaVisualizarEditais();
 	}
 }

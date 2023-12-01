@@ -19,7 +19,10 @@ public class EditalDeMonitoria {
 	private int numMaxInscricoes;
 
 	//pode ser não calculado, calculado e final
-	private String resultado;
+	private String resultado = "não calculado";
+	
+	//pode ser aberto, não aberto, finalizadas ou encerradas
+	private String status;
 	
 	public EditalDeMonitoria(float numeroEdital, LocalDate dataInicio, LocalDate dataFim,  float pesoCRE, float pesoMedia, int numMaxInscricoes) {
 		id = System.currentTimeMillis();
@@ -179,5 +182,13 @@ public class EditalDeMonitoria {
 
 	public void setResultado(String resultado) {
 		this.resultado = resultado;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 }

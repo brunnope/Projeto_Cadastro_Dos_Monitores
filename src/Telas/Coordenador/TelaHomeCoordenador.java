@@ -68,6 +68,13 @@ public class TelaHomeCoordenador extends TelaPadrao{
 		
 		JButton bTodosAlunos = FabricaJButton.criarJButton("Todos os Alunos", 325, 485, 250, 40, Color.GREEN, Color.WHITE, 12);
 		add(bTodosAlunos);
+		bTodosAlunos.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new TelaTodosOsAlunos();
+			}
+		});
 	}
 
 	private void adicionarIcones() {

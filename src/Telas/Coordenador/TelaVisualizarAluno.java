@@ -1,17 +1,20 @@
 package Telas.Coordenador;
 
 import java.awt.Color;
-import java.text.ParseException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import javax.swing.text.MaskFormatter;
 
+import Classes.Aluno;
+import Classes.Coordenador;
+import Classes.Sexo;
 import Telas.FabricaImagens;
 import Telas.TelaPadrao;
+import Telas.Aluno.TelaHomeAluno;
 import Telas.FabricaComponentes.FabricaIcones;
 import Telas.FabricaComponentes.FabricaJButton;
 import Telas.FabricaComponentes.FabricaJComboBox;
@@ -19,9 +22,17 @@ import Telas.FabricaComponentes.FabricaJLabel;
 import Telas.FabricaComponentes.FabricaJTextField;
 
 public class TelaVisualizarAluno extends TelaPadrao{
-
-	public TelaVisualizarAluno(){
+	private Aluno aluno;
+	private JTextField tNome;
+	private JTextField tEmail;
+	private JTextField tSenha;
+	private JTextField tMatricula;
+	private JComboBox<String> cGenero;
+	String[] opcoes = {"Masculino","Feminino"};
+	
+	public TelaVisualizarAluno(Aluno aluno){
 		super("DADOS ALUNO");
+		this.aluno = aluno;
 		configurarComponentes();
 		setVisible(true);
 	}
@@ -32,6 +43,19 @@ public class TelaVisualizarAluno extends TelaPadrao{
 		adicionarComboBox();
 		adicionarButtons();
 		adicionarIcones();
+		preencherCampos();
+		
+	}
+	public void preencherCampos() {
+		tNome.setText(aluno.getNome());
+		tMatricula.setText(aluno.getMatricula());
+		tEmail.setText(aluno.getEmail());
+		tSenha.setText(aluno.getSenha());
+		if(aluno.getSexo() == Sexo.MASCULINO) {
+			cGenero.setSelectedItem(opcoes[0]);	
+		}else {
+			cGenero.setSelectedItem(opcoes[1]);
+		}
 		
 	}
 
@@ -56,39 +80,44 @@ public class TelaVisualizarAluno extends TelaPadrao{
 	}
 	
 	private void adicionarTextFields() {
-		JTextField tNome = FabricaJTextField.criarJTextField(325, 310, 282, 30, Color.WHITE, Color.BLACK, 12, Color.GRAY);
-		tNome.setToolTipText("Escreva seu nome completo!");
+		tNome = FabricaJTextField.criarJTextField(325, 310, 282, 30, Color.WHITE, Color.BLACK, 12, Color.GRAY);
+		tNome.setEditable(false);
 		add(tNome);
 		
-		MaskFormatter mascara = null;
-		try {
-			mascara = new MaskFormatter("############");
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		JFormattedTextField fMatricula = FabricaJTextField.criarJFormattedTextField(mascara, 325, 370, 120, 30, Color.WHITE, Color.BLACK, 12, Color.GRAY);
-		fMatricula.setToolTipText("Apenas números");
-		add(fMatricula);
+		tMatricula = FabricaJTextField.criarJTextField(325, 370, 120, 30, Color.WHITE, Color.BLACK, 12, Color.GRAY);
+		tMatricula.setEditable(false);
+		add(tMatricula);
 		
-		JTextField tEmail = FabricaJTextField.criarJTextField(325, 430, 282, 30, Color.WHITE, Color.BLACK, 12, Color.GRAY);
-		tEmail.setToolTipText("Exemplo: brunno@academico.ifpb.edu.br");
+		tEmail = FabricaJTextField.criarJTextField(325, 430, 282, 30, Color.WHITE, Color.BLACK, 12, Color.GRAY);
+		tEmail.setEditable(false);
 		add(tEmail);	
 		
-		JTextField tSenha = FabricaJTextField.criarJPasswordField(325, 490, 282, 30, Color.WHITE, Color.BLACK, 12, Color.GRAY);
-		tSenha.setToolTipText("Exemplo: brunno123");
+		tSenha = FabricaJTextField.criarJPasswordField(325, 490, 282, 30, Color.WHITE, Color.BLACK, 12, Color.GRAY);
+		tSenha.setEditable(false);
 		add(tSenha);
 
 	}
 	
 	private void adicionarComboBox() {
-		String[] opcoes = {"Masculino","Feminino"};
-		JComboBox<String> cGenero = FabricaJComboBox.criarJComboBpx(opcoes, 487, 370, 120, 30, Color.WHITE, Color.BLACK, 12);
+		cGenero = FabricaJComboBox.criarJComboBpx(opcoes, 487, 370, 120, 30, Color.WHITE, Color.BLACK, 12);
+		cGenero.setEnabled(false);
 		add(cGenero);
 	}
 	
 
 	private void adicionarButtons() {
 		JButton bVoltar = FabricaJButton.criarJButton("Voltar", 293, 560, 313, 30, Color.GREEN, Color.WHITE, 12);
+		bVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				if (getUsuario() instanceof Coordenador) {
+					new TelaTodosOsAlunos();
+				}else {
+					new TelaHomeAluno();
+				}
+				
+			}
+		});
 		add(bVoltar);
 	}
 
@@ -115,8 +144,4 @@ public class TelaVisualizarAluno extends TelaPadrao{
 		add(imagemFundo);
 	}
 	
-	public static void main(String[] args) {
-		TelaVisualizarAluno t = new TelaVisualizarAluno();
-	}
-
 }

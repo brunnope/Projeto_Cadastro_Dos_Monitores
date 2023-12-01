@@ -27,20 +27,18 @@ import Telas.FabricaComponentes.FabricaJMenuBar;
 import Telas.FabricaComponentes.FabricaJTextField;
 
 public class TelaDetalharEditalAberto extends TelaPadrao{
-	private Persistencia dados = new Persistencia();
-	private CentralDeInformacoes central = dados.recuperarCentral("central.xml");
-	//apagar id
 	private EditalDeMonitoria edital;
 
-	public TelaDetalharEditalAberto() {
+	public TelaDetalharEditalAberto(EditalDeMonitoria edital) {
 		super("DETALHES EDITAL ABERTO");
+		this.edital = edital;
 		configurarComponentes();
 		setVisible(true);
 	}
 
 	public void configurarComponentes() {
 		try {
-			edital = central.recuperarEditalPeloId(central.getTodosOsEditais().get(0).getId());
+			edital = getCentral().recuperarEditalPeloId(getCentral().getTodosOsEditais().get(0).getId());
 		} catch (EditalNaoEncontradoException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -180,8 +178,4 @@ public class TelaDetalharEditalAberto extends TelaPadrao{
 
 
 	}
-	public static void main(String[] args) {
-		TelaDetalharEditalAberto t = new TelaDetalharEditalAberto();
-	}
-
 }

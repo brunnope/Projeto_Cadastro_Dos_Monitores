@@ -105,6 +105,8 @@ public class TelaCadastroDisciplina extends TelaPadrao{
 						getCentral().recuperarEditalPeloId(edital.getId()).inscreverDisciplina(tDisciplina.getText(), vagasRemuneradas, vagasVoluntarias);
 						FabricaJOptionPane.criarMsgValido("Disciplina Adicionada com sucesso!");
 						getDados().salvarCentral(getCentral(), "central.xml");
+						dispose();
+						new TelaCadastroDisciplina(edital);
 					} catch (DisciplinaJaCadastradaException | EditalNaoEncontradoException e1) {
 						FabricaJOptionPane.criarMsgErro(e1.getMessage());
 					}

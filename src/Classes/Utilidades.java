@@ -56,12 +56,12 @@ public class Utilidades {
 
 	public Pessoa login(String email, String senha, CentralDeInformacoes central) throws CredenciaisInvalidasException {
 		Coordenador c = central.getCoordenador();
-		if (c.getEmail().equals(email) && c.getSenha().equals(senha)) {
+		if (c.getEmail().equalsIgnoreCase(email) && c.getSenha().equals(senha)) {
 			return c;
 		}
 
 		for(Aluno a: central.getTodosOsAlunos()) {
-			if (a.getEmail().equals(email) && a.getSenha().equals(senha)) {
+			if (a.getEmail().equalsIgnoreCase(email) && a.getSenha().equals(senha)) {
 				return a;
 			}
 		}throw new CredenciaisInvalidasException();
@@ -72,7 +72,7 @@ public class Utilidades {
 		String senha = central.recuperarSenhaPeloEmail(email);
 		Mensageiro.enviarEmail(email, "Sua senha atual é: " + senha);
 	}
-	public void editarAluno(Aluno aluno, String nome, String email, String senha, String matricula, String sex) 
+	public void editarAluno(CentralDeInformacoes central, Aluno aluno, String nome, String email, String senha, String matricula, String sex) 
 			throws EmailInvalidoException, SenhaMuitoPequenaException, CamposVaziosException, EmailJaCadastradoException, AlunoJaMatriculadoException {
 		nome.trim();
 		email.trim();
@@ -85,15 +85,15 @@ public class Utilidades {
 			throw new SenhaMuitoPequenaException();
 		}
 		if (TelaPadrao.getUsuario() instanceof Coordenador) {
-		TelaPadrao.getCentral().verificarMatricula(aluno, matricula);
+		central.verificarMatricula(aluno, matricula);
 		}
-		TelaPadrao.getCentral().emailExiste(email);
+		central.emailExiste(email);
 		CentralDeInformacoes.validarEmail(email);
 		aluno.setEmail(email);
 		aluno.setNome(nome);
 		aluno.setSenha(senha);
 		aluno.setSexo(sexo);
 		aluno.setMatricula(matricula);
-	}
+	}	
 }
 
