@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -19,6 +20,7 @@ import javax.swing.text.MaskFormatter;
 
 import Classes.Disciplina;
 import Classes.EditalDeMonitoria;
+import Excecoes.EditalInvalidoException;
 import Excecoes.EditalNaoEncontradoException;
 import Persistencia.CentralDeInformacoes;
 import Persistencia.Persistencia;
@@ -34,6 +36,8 @@ import Telas.FabricaComponentes.FabricaJTextField;
 
 public class TelaDetalharEditalAberto extends TelaPadrao{
 	private EditalDeMonitoria edital;
+	JButton bClonar;
+	JButton bEncerrar;
 
 	public TelaDetalharEditalAberto(EditalDeMonitoria edital) {
 		super("DETALHES EDITAL ABERTO");
@@ -49,6 +53,11 @@ public class TelaDetalharEditalAberto extends TelaPadrao{
 		adicionarTable();
 		adicionarButtons();
 		adicionarIcones();
+		
+		if (edital.getStatus().equals("não abertas")) {
+			bClonar.setEnabled(false);
+			bEncerrar.setEnabled(false);
+		}
 	}
 	
 	private void adicionarMenuBar() {
@@ -165,17 +174,31 @@ public class TelaDetalharEditalAberto extends TelaPadrao{
 			}
 		});
 		
-		JButton bClonar = FabricaJButton.criarJButton("Clonar", 400, 610, 100, 30, Color.GREEN, Color.WHITE, 12);
+		bClonar = FabricaJButton.criarJButton("Clonar", 400, 610, 100, 30, Color.GREEN, Color.WHITE, 12);
 		add(bClonar);
 		bClonar.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				
+				int opcao = FabricaJOptionPane.criarMsgDeOpcao("CONFIRMAÇÃO", "Clonar Edital?");
+				if (opcao == JOptionPane.YES_OPTION) {
+					
+					//cria novos objetos de disciplina para evitar conexão entre os editais
+					ArrayList<Disciplina>  disciplinas = new ArrayList<>();
+		            for (Disciplina disciplina : edital.getDisciplinas()) {
+		                disciplinas.add(new Disciplina(disciplina.getNome(), disciplina.getQuantDeVagasRemuneradas(), disciplina.getQuantDeVagasVoluntarias()));
+		            }
+					
+					EditalDeMonitoria editalClonado = new EditalDeMonitoria(edital.getNumeroEdital(), edital.getDataInicio(), edital.getDataFim(), disciplinas,
+							edital.getPesoCRE(), edital.getPesoMedia(), edital.getNumMaxInscricoes());
+						FabricaJOptionPane.criarMsgValido("Clone Criado com sucesso!");
+						dispose();
+						new TelaClonarEdital(editalClonado);
+				}
 			}
 		});
 		
 		
-		JButton bEncerrar = FabricaJButton.criarJButton("Gerar Resultado", 507, 610, 100, 30, Color.GREEN, Color.WHITE, 12);
+		bEncerrar = FabricaJButton.criarJButton("Gerar Resultado", 507, 610, 100, 30, Color.GREEN, Color.WHITE, 12);
 		add(bEncerrar);
 		bEncerrar.addActionListener(new ActionListener() {
 			

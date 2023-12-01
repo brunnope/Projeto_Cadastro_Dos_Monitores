@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
+import Classes.Disciplina;
 import Classes.EditalDeMonitoria;
 import Excecoes.DisciplinaJaCadastradaException;
 import Excecoes.EditalNaoEncontradoException;
@@ -26,8 +27,11 @@ public class TelaCadastroDisciplina extends TelaPadrao{
 
 	private JFormattedTextField fVagasRemuneradas;
 	private JFormattedTextField fVagasVoluntario;
+	private JButton bSalvar;
 	private JTextField tDisciplina;
 	private EditalDeMonitoria edital;
+	
+	private Disciplina disciplina;
 	
 	public TelaCadastroDisciplina(EditalDeMonitoria edital) {
 		super("CADASTRO DISCIPLINA");
@@ -35,6 +39,22 @@ public class TelaCadastroDisciplina extends TelaPadrao{
 		setSize(400, 400);
 		setLocationRelativeTo(null);
 		configurarComponentes();
+		setVisible(true);
+	}
+	
+	public TelaCadastroDisciplina(EditalDeMonitoria edital, Disciplina disciplina) {
+		super("EDITAR DISCIPLINA");
+		this.edital = edital;
+		this.disciplina = disciplina;
+		setSize(400, 400);
+		setLocationRelativeTo(null);
+		configurarComponentes();
+		
+		tDisciplina.setText(disciplina.getNome());
+		tDisciplina.setEditable(false);
+		fVagasRemuneradas.setText(Integer.toString(disciplina.getQuantDeVagasRemuneradas()));
+		fVagasVoluntario.setText(Integer.toString(disciplina.getQuantDeVagasVoluntarias()));
+		bSalvar.setText("Editar");
 		setVisible(true);
 	}
 	
@@ -90,7 +110,7 @@ public class TelaCadastroDisciplina extends TelaPadrao{
 			}
 		});
 		
-		JButton bSalvar = FabricaJButton.criarJButton("Adicionar", 189, 225, 155, 30, Color.GREEN, Color.WHITE, 12);
+		bSalvar = FabricaJButton.criarJButton("Adicionar", 189, 225, 155, 30, Color.GREEN, Color.WHITE, 12);
 		add(bSalvar);
 		bSalvar.addActionListener(new ActionListener() {
 			
@@ -101,15 +121,26 @@ public class TelaCadastroDisciplina extends TelaPadrao{
 					int vagasRemuneradas = Integer.parseInt(fVagasRemuneradas.getText());
 					int vagasVoluntarias = Integer.parseInt(fVagasVoluntario.getText());
 					
-					try {
-						getCentral().recuperarEditalPeloId(edital.getId()).inscreverDisciplina(tDisciplina.getText(), vagasRemuneradas, vagasVoluntarias);
-						FabricaJOptionPane.criarMsgValido("Disciplina Adicionada com sucesso!");
-						getDados().salvarCentral(getCentral(), "central.xml");
-						dispose();
-						new TelaCadastroDisciplina(edital);
-					} catch (DisciplinaJaCadastradaException | EditalNaoEncontradoException e1) {
-						FabricaJOptionPane.criarMsgErro(e1.getMessage());
+					//condição para editar disciplina no clone de edital
+					if (bSalvar.getText().equals("Editar")) {
+						disciplina.setQuantDeVagasRemuneradas(vagasRemuneradas);
+						disciplina.setQuantDeVagasVoluntarias(vagasVoluntarias);
+						FabricaJOptionPane.criarMsgValido("Disciplina editada com sucesso!");
+						new TelaTodasAsDiscplinasEdital(edital);
+					}else {
+						
+						try {
+							edital.inscreverDisciplina(tDisciplina.getText(), vagasRemuneradas, vagasVoluntarias);
+							FabricaJOptionPane.criarMsgValido("Disciplina Adicionada com sucesso!");
+							getDados().salvarCentral(getCentral(), "central.xml");
+							dispose();
+							new TelaCadastroDisciplina(edital);
+						} catch (DisciplinaJaCadastradaException e1) {
+							FabricaJOptionPane.criarMsgErro(e1.getMessage());
+						}
 					}
+					
+					
 				}
 			}
 		});

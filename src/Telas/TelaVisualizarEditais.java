@@ -63,7 +63,7 @@ public class TelaVisualizarEditais extends TelaPadrao{
 		
 		mEditais.addColumn("Num. Editais");
 		mEditais.addColumn("Data Início");
-		mEditais.addColumn("Número Fim");
+		mEditais.addColumn("Data Fim");
 		mEditais.addColumn("Inscrições");
 		mEditais.addColumn("Resultado");
 		
@@ -153,7 +153,12 @@ public class TelaVisualizarEditais extends TelaPadrao{
 								FabricaJOptionPane.criarMsgErro(e2.getMessage());
 							}
 						} catch (InscricoesNaoAbertasException e3) {
-							FabricaJOptionPane.criarMsgErro(e3.getMessage());
+							if (getUsuario() instanceof Coordenador) {
+								dispose();
+								new Telas.Coordenador.TelaDetalharEditalAberto(edital);
+							}else {
+								FabricaJOptionPane.criarMsgErro(e3.getMessage());
+							}
 						}
 					}	
 				}

@@ -44,6 +44,17 @@ public class EditalDeMonitoria {
 		this.pesoMedia = pesoMedia;
 	}
 	
+	public EditalDeMonitoria(float numeroEdital, LocalDate dataInicio, LocalDate dataFim, ArrayList<Disciplina> disciplinas, float pesoCRE, float pesoMedia, int numMaxInscricoes) {
+		id = System.currentTimeMillis();
+		this.numeroEdital = numeroEdital;
+		this.dataInicio = dataInicio;
+		this.dataFim = dataFim;
+		this.disciplinas = disciplinas;
+		this.pesoCRE = pesoCRE;
+		this.pesoMedia = pesoMedia;
+		this.numMaxInscricoes = numMaxInscricoes;
+	}
+	
 	public EditalDeMonitoria(){
 		id = System.currentTimeMillis();
 	}
@@ -99,7 +110,7 @@ public class EditalDeMonitoria {
 		return "abertas";
 	}
 	
-	public String toString(){
+	public String toString(){  
 		String printDisciplinas = ""; 
 		String printMensagemEdital  = "";
 		for(Disciplina disciplina: disciplinas) {

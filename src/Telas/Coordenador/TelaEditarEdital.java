@@ -90,14 +90,17 @@ public class TelaEditarEdital extends TelaPadrao{
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
 		fDataInicio = FabricaJTextField.criarJFormattedTextField(mascara, 325, 305, 120, 30, Color.WHITE, Color.BLACK, 12, Color.GRAY);
-		fDataInicio.setValue(edital.getDataInicio().getDayOfMonth() + "/" + edital.getDataInicio().getMonthValue() + "/" + edital.getDataInicio().getYear());
+		fDataInicio.setValue(edital.getDataInicio().format(formatter));
 		fDataInicio.setToolTipText("dd/MM/yyyy");
 		fDataInicio.setHorizontalAlignment(JFormattedTextField.CENTER);
 		add(fDataInicio);
 
 		fDataFim = FabricaJTextField.criarJFormattedTextField(mascara, 487, 305, 120, 30, Color.WHITE, Color.BLACK, 12, Color.GRAY);
-		fDataFim.setValue(edital.getDataFim().getDayOfMonth() + "/" + edital.getDataFim().getMonthValue() + "/" + edital.getDataFim().getYear());
+		fDataFim.setValue(edital.getDataFim().format(formatter));
 		fDataFim.setToolTipText("dd/MM/yyyy");
 		fDataFim.setHorizontalAlignment(JFormattedTextField.CENTER);
 		add(fDataFim);
@@ -143,7 +146,10 @@ public class TelaEditarEdital extends TelaPadrao{
 						getDados().salvarCentral(getCentral(), "central.xml");
 						dispose();
 						new TelaDetalharEditalAberto(edital);
-					}else{
+					}else if(edital.getStatus().equals("não abertas")) {
+						FabricaJOptionPane.criarMsgErro("Inscrições não abertas ainda!");
+					}
+					else{
 						FabricaJOptionPane.criarMsgErro("Inscrições já abertas");
 					}
 				} catch (InscricoesFinalizadaException e1) {
