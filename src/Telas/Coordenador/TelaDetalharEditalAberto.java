@@ -144,8 +144,8 @@ public class TelaDetalharEditalAberto extends TelaPadrao{
 		for(Disciplina disciplina: disciplinas) {
 			Object[] linha = new Object[3];
 			linha[0] = disciplina.getNome();
-			linha[1] = (disciplina.getQuantDeVagasRemuneradas() + disciplina.getQuantDeVagasVoluntarias());
-			linha[2] = disciplina.getAlunosInscritos().size();
+			linha[1] = disciplina.getQuantDeVagasRemuneradas() + disciplina.getQuantDeVagasVoluntarias();
+			linha[2] = disciplina.getInscricoes().size();
 			mDisciplinas.addRow(linha);
 		}
 

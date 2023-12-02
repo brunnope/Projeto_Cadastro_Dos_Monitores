@@ -1,6 +1,7 @@
 package Classes;
-import java.util.ArrayList;
+
 import java.util.HashMap;
+
 public class Disciplina {
 	private String nome;
 	private int quantDeVagasRemuneradas;
@@ -34,12 +35,6 @@ public class Disciplina {
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-	public int getQuantVagas() {
-		return quantVagas;
-	}
-	public void setQuantVagas(int quantVagas) {
-		this.quantVagas = quantVagas;
 	}
 	
 	public HashMap<Aluno, Inscricao> getInscricoes() {

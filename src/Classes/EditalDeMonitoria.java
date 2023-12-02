@@ -94,7 +94,7 @@ public class EditalDeMonitoria {
 		String printDisciplinas = ""; 
 		String printMensagemEdital  = "";
 		for(Disciplina disciplina: disciplinas) {
-			printDisciplinas += disciplina.getNome() + " - " + disciplina.getQuantVagas() + "\n";
+			printDisciplinas += disciplina.getNome() + " - " + disciplina.getQuantDeVagasRemuneradas() + disciplina.getQuantDeVagasVoluntarias() + "\n";
 		}
 		try {
 			printMensagemEdital = String.format("Edital de Monitoria %s \n"

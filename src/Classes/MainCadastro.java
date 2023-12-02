@@ -10,9 +10,9 @@ public class MainCadastro {
 		CentralDeInformacoes central = dados.recuperarCentral("central.xml");
 	
 		if (central.getCoordenador() == null) {
-			TelaCadastroCoordenador t = new TelaCadastroCoordenador();
+			new TelaCadastroCoordenador();
 		}else {
-			TelaLogin t = new TelaLogin();
+			new TelaLogin();
 		}	
 	}
 }
