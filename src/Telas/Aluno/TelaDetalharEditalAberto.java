@@ -1,10 +1,14 @@
 package Telas.Aluno;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.ParseException;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.JScrollPane;
@@ -12,22 +16,36 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.MaskFormatter;
+import javax.swing.text.AbstractDocument;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DocumentFilter;
 
+import Classes.Aluno;
 import Classes.Disciplina;
 import Classes.EditalDeMonitoria;
+import Classes.Inscricao;
 import Excecoes.EditalNaoEncontradoException;
 import Persistencia.CentralDeInformacoes;
 import Persistencia.Persistencia;
 import Telas.FabricaImagens;
 import Telas.TelaPadrao;
+import Telas.TelaVisualizarEditais;
+import Telas.Coordenador.TelaTodosOsAlunos;
 import Telas.FabricaComponentes.FabricaIcones;
 import Telas.FabricaComponentes.FabricaJButton;
 import Telas.FabricaComponentes.FabricaJLabel;
 import Telas.FabricaComponentes.FabricaJMenuBar;
+import Telas.FabricaComponentes.FabricaJOptionPane;
 import Telas.FabricaComponentes.FabricaJTextField;
 
 public class TelaDetalharEditalAberto extends TelaPadrao{
 	private EditalDeMonitoria edital;
+	private JTable tableDisciplinas;
+	private Disciplina disciplina;
+	JTextField fCRE;
+	JTextField fMedia;
 
 	public TelaDetalharEditalAberto(EditalDeMonitoria edital) {
 		super("DETALHES EDITAL ABERTO");
@@ -40,8 +58,7 @@ public class TelaDetalharEditalAberto extends TelaPadrao{
 		try {
 			edital = getCentral().recuperarEditalPeloId(getCentral().getTodosOsEditais().get(0).getId());
 		} catch (EditalNaoEncontradoException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			FabricaJOptionPane.criarMsgErro(e.getMessage());
 		}
 		adicionarMenuBar();
 		adicionarLabels();
@@ -105,12 +122,14 @@ public class TelaDetalharEditalAberto extends TelaPadrao{
 		fDataFim.setHorizontalAlignment(JFormattedTextField.CENTER);
 		add(fDataFim);
 
-		JTextField fCRE = FabricaJTextField.criarJTextField(325, 550, 120, 30, Color.WHITE, Color.BLACK, 12, Color.GRAY);
+		fCRE = FabricaJTextField.criarJTextField( 325, 550, 120, 30, Color.WHITE, Color.BLACK, 12, Color.GRAY);
 		fCRE.setToolTipText("No máximo 3 dígitos");
+		limitarTamanhoCampo(fCRE, 3);
 		add(fCRE);
 
-		JTextField fMedia = FabricaJTextField.criarJTextField(487, 550, 120, 30, Color.WHITE, Color.BLACK, 12, Color.GRAY);
+		fMedia = FabricaJTextField.criarJTextField(487, 550, 120, 30, Color.WHITE, Color.BLACK, 12, Color.GRAY);
 		fMedia.setToolTipText("No máximo 3 dígitos");
+		limitarTamanhoCampo(fMedia, 3);
 		add(fMedia);
 
 	}
@@ -127,18 +146,18 @@ public class TelaDetalharEditalAberto extends TelaPadrao{
 			Object[] linha = new Object[3];
 			linha[0] = disciplina.getNome();
 			linha[1] = disciplina.getQuantVagas();
-			linha[2] = disciplina.getAlunosInscritos().size();
+			linha[2] = disciplina.getInscricoes() != null ? disciplina.getInscricoes().size() : 0;
 			mDisciplinas.addRow(linha);
 		}
 
 		// Torna todas as células não editáveis
-		JTable tableDisciplinas = new JTable(mDisciplinas) {
+		tableDisciplinas = new JTable(mDisciplinas) {
 
 			public boolean isCellEditable(int row, int column) {
 				return false;
 			}
 		};
-		//se inscreve em uma por vez
+
 		tableDisciplinas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		JScrollPane rolagemTabela = new JScrollPane(tableDisciplinas);
 		rolagemTabela.setBounds(295, 420, 315, 100);
@@ -147,9 +166,45 @@ public class TelaDetalharEditalAberto extends TelaPadrao{
 
 	private void adicionarButtons() {
 		JButton bVoltar = FabricaJButton.criarJButton("Voltar", 293, 610, 150, 30, Color.GREEN, Color.WHITE, 12);
+		bVoltar.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new TelaVisualizarEditais();
+			}
+		});
 		add(bVoltar);
 
 		JButton bInscrever = FabricaJButton.criarJButton("Inscrever-se", 457, 610, 150, 30, Color.GREEN, Color.WHITE, 12);
+		bInscrever.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (tableDisciplinas.getSelectedRow() == -1) {
+					FabricaJOptionPane.criarMsgErro("Selecione uma disciplina!");
+				} else {
+					try {
+						float cre = Float.parseFloat(fCRE.getText());
+						float media = Float.parseFloat(fMedia.getText());
+
+						if (cre > 100 || media > 100 || cre < 0 || media < 0) {
+							FabricaJOptionPane.criarMsgErro("Valores de CRE ou média inválidos!");
+						} else {
+							disciplina = edital.getDisciplinas().get(tableDisciplinas.getSelectedRow());
+							if (disciplina.getInscricoes().containsKey((Aluno) getUsuario())) {
+								FabricaJOptionPane.criarMsgErro("Você já está inscrito nesta disciplina!");
+							} else {
+								disciplina.getInscricoes().put((Aluno) getUsuario(), new Inscricao((Aluno) getUsuario(), media, cre));
+								
+								getDados().salvarCentral(getCentral(), "central.xml");
+								dispose();
+								new TelaDetalharEditalAberto(edital);
+							}
+						}
+					} catch (NumberFormatException ex) {
+						FabricaJOptionPane.criarMsgErro("Preencha os campos vazios!");
+					}
+				}
+			}
+		});
 		add(bInscrever);
 	}
 
@@ -176,6 +231,23 @@ public class TelaDetalharEditalAberto extends TelaPadrao{
 		JLabel imagemFundo = FabricaIcones.criarIcone(FabricaImagens.TELA_LOGIN, 0, 0, 900, 800);
 		add(imagemFundo);
 
+	}
+	private void limitarTamanhoCampo(JTextField textField, int maxLength) {
+		AbstractDocument document = (AbstractDocument) textField.getDocument();
+		document.setDocumentFilter(new DocumentFilter() {
+			public void replace(FilterBypass fb, int offset, int length, String text, AttributeSet attrs)
+					throws BadLocationException {
+				if (text.matches("\\d*")) {
+					// Calcula o novo comprimento do texto no documento após a substituição
+					int newLength = fb.getDocument().getLength() + text.length() - length;
+
+					// Verifica se o novo comprimento não excede o comprimento máximo definido
+					if (newLength <= maxLength) {
+						super.replace(fb, offset, length, text, attrs);
+					}
+				}
+			}
+		});
 
 	}
 }
