@@ -1,13 +1,12 @@
 package Classes;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Disciplina {
 	private String nome;
-	private int quantVagas;
-	private ArrayList<Aluno> alunosInscritos = new ArrayList<Aluno>();
 	private int quantDeVagasRemuneradas;
 	private int quantDeVagasVoluntarias;
+	private HashMap<Aluno, Inscricao> inscricoes = new HashMap<>();
 	
 	public Disciplina(String nome, int quantRemuneradas, int quantVoluntarias) {
 		this.nome = nome;
@@ -37,16 +36,15 @@ public class Disciplina {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public int getQuantVagas() {
-		return quantVagas;
+	
+	public HashMap<Aluno, Inscricao> getInscricoes() {
+		if (inscricoes == null) {
+			inscricoes = new HashMap<>();		}
+		return inscricoes;
 	}
-	public void setQuantVagas(int quantVagas) {
-		this.quantVagas = quantVagas;
+	public void setInscricoes(HashMap<Aluno, Inscricao> inscricoes) {
+		this.inscricoes = inscricoes;
 	}
-	public ArrayList<Aluno> getAlunosInscritos() {
-		return alunosInscritos;
-	}
-	public void setAlunosInscritos(ArrayList<Aluno> alunosInscritos) {
-		this.alunosInscritos = alunosInscritos;
-	}
+	
+	
 }

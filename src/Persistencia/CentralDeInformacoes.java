@@ -6,6 +6,7 @@ import Classes.Aluno;
 import Classes.Coordenador;
 import Classes.Disciplina;
 import Classes.EditalDeMonitoria;
+import Classes.Inscricao;
 import Excecoes.AlunoJaMatriculadoException;
 import Excecoes.AlunoNaoEncontradoException;
 import Excecoes.EditalInvalidoException;
@@ -102,8 +103,8 @@ public class CentralDeInformacoes {
 			for (EditalDeMonitoria edital: todosOsEditais) {
 				if (edital.getId() == id) {
 					for(Disciplina disciplina: edital.getDisciplinas()) {
-						for(Aluno aluno: disciplina.getAlunosInscritos()) {
-							if (aluno.getMatricula().equals(matricula)) {
+						for(Inscricao inscricao: disciplina.getInscricoes().values()) {
+							if (inscricao.getAluno().getMatricula().equals(matricula)) {
 								disciplinasAluno.add(disciplina);
 								break;
 							}

@@ -2,289 +2,67 @@
 <Persistencia.CentralDeInformacoes>
   <coordenador>
     <nome>Cleyton Souza</nome>
-    <email>Cleyton.Souza@academico.ifpb.edu.br</email>
-    <senha>cleyton123</senha>
+    <email>cleyton@gmail.com</email>
+    <senha>godofwar</senha>
   </coordenador>
   <todosOsAlunos>
     <Classes.Aluno>
-      <nome>Anderson da Silva Santos</nome>
-      <email>anderson@gmail.com</email>
-      <senha>anderson123</senha>
+      <nome>Guilherme Gay Silva</nome>
+      <email>carvalhus026@gmail.com</email>
+      <senha>deus criou adao e eva, e o diabo ele é viadão</senha>
       <sexo>MASCULINO</sexo>
-      <matricula>202315220023</matricula>
+      <matricula>696969696969</matricula>
+    </Classes.Aluno>
+    <Classes.Aluno>
+      <nome>anderson da silva</nome>
+      <email>anderson.ss1090@gmail.com</email>
+      <senha>12345678</senha>
+      <sexo>MASCULINO</sexo>
+      <matricula>111111111111</matricula>
     </Classes.Aluno>
     <Classes.Aluno>
       <nome>Cicero Brunno das Neves</nome>
       <email>cicero.brunno@academico.ifpb.edu.br</email>
-      <senha>brunnoelegal</senha>
+      <senha>soumuitogaysocorro</senha>
       <sexo>MASCULINO</sexo>
-      <matricula>202315220015</matricula>
+      <matricula>146894689535</matricula>
     </Classes.Aluno>
     <Classes.Aluno>
       <nome>Gabriel Laet Freire Moreno</nome>
       <email>gabriel.laet@academico.ifpb.edu.br</email>
-      <senha>gabizindagalera</senha>
+      <senha>deusépai</senha>
       <sexo>MASCULINO</sexo>
-      <matricula>202315220028</matricula>
-    </Classes.Aluno>
-    <Classes.Aluno>
-      <nome>rei delas</nome>
-      <email>reidelas@gmail.com</email>
-      <senha>reidelas</senha>
-      <sexo>MASCULINO</sexo>
-      <matricula>696969696969</matricula>
+      <matricula>001217190312</matricula>
     </Classes.Aluno>
   </todosOsAlunos>
   <todosOsEditais>
     <Classes.EditalDeMonitoria>
-      <id>1701385597772</id>
-      <numeroEdital>200.0</numeroEdital>
-      <dataInicio>2023-12-01</dataInicio>
-      <dataFim>2023-12-12</dataFim>
-      <disciplinas>
-        <Classes.Disciplina>
-          <nome>poo</nome>
-          <quantVagas>0</quantVagas>
-          <alunosInscritos/>
-          <quantDeVagasRemuneradas>2</quantDeVagasRemuneradas>
-          <quantDeVagasVoluntarias>3</quantDeVagasVoluntarias>
-        </Classes.Disciplina>
-        <Classes.Disciplina>
-          <nome>matematica</nome>
-          <quantVagas>0</quantVagas>
-          <alunosInscritos/>
-          <quantDeVagasRemuneradas>2</quantDeVagasRemuneradas>
-          <quantDeVagasVoluntarias>1</quantDeVagasVoluntarias>
-        </Classes.Disciplina>
-        <Classes.Disciplina>
-          <nome>ingles</nome>
-          <quantVagas>0</quantVagas>
-          <alunosInscritos/>
-          <quantDeVagasRemuneradas>2</quantDeVagasRemuneradas>
-          <quantDeVagasVoluntarias>3</quantDeVagasVoluntarias>
-        </Classes.Disciplina>
-      </disciplinas>
-      <pesoCRE>0.1</pesoCRE>
-      <pesoMedia>0.9</pesoMedia>
-      <numMaxInscricoes>2</numMaxInscricoes>
-      <resultado>final</resultado>
-      <status>finalizadas</status>
-    </Classes.EditalDeMonitoria>
-    <Classes.EditalDeMonitoria>
-      <id>1701395382682</id>
-      <numeroEdital>1.0</numeroEdital>
-      <dataInicio>2023-12-10</dataInicio>
-      <dataFim>2023-12-11</dataFim>
-      <disciplinas>
-        <Classes.Disciplina>
-          <nome>poo</nome>
-          <quantVagas>0</quantVagas>
-          <alunosInscritos/>
-          <quantDeVagasRemuneradas>2</quantDeVagasRemuneradas>
-          <quantDeVagasVoluntarias>3</quantDeVagasVoluntarias>
-        </Classes.Disciplina>
-        <Classes.Disciplina>
-          <nome>matematica</nome>
-          <quantVagas>0</quantVagas>
-          <alunosInscritos/>
-          <quantDeVagasRemuneradas>2</quantDeVagasRemuneradas>
-          <quantDeVagasVoluntarias>2</quantDeVagasVoluntarias>
-        </Classes.Disciplina>
-      </disciplinas>
-      <pesoCRE>0.7</pesoCRE>
-      <pesoMedia>0.3</pesoMedia>
-      <numMaxInscricoes>3</numMaxInscricoes>
-      <resultado>não calculado</resultado>
-      <status>não abertas</status>
-    </Classes.EditalDeMonitoria>
-    <Classes.EditalDeMonitoria>
-      <id>1701402081552</id>
-      <numeroEdital>3.0</numeroEdital>
-      <dataInicio>2023-12-01</dataInicio>
-      <dataFim>2023-12-15</dataFim>
-      <disciplinas>
-        <Classes.Disciplina>
-          <nome>nada</nome>
-          <quantVagas>0</quantVagas>
-          <alunosInscritos/>
-          <quantDeVagasRemuneradas>2</quantDeVagasRemuneradas>
-          <quantDeVagasVoluntarias>2</quantDeVagasVoluntarias>
-        </Classes.Disciplina>
-      </disciplinas>
-      <pesoCRE>0.5</pesoCRE>
-      <pesoMedia>0.5</pesoMedia>
-      <numMaxInscricoes>5</numMaxInscricoes>
-      <resultado>não calculado</resultado>
-      <status>abertas</status>
-    </Classes.EditalDeMonitoria>
-    <Classes.EditalDeMonitoria>
-      <id>1701402322674</id>
-      <numeroEdital>5.0</numeroEdital>
-      <dataInicio>2023-01-10</dataInicio>
-      <dataFim>2024-01-01</dataFim>
-      <disciplinas>
-        <Classes.Disciplina>
-          <nome>poo</nome>
-          <quantVagas>0</quantVagas>
-          <alunosInscritos/>
-          <quantDeVagasRemuneradas>2</quantDeVagasRemuneradas>
-          <quantDeVagasVoluntarias>2</quantDeVagasVoluntarias>
-        </Classes.Disciplina>
-        <Classes.Disciplina>
-          <nome>matematica</nome>
-          <quantVagas>0</quantVagas>
-          <alunosInscritos/>
-          <quantDeVagasRemuneradas>2</quantDeVagasRemuneradas>
-          <quantDeVagasVoluntarias>2</quantDeVagasVoluntarias>
-        </Classes.Disciplina>
-        <Classes.Disciplina>
-          <nome>ingles</nome>
-          <quantVagas>0</quantVagas>
-          <alunosInscritos/>
-          <quantDeVagasRemuneradas>2</quantDeVagasRemuneradas>
-          <quantDeVagasVoluntarias>3</quantDeVagasVoluntarias>
-        </Classes.Disciplina>
-        <Classes.Disciplina>
-          <nome>frances</nome>
-          <quantVagas>0</quantVagas>
-          <alunosInscritos/>
-          <quantDeVagasRemuneradas>2</quantDeVagasRemuneradas>
-          <quantDeVagasVoluntarias>2</quantDeVagasVoluntarias>
-        </Classes.Disciplina>
-        <Classes.Disciplina>
-          <nome>brasileiro</nome>
-          <quantVagas>0</quantVagas>
-          <alunosInscritos/>
-          <quantDeVagasRemuneradas>2</quantDeVagasRemuneradas>
-          <quantDeVagasVoluntarias>2</quantDeVagasVoluntarias>
-        </Classes.Disciplina>
-      </disciplinas>
-      <pesoCRE>0.5</pesoCRE>
-      <pesoMedia>0.5</pesoMedia>
-      <numMaxInscricoes>1</numMaxInscricoes>
-      <resultado>não calculado</resultado>
-      <status>abertas</status>
-    </Classes.EditalDeMonitoria>
-    <Classes.EditalDeMonitoria>
-      <id>1701463164004</id>
-      <numeroEdital>6.0</numeroEdital>
-      <dataInicio>2023-01-10</dataInicio>
-      <dataFim>2024-01-01</dataFim>
-      <disciplinas reference="../../Classes.EditalDeMonitoria[4]/disciplinas"/>
-      <pesoCRE>0.5</pesoCRE>
-      <pesoMedia>0.5</pesoMedia>
-      <numMaxInscricoes>1</numMaxInscricoes>
-      <resultado>não calculado</resultado>
-      <status>abertas</status>
-    </Classes.EditalDeMonitoria>
-    <Classes.EditalDeMonitoria>
-      <id>1701465907428</id>
-      <numeroEdital>6.5</numeroEdital>
-      <dataInicio>2023-12-01</dataInicio>
-      <dataFim>2024-01-01</dataFim>
-      <disciplinas>
-        <Classes.Disciplina>
-          <nome>poo</nome>
-          <quantVagas>0</quantVagas>
-          <alunosInscritos/>
-          <quantDeVagasRemuneradas>2</quantDeVagasRemuneradas>
-          <quantDeVagasVoluntarias>2</quantDeVagasVoluntarias>
-        </Classes.Disciplina>
-        <Classes.Disciplina>
-          <nome>matematica</nome>
-          <quantVagas>0</quantVagas>
-          <alunosInscritos/>
-          <quantDeVagasRemuneradas>2</quantDeVagasRemuneradas>
-          <quantDeVagasVoluntarias>2</quantDeVagasVoluntarias>
-        </Classes.Disciplina>
-        <Classes.Disciplina>
-          <nome>ingles</nome>
-          <quantVagas>0</quantVagas>
-          <alunosInscritos/>
-          <quantDeVagasRemuneradas>2</quantDeVagasRemuneradas>
-          <quantDeVagasVoluntarias>3</quantDeVagasVoluntarias>
-        </Classes.Disciplina>
-        <Classes.Disciplina>
-          <nome>frances</nome>
-          <quantVagas>0</quantVagas>
-          <alunosInscritos/>
-          <quantDeVagasRemuneradas>2</quantDeVagasRemuneradas>
-          <quantDeVagasVoluntarias>2</quantDeVagasVoluntarias>
-        </Classes.Disciplina>
-        <Classes.Disciplina>
-          <nome>alemao</nome>
-          <quantVagas>0</quantVagas>
-          <alunosInscritos/>
-          <quantDeVagasRemuneradas>2</quantDeVagasRemuneradas>
-          <quantDeVagasVoluntarias>2</quantDeVagasVoluntarias>
-        </Classes.Disciplina>
-      </disciplinas>
-      <pesoCRE>0.3</pesoCRE>
-      <pesoMedia>0.7</pesoMedia>
-      <numMaxInscricoes>2</numMaxInscricoes>
-      <resultado>não calculado</resultado>
-      <status>abertas</status>
-    </Classes.EditalDeMonitoria>
-    <Classes.EditalDeMonitoria>
-      <id>1701466110395</id>
-      <numeroEdital>70.0</numeroEdital>
-      <dataInicio>2023-12-01</dataInicio>
-      <dataFim>2024-01-01</dataFim>
-      <disciplinas>
-        <Classes.Disciplina>
-          <nome>poo</nome>
-          <quantVagas>0</quantVagas>
-          <alunosInscritos/>
-          <quantDeVagasRemuneradas>2</quantDeVagasRemuneradas>
-          <quantDeVagasVoluntarias>2</quantDeVagasVoluntarias>
-        </Classes.Disciplina>
-        <Classes.Disciplina>
-          <nome>matematica</nome>
-          <quantVagas>0</quantVagas>
-          <alunosInscritos/>
-          <quantDeVagasRemuneradas>2</quantDeVagasRemuneradas>
-          <quantDeVagasVoluntarias>2</quantDeVagasVoluntarias>
-        </Classes.Disciplina>
-        <Classes.Disciplina>
-          <nome>ingles</nome>
-          <quantVagas>0</quantVagas>
-          <alunosInscritos/>
-          <quantDeVagasRemuneradas>2</quantDeVagasRemuneradas>
-          <quantDeVagasVoluntarias>3</quantDeVagasVoluntarias>
-        </Classes.Disciplina>
-        <Classes.Disciplina>
-          <nome>frances</nome>
-          <quantVagas>0</quantVagas>
-          <alunosInscritos/>
-          <quantDeVagasRemuneradas>2</quantDeVagasRemuneradas>
-          <quantDeVagasVoluntarias>2</quantDeVagasVoluntarias>
-        </Classes.Disciplina>
-        <Classes.Disciplina>
-          <nome>alemao</nome>
-          <quantVagas>0</quantVagas>
-          <alunosInscritos/>
-          <quantDeVagasRemuneradas>2</quantDeVagasRemuneradas>
-          <quantDeVagasVoluntarias>2</quantDeVagasVoluntarias>
-        </Classes.Disciplina>
-      </disciplinas>
-      <pesoCRE>0.3</pesoCRE>
-      <pesoMedia>0.7</pesoMedia>
-      <numMaxInscricoes>3</numMaxInscricoes>
-      <resultado>não calculado</resultado>
-      <status>abertas</status>
-    </Classes.EditalDeMonitoria>
-    <Classes.EditalDeMonitoria>
-      <id>1701477578503</id>
-      <numeroEdital>201.0</numeroEdital>
+      <id>1701541251608</id>
+      <numeroEdital>10.0</numeroEdital>
       <dataInicio>2023-11-30</dataInicio>
-      <dataFim>2023-12-02</dataFim>
+      <dataFim>2023-12-30</dataFim>
       <disciplinas>
         <Classes.Disciplina>
-          <nome>poo</nome>
-          <quantVagas>0</quantVagas>
-          <alunosInscritos/>
+          <nome>POO</nome>
+          <quantDeVagasRemuneradas>3</quantDeVagasRemuneradas>
+          <quantDeVagasVoluntarias>3</quantDeVagasVoluntarias>
+          <inscricoes>
+            <entry>
+              <Classes.Aluno reference="../../../../../../../todosOsAlunos/Classes.Aluno[2]"/>
+              <Classes.Inscricao>
+                <aluno reference="../../../../../../../../todosOsAlunos/Classes.Aluno[2]"/>
+                <nota>99.0</nota>
+                <CRE>99.0</CRE>
+                <desistiu>false</desistiu>
+              </Classes.Inscricao>
+            </entry>
+          </inscricoes>
+        </Classes.Disciplina>
+        <Classes.Disciplina>
+          <nome>Algoritmos</nome>
           <quantDeVagasRemuneradas>2</quantDeVagasRemuneradas>
-          <quantDeVagasVoluntarias>2</quantDeVagasVoluntarias>
+          <quantDeVagasVoluntarias>3</quantDeVagasVoluntarias>
+          <inscricoes/>
         </Classes.Disciplina>
       </disciplinas>
       <pesoCRE>0.5</pesoCRE>
@@ -292,6 +70,37 @@
       <numMaxInscricoes>2</numMaxInscricoes>
       <resultado>calculado</resultado>
       <status>finalizadas</status>
+    </Classes.EditalDeMonitoria>
+    <Classes.EditalDeMonitoria>
+      <id>1701543944511</id>
+      <numeroEdital>12.0</numeroEdital>
+      <dataInicio>2023-12-02</dataInicio>
+      <dataFim>2023-12-25</dataFim>
+      <disciplinas>
+        <Classes.Disciplina>
+          <nome>Matematica Aplicada a Computação</nome>
+          <quantDeVagasRemuneradas>3</quantDeVagasRemuneradas>
+          <quantDeVagasVoluntarias>2</quantDeVagasVoluntarias>
+          <inscricoes/>
+        </Classes.Disciplina>
+        <Classes.Disciplina>
+          <nome>Ingles Instrumental 1</nome>
+          <quantDeVagasRemuneradas>1</quantDeVagasRemuneradas>
+          <quantDeVagasVoluntarias>1</quantDeVagasVoluntarias>
+          <inscricoes/>
+        </Classes.Disciplina>
+        <Classes.Disciplina>
+          <nome>Ingles Instrumental 2</nome>
+          <quantDeVagasRemuneradas>2</quantDeVagasRemuneradas>
+          <quantDeVagasVoluntarias>1</quantDeVagasVoluntarias>
+          <inscricoes/>
+        </Classes.Disciplina>
+      </disciplinas>
+      <pesoCRE>0.5</pesoCRE>
+      <pesoMedia>0.5</pesoMedia>
+      <numMaxInscricoes>3</numMaxInscricoes>
+      <resultado>não calculado</resultado>
+      <status>abertas</status>
     </Classes.EditalDeMonitoria>
   </todosOsEditais>
 </Persistencia.CentralDeInformacoes>
