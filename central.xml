@@ -3,7 +3,7 @@
   <coordenador>
     <nome>Cleyton Souza</nome>
     <email>cleyton@gmail.com</email>
-    <senha>godofwar</senha>
+    <senha>cleyton123</senha>
   </coordenador>
   <todosOsAlunos>
     <Classes.Aluno>
@@ -23,7 +23,7 @@
     <Classes.Aluno>
       <nome>Cicero Brunno das Neves</nome>
       <email>cicero.brunno@academico.ifpb.edu.br</email>
-      <senha>soumuitogaysocorro</senha>
+      <senha>brunno123</senha>
       <sexo>MASCULINO</sexo>
       <matricula>146894689535</matricula>
     </Classes.Aluno>
@@ -74,6 +74,37 @@
     <Classes.EditalDeMonitoria>
       <id>1701543944511</id>
       <numeroEdital>12.0</numeroEdital>
+      <dataInicio>2023-12-02</dataInicio>
+      <dataFim>2023-12-25</dataFim>
+      <disciplinas>
+        <Classes.Disciplina>
+          <nome>Matematica Aplicada a Computação</nome>
+          <quantDeVagasRemuneradas>3</quantDeVagasRemuneradas>
+          <quantDeVagasVoluntarias>2</quantDeVagasVoluntarias>
+          <inscricoes/>
+        </Classes.Disciplina>
+        <Classes.Disciplina>
+          <nome>Ingles Instrumental 1</nome>
+          <quantDeVagasRemuneradas>1</quantDeVagasRemuneradas>
+          <quantDeVagasVoluntarias>1</quantDeVagasVoluntarias>
+          <inscricoes/>
+        </Classes.Disciplina>
+        <Classes.Disciplina>
+          <nome>Ingles Instrumental 2</nome>
+          <quantDeVagasRemuneradas>2</quantDeVagasRemuneradas>
+          <quantDeVagasVoluntarias>1</quantDeVagasVoluntarias>
+          <inscricoes/>
+        </Classes.Disciplina>
+      </disciplinas>
+      <pesoCRE>0.5</pesoCRE>
+      <pesoMedia>0.5</pesoMedia>
+      <numMaxInscricoes>3</numMaxInscricoes>
+      <resultado>não calculado</resultado>
+      <status>abertas</status>
+    </Classes.EditalDeMonitoria>
+    <Classes.EditalDeMonitoria>
+      <id>1701548784656</id>
+      <numeroEdital>12.5</numeroEdital>
       <dataInicio>2023-12-02</dataInicio>
       <dataFim>2023-12-25</dataFim>
       <disciplinas>
