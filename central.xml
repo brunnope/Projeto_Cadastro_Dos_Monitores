@@ -2,7 +2,7 @@
 <Persistencia.CentralDeInformacoes>
   <coordenador>
     <nome>Cleyton Souza</nome>
-    <email>Cleyton.Souza@ifpb.edu.br</email>
+    <email>Cleyton.Souza@academico.ifpb.edu.br</email>
     <senha>cleyton123</senha>
   </coordenador>
   <todosOsAlunos>
@@ -28,9 +28,9 @@
       <matricula>202315220028</matricula>
     </Classes.Aluno>
     <Classes.Aluno>
-      <nome>Pau na tora</nome>
-      <email>pauNaTora@gmail.com</email>
-      <senha>pau12345</senha>
+      <nome>rei delas</nome>
+      <email>reidelas@gmail.com</email>
+      <senha>reidelas</senha>
       <sexo>MASCULINO</sexo>
       <matricula>696969696969</matricula>
     </Classes.Aluno>
@@ -67,8 +67,8 @@
       <pesoCRE>0.1</pesoCRE>
       <pesoMedia>0.9</pesoMedia>
       <numMaxInscricoes>2</numMaxInscricoes>
-      <resultado>não calculado</resultado>
-      <status>abertas</status>
+      <resultado>final</resultado>
+      <status>finalizadas</status>
     </Classes.EditalDeMonitoria>
     <Classes.EditalDeMonitoria>
       <id>1701395382682</id>
@@ -100,7 +100,7 @@
     <Classes.EditalDeMonitoria>
       <id>1701402081552</id>
       <numeroEdital>3.0</numeroEdital>
-      <dataInicio>2023-12-11</dataInicio>
+      <dataInicio>2023-12-01</dataInicio>
       <dataFim>2023-12-15</dataFim>
       <disciplinas>
         <Classes.Disciplina>
@@ -113,9 +113,9 @@
       </disciplinas>
       <pesoCRE>0.5</pesoCRE>
       <pesoMedia>0.5</pesoMedia>
-      <numMaxInscricoes>4</numMaxInscricoes>
+      <numMaxInscricoes>5</numMaxInscricoes>
       <resultado>não calculado</resultado>
-      <status>não abertas</status>
+      <status>abertas</status>
     </Classes.EditalDeMonitoria>
     <Classes.EditalDeMonitoria>
       <id>1701402322674</id>
@@ -222,8 +222,8 @@
       <pesoCRE>0.3</pesoCRE>
       <pesoMedia>0.7</pesoMedia>
       <numMaxInscricoes>2</numMaxInscricoes>
-      <resultado>calculado</resultado>
-      <status>encerradas</status>
+      <resultado>não calculado</resultado>
+      <status>abertas</status>
     </Classes.EditalDeMonitoria>
     <Classes.EditalDeMonitoria>
       <id>1701466110395</id>
@@ -272,6 +272,26 @@
       <numMaxInscricoes>3</numMaxInscricoes>
       <resultado>não calculado</resultado>
       <status>abertas</status>
+    </Classes.EditalDeMonitoria>
+    <Classes.EditalDeMonitoria>
+      <id>1701477578503</id>
+      <numeroEdital>201.0</numeroEdital>
+      <dataInicio>2023-11-30</dataInicio>
+      <dataFim>2023-12-02</dataFim>
+      <disciplinas>
+        <Classes.Disciplina>
+          <nome>poo</nome>
+          <quantVagas>0</quantVagas>
+          <alunosInscritos/>
+          <quantDeVagasRemuneradas>2</quantDeVagasRemuneradas>
+          <quantDeVagasVoluntarias>2</quantDeVagasVoluntarias>
+        </Classes.Disciplina>
+      </disciplinas>
+      <pesoCRE>0.5</pesoCRE>
+      <pesoMedia>0.5</pesoMedia>
+      <numMaxInscricoes>2</numMaxInscricoes>
+      <resultado>calculado</resultado>
+      <status>finalizadas</status>
     </Classes.EditalDeMonitoria>
   </todosOsEditais>
 </Persistencia.CentralDeInformacoes>
