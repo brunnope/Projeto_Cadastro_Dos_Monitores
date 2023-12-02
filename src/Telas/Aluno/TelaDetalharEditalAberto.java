@@ -3,12 +3,10 @@ package Telas.Aluno;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.JScrollPane;
@@ -16,7 +14,6 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.text.MaskFormatter;
 import javax.swing.text.AbstractDocument;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
@@ -26,13 +23,9 @@ import Classes.Aluno;
 import Classes.Disciplina;
 import Classes.EditalDeMonitoria;
 import Classes.Inscricao;
-import Excecoes.EditalNaoEncontradoException;
-import Persistencia.CentralDeInformacoes;
-import Persistencia.Persistencia;
 import Telas.FabricaImagens;
 import Telas.TelaPadrao;
 import Telas.TelaVisualizarEditais;
-import Telas.Coordenador.TelaTodosOsAlunos;
 import Telas.FabricaComponentes.FabricaIcones;
 import Telas.FabricaComponentes.FabricaJButton;
 import Telas.FabricaComponentes.FabricaJLabel;
@@ -55,11 +48,6 @@ public class TelaDetalharEditalAberto extends TelaPadrao{
 	}
 
 	public void configurarComponentes() {
-		try {
-			edital = getCentral().recuperarEditalPeloId(getCentral().getTodosOsEditais().get(0).getId());
-		} catch (EditalNaoEncontradoException e) {
-			FabricaJOptionPane.criarMsgErro(e.getMessage());
-		}
 		adicionarMenuBar();
 		adicionarLabels();
 		adicionarTextFields();
