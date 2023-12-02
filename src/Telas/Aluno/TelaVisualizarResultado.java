@@ -12,9 +12,6 @@ import javax.swing.table.DefaultTableModel;
 
 import Classes.Disciplina;
 import Classes.EditalDeMonitoria;
-import Excecoes.EditalNaoEncontradoException;
-import Persistencia.CentralDeInformacoes;
-import Persistencia.Persistencia;
 import Telas.FabricaImagens;
 import Telas.TelaPadrao;
 import Telas.FabricaComponentes.FabricaIcones;
@@ -23,25 +20,16 @@ import Telas.FabricaComponentes.FabricaJLabel;
 import Telas.FabricaComponentes.FabricaJMenuBar;
 
 public class TelaVisualizarResultado extends TelaPadrao{
-
-	private Persistencia dados = new Persistencia();
-	private CentralDeInformacoes central = dados.recuperarCentral("central.xml");
-	//apagar id
 	private EditalDeMonitoria edital;
 	
-	public TelaVisualizarResultado() {
+	public TelaVisualizarResultado(EditalDeMonitoria edital) {
 		super("DETALHES RESULTADO");
+		this.edital = edital;
 		configurarComponentes();
 		setVisible(true);
 	}
 
 	public void configurarComponentes() {
-		try {
-			edital = central.recuperarEditalPeloId(central.getTodosOsEditais().get(0).getId());
-		} catch (EditalNaoEncontradoException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		adicionarMenuBar();
 		adicionarLabels();
 		adicionarTable();
@@ -50,7 +38,7 @@ public class TelaVisualizarResultado extends TelaPadrao{
 	}
 	
 	private void adicionarMenuBar() {
-		JMenuBar mOpcoes = FabricaJMenuBar.MenuCoordenador(this);
+		JMenuBar mOpcoes = FabricaJMenuBar.MenuAluno(this);
 		setJMenuBar(mOpcoes);
 	}
 
@@ -104,8 +92,4 @@ public class TelaVisualizarResultado extends TelaPadrao{
 		
 		
 	}
-	public static void main(String[] args) {
-		TelaVisualizarResultado t = new TelaVisualizarResultado();
-	}
-
 }
