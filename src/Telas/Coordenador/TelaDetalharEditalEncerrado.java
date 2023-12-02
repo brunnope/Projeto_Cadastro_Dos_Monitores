@@ -168,7 +168,7 @@ public class TelaDetalharEditalEncerrado extends TelaPadrao{
 			
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				new TelaDetalhesResultado();
+				new TelaDetalhesResultado(edital);
 			}
 		});
 		

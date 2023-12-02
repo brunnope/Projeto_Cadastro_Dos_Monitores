@@ -54,6 +54,7 @@
                 <nota>99.0</nota>
                 <CRE>99.0</CRE>
                 <desistiu>false</desistiu>
+                <notaFinal>0.0</notaFinal>
               </Classes.Inscricao>
             </entry>
           </inscricoes>
@@ -68,8 +69,8 @@
       <pesoCRE>0.5</pesoCRE>
       <pesoMedia>0.5</pesoMedia>
       <numMaxInscricoes>2</numMaxInscricoes>
-      <resultado>calculado</resultado>
-      <status>finalizadas</status>
+      <resultado>não calculado</resultado>
+      <status>abertas</status>
     </Classes.EditalDeMonitoria>
     <Classes.EditalDeMonitoria>
       <id>1701543944511</id>
@@ -81,26 +82,128 @@
           <nome>Matematica Aplicada a Computação</nome>
           <quantDeVagasRemuneradas>3</quantDeVagasRemuneradas>
           <quantDeVagasVoluntarias>2</quantDeVagasVoluntarias>
-          <inscricoes/>
+          <inscricoes>
+            <entry>
+              <Classes.Aluno reference="../../../../../../../todosOsAlunos/Classes.Aluno[2]"/>
+              <Classes.Inscricao>
+                <aluno reference="../../../../../../../../todosOsAlunos/Classes.Aluno[2]"/>
+                <nota>80.0</nota>
+                <CRE>90.0</CRE>
+                <desistiu>false</desistiu>
+                <notaFinal>85.0</notaFinal>
+                <resultado>Contemplado em vaga Remunerada</resultado>
+              </Classes.Inscricao>
+            </entry>
+            <entry>
+              <Classes.Aluno reference="../../../../../../../todosOsAlunos/Classes.Aluno"/>
+              <Classes.Inscricao>
+                <aluno reference="../../../../../../../../todosOsAlunos/Classes.Aluno"/>
+                <nota>90.0</nota>
+                <CRE>80.0</CRE>
+                <desistiu>false</desistiu>
+                <notaFinal>85.0</notaFinal>
+                <resultado>Contemplado em vaga Remunerada</resultado>
+              </Classes.Inscricao>
+            </entry>
+            <entry>
+              <Classes.Aluno reference="../../../../../../../todosOsAlunos/Classes.Aluno[3]"/>
+              <Classes.Inscricao>
+                <aluno reference="../../../../../../../../todosOsAlunos/Classes.Aluno[3]"/>
+                <nota>80.0</nota>
+                <CRE>90.0</CRE>
+                <desistiu>false</desistiu>
+                <notaFinal>85.0</notaFinal>
+                <resultado>Contemplado em vaga Remunerada</resultado>
+              </Classes.Inscricao>
+            </entry>
+          </inscricoes>
         </Classes.Disciplina>
         <Classes.Disciplina>
           <nome>Ingles Instrumental 1</nome>
           <quantDeVagasRemuneradas>1</quantDeVagasRemuneradas>
           <quantDeVagasVoluntarias>1</quantDeVagasVoluntarias>
-          <inscricoes/>
+          <inscricoes>
+            <entry>
+              <Classes.Aluno reference="../../../../../../../todosOsAlunos/Classes.Aluno[2]"/>
+              <Classes.Inscricao>
+                <aluno reference="../../../../../../../../todosOsAlunos/Classes.Aluno[2]"/>
+                <nota>100.0</nota>
+                <CRE>90.0</CRE>
+                <desistiu>false</desistiu>
+                <notaFinal>95.0</notaFinal>
+                <resultado>Contemplado em vaga Remunerada</resultado>
+              </Classes.Inscricao>
+            </entry>
+            <entry>
+              <Classes.Aluno reference="../../../../../../../todosOsAlunos/Classes.Aluno"/>
+              <Classes.Inscricao>
+                <aluno reference="../../../../../../../../todosOsAlunos/Classes.Aluno"/>
+                <nota>95.0</nota>
+                <CRE>80.0</CRE>
+                <desistiu>false</desistiu>
+                <notaFinal>87.5</notaFinal>
+                <resultado>Não Contemplado</resultado>
+              </Classes.Inscricao>
+            </entry>
+            <entry>
+              <Classes.Aluno reference="../../../../../../../todosOsAlunos/Classes.Aluno[3]"/>
+              <Classes.Inscricao>
+                <aluno reference="../../../../../../../../todosOsAlunos/Classes.Aluno[3]"/>
+                <nota>100.0</nota>
+                <CRE>90.0</CRE>
+                <desistiu>false</desistiu>
+                <notaFinal>95.0</notaFinal>
+                <resultado>Contemplado em vaga voluntária</resultado>
+              </Classes.Inscricao>
+            </entry>
+          </inscricoes>
         </Classes.Disciplina>
         <Classes.Disciplina>
           <nome>Ingles Instrumental 2</nome>
           <quantDeVagasRemuneradas>2</quantDeVagasRemuneradas>
           <quantDeVagasVoluntarias>1</quantDeVagasVoluntarias>
-          <inscricoes/>
+          <inscricoes>
+            <entry>
+              <Classes.Aluno reference="../../../../../../../todosOsAlunos/Classes.Aluno[2]"/>
+              <Classes.Inscricao>
+                <aluno reference="../../../../../../../../todosOsAlunos/Classes.Aluno[2]"/>
+                <nota>95.0</nota>
+                <CRE>90.0</CRE>
+                <desistiu>false</desistiu>
+                <notaFinal>92.5</notaFinal>
+                <resultado>Contemplado em vaga Remunerada</resultado>
+              </Classes.Inscricao>
+            </entry>
+            <entry>
+              <Classes.Aluno reference="../../../../../../../todosOsAlunos/Classes.Aluno"/>
+              <Classes.Inscricao>
+                <aluno reference="../../../../../../../../todosOsAlunos/Classes.Aluno"/>
+                <nota>100.0</nota>
+                <CRE>80.0</CRE>
+                <desistiu>false</desistiu>
+                <notaFinal>90.0</notaFinal>
+                <resultado>Contemplado em vaga Remunerada</resultado>
+              </Classes.Inscricao>
+            </entry>
+            <entry>
+              <Classes.Aluno reference="../../../../../../../todosOsAlunos/Classes.Aluno[3]"/>
+              <Classes.Inscricao>
+                <aluno reference="../../../../../../../../todosOsAlunos/Classes.Aluno[3]"/>
+                <nota>90.0</nota>
+                <CRE>90.0</CRE>
+                <desistiu>false</desistiu>
+                <notaFinal>90.0</notaFinal>
+                <resultado>Contemplado em vaga voluntária</resultado>
+              </Classes.Inscricao>
+            </entry>
+          </inscricoes>
         </Classes.Disciplina>
       </disciplinas>
       <pesoCRE>0.5</pesoCRE>
       <pesoMedia>0.5</pesoMedia>
       <numMaxInscricoes>3</numMaxInscricoes>
-      <resultado>não calculado</resultado>
-      <status>abertas</status>
+      <resultado>calculado</resultado>
+      <status>finalizadas</status>
     </Classes.EditalDeMonitoria>
     <Classes.EditalDeMonitoria>
       <id>1701548784656</id>

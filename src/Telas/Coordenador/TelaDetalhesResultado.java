@@ -2,6 +2,9 @@ package Telas.Coordenador;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
@@ -12,8 +15,10 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import Classes.Aluno;
 import Classes.Disciplina;
 import Classes.EditalDeMonitoria;
+import Classes.Inscricao;
 import Excecoes.EditalNaoEncontradoException;
 import Persistencia.CentralDeInformacoes;
 import Persistencia.Persistencia;
@@ -28,8 +33,9 @@ import Telas.FabricaComponentes.FabricaJTextField;
 public class TelaDetalhesResultado extends TelaPadrao{
 	private EditalDeMonitoria edital;
 	
-	public TelaDetalhesResultado() {
+	public TelaDetalhesResultado(EditalDeMonitoria edital) {
 		super("DETALHES RESULTADO");
+		this.edital = edital;
 		configurarComponentes();
 		setVisible(true);
 	}
@@ -67,7 +73,18 @@ public class TelaDetalhesResultado extends TelaPadrao{
 		
 		ArrayList<Disciplina> disciplinas = edital.getDisciplinas();
 		
-
+		for(Disciplina disciplina : disciplinas) {
+			List<Map.Entry<Aluno, Inscricao>> listaOrdenada = disciplina.ordenarInscricoesPorNotaFinal();
+			for(Entry<Aluno, Inscricao> e : listaOrdenada) {
+				Inscricao inscricao = e.getValue();
+				Object[] linha = new Object[4];
+				linha[0] = disciplina.getNome();
+				linha[1] = inscricao.getAluno().getMatricula();
+				linha[2] = inscricao.getNotaFinal();
+				linha[3] = inscricao.getResultado();
+				mResultados.addRow(linha);
+			}
+	}
 		// Torna todas as células não editáveis
 		JTable tableDisciplinas = new JTable(mResultados) {
 
@@ -102,9 +119,6 @@ public class TelaDetalhesResultado extends TelaPadrao{
 		add(imagemFundo);
 		
 		
-	}
-	public static void main(String[] args) {
-		TelaDetalhesResultado t = new TelaDetalhesResultado();
 	}
 
 }

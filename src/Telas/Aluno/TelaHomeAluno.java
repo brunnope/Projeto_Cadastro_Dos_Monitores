@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 
+import Classes.Aluno;
 import Telas.FabricaImagens;
 import Telas.TelaPadrao;
 import Telas.TelaVisualizarEditais;
@@ -56,6 +57,13 @@ public class TelaHomeAluno extends TelaPadrao{
 		
 		
 		JButton bEditarInformacoes = FabricaJButton.criarJButton("Editar Informações", 325, 475, 250, 40, Color.GREEN, Color.WHITE, 12);
+		bEditarInformacoes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				Aluno aluno = (Aluno) getUsuario();
+				new TelaEditarInformacoesAluno(aluno);
+			}
+		});
 		add(bEditarInformacoes);
 	}
 

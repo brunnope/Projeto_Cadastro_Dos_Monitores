@@ -140,7 +140,7 @@ public class TelaVisualizarEditais extends TelaPadrao{
 					}else if(edital.getResultado().equals("final")) {
 						if (getUsuario() instanceof Coordenador) {
 							dispose();
-							new TelaDetalhesResultado();
+							new Telas.Coordenador.TelaDetalhesResultado(edital);
 						}else {
 							FabricaJOptionPane.criarMsgErro("Edital encerrado!");
 						}
