@@ -71,26 +71,6 @@ public class EditalDeMonitoria {
 		Disciplina disciplina = new Disciplina(nomeDisciplina, quantRemuneradas, quantVoluntarios);
 		getDisciplinas().add(disciplina);
 	}
-
-	public boolean inscrever(Aluno aluno, String nomeDisciplina) throws AlunoJaInscritoException, InscricoesFinalizadaException, InscricoesNaoAbertasException {
-		if ((!jaAcabou()) && (status().equalsIgnoreCase("abertas"))) {
-			for (Disciplina disciplina: disciplinas) {
-				if(disciplina.getNome().equalsIgnoreCase(nomeDisciplina)) {
-					for (Aluno a: disciplina.getAlunosInscritos()) {
-						if(a.getMatricula().equalsIgnoreCase(aluno.getMatricula())) {
-							throw new AlunoJaInscritoException();
-						}
-					} 
-					if(disciplina.getQuantVagas() > 0) {
-						disciplina.setQuantVagas(disciplina.getQuantVagas()-1);
-						disciplina.getAlunosInscritos().add(aluno);					
-						return true;
-						}
-					}
-				}
-			}
-		throw new InscricoesFinalizadaException();		
-	}
 	
 	public boolean jaAcabou() throws InscricoesFinalizadaException {
 		LocalDate dataAtual = LocalDate.now();
