@@ -25,11 +25,11 @@ import Telas.FabricaComponentes.FabricaJLabel;
 import Telas.FabricaComponentes.FabricaJMenuBar;
 import Telas.FabricaComponentes.FabricaJOptionPane;
 
-public class TelaTodasAsDiscplinasEdital extends TelaPadrao{
+public class TelaTodasAsDisciplinasEdital extends TelaPadrao{
 	private EditalDeMonitoria edital;
 	JTable tableDisciplinas;
 	
-	public TelaTodasAsDiscplinasEdital(EditalDeMonitoria edital){
+	public TelaTodasAsDisciplinasEdital(EditalDeMonitoria edital){
 		super("DETALHE DISCIPLINAS EDITAL CLONE");
 		this.edital = edital;
 		configurarComponentes();
@@ -142,7 +142,7 @@ public class TelaTodasAsDiscplinasEdital extends TelaPadrao{
 
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				new TelaTodasAsDiscplinasEdital(edital);
+				new TelaTodasAsDisciplinasEdital(edital);
 			}
 		});
 			

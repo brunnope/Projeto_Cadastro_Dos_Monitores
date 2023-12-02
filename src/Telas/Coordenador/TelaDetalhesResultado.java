@@ -26,9 +26,6 @@ import Telas.FabricaComponentes.FabricaJMenuBar;
 import Telas.FabricaComponentes.FabricaJTextField;
 
 public class TelaDetalhesResultado extends TelaPadrao{
-	private Persistencia dados = new Persistencia();
-	private CentralDeInformacoes central = dados.recuperarCentral("central.xml");
-	//apagar id
 	private EditalDeMonitoria edital;
 	
 	public TelaDetalhesResultado() {
@@ -38,12 +35,6 @@ public class TelaDetalhesResultado extends TelaPadrao{
 	}
 
 	public void configurarComponentes() {
-		try {
-			edital = central.recuperarEditalPeloId(central.getTodosOsEditais().get(0).getId());
-		} catch (EditalNaoEncontradoException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		adicionarMenuBar();
 		adicionarLabels();
 		adicionarTable();

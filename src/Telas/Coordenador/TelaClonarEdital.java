@@ -146,7 +146,7 @@ public class TelaClonarEdital extends TelaPadrao{
 			
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				new TelaTodasAsDiscplinasEdital(edital);
+				new TelaTodasAsDisciplinasEdital(edital);
 			}
 		});
 			
@@ -210,8 +210,6 @@ public class TelaClonarEdital extends TelaPadrao{
 									} catch (EditalInvalidoException e1) {
 										FabricaJOptionPane.criarMsgErro("Erro ao salvar edital!");
 									}
-									
-									
 								} catch(NumberFormatException e1) {
 									FabricaJOptionPane.criarMsgErro("Número de Edital com letra!");
 								}

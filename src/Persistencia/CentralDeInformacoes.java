@@ -7,6 +7,7 @@ import Classes.Coordenador;
 import Classes.Disciplina;
 import Classes.EditalDeMonitoria;
 import Classes.Inscricao;
+import Classes.Pessoa;
 import Excecoes.AlunoJaMatriculadoException;
 import Excecoes.AlunoNaoEncontradoException;
 import Excecoes.EditalInvalidoException;
@@ -52,6 +53,22 @@ public class CentralDeInformacoes {
 		if (coordenador.getEmail().equalsIgnoreCase(email)) {
 			throw new EmailJaCadastradoException();
 		}return false;
+	}
+	
+	public boolean emailExiste(String email,Pessoa pessoa) throws EmailJaCadastradoException {
+		for (Aluno aluno : todosOsAlunos) {
+			if (aluno != pessoa) {
+				if (aluno.getEmail().equalsIgnoreCase(email)) {
+					throw new EmailJaCadastradoException();
+				}
+			}
+		}
+		if (coordenador != pessoa) {
+			if (coordenador.getEmail().equalsIgnoreCase(email)) {
+				throw new EmailJaCadastradoException();
+			}
+		}
+		return false;
 	}
 
 

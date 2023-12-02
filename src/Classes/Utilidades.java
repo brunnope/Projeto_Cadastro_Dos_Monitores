@@ -87,7 +87,7 @@ public class Utilidades {
 		if (TelaPadrao.getUsuario() instanceof Coordenador) {
 		central.verificarMatricula(aluno, matricula);
 		}
-		central.emailExiste(email);
+		central.emailExiste(email, aluno);
 		CentralDeInformacoes.validarEmail(email);
 		aluno.setEmail(email);
 		aluno.setNome(nome);
@@ -104,7 +104,7 @@ public class Utilidades {
 		}else if(senha.length() < 8){
 			throw new SenhaMuitoPequenaException();
 		}
-		central.emailExiste(email);
+		central.emailExiste(email, coordenador);
 		CentralDeInformacoes.validarEmail(email);
 		coordenador.setEmail(email);
 		coordenador.setNome(nome);
