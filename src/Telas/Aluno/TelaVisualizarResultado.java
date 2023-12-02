@@ -50,7 +50,7 @@ public class TelaVisualizarResultado extends TelaPadrao{
 	}
 	
 	private void adicionarMenuBar() {
-		JMenuBar mOpcoes = FabricaJMenuBar.MenuCoordenador(this);
+		JMenuBar mOpcoes = FabricaJMenuBar.MenuAluno(this);
 		setJMenuBar(mOpcoes);
 	}
 
