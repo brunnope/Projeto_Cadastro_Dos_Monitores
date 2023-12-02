@@ -1,6 +1,8 @@
 package Telas.Coordenador;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -14,11 +16,9 @@ import javax.swing.table.DefaultTableModel;
 
 import Classes.Disciplina;
 import Classes.EditalDeMonitoria;
-import Excecoes.EditalNaoEncontradoException;
-import Persistencia.CentralDeInformacoes;
-import Persistencia.Persistencia;
 import Telas.FabricaImagens;
 import Telas.TelaPadrao;
+import Telas.TelaVisualizarEditais;
 import Telas.FabricaComponentes.FabricaIcones;
 import Telas.FabricaComponentes.FabricaJButton;
 import Telas.FabricaComponentes.FabricaJLabel;
@@ -151,12 +151,38 @@ public class TelaDetalharEditalEncerrado extends TelaPadrao{
 	}
 	
 	private void adicionarButtons() {
-		JButton bVoltar = FabricaJButton.criarJButton("Voltar", 298, 610, 150, 30, Color.GREEN, Color.WHITE, 12);
-		add(bVoltar);
 		
-		JButton bResultados = FabricaJButton.criarJButton("Resultados", 455, 610, 150, 30, Color.GREEN, Color.WHITE, 12);
+		JButton bEditar = FabricaJButton.criarJButton("Editar", 293, 610, 155, 30, Color.GREEN, Color.WHITE, 12);
+		add(bEditar);
+		bEditar.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new TelaEditarEdital(edital);
+			}
+		});
+		
+		JButton bResultados = FabricaJButton.criarJButton("Resultados", 452, 610, 155, 30, Color.GREEN, Color.WHITE, 12);
 		add(bResultados);
+		bResultados.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new TelaDetalhesResultado();
+			}
+		});
 		
+		
+		JButton bVoltar = FabricaJButton.criarJButton("Voltar", 293, 650, 313, 30, Color.GREEN, Color.WHITE, 12);
+		add(bVoltar);
+		bVoltar.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new TelaVisualizarEditais();
+				
+			}
+		});
 	}
 
 	private void adicionarIcones() {

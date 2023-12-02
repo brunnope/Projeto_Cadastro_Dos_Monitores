@@ -193,9 +193,12 @@ public class TelaCadastroEdital extends TelaPadrao{
 						try {
 							dataInicio = LocalDate.parse(fDataInicio.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 							dataFim = LocalDate.parse(fDataFim.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+							LocalDate dataAtual = LocalDate.now();
 							
 							if (dataFim.isBefore(dataInicio)) {
 								FabricaJOptionPane.criarMsgErro("Data Final antes que Data Inicial!");
+							}else if(dataFim.isBefore(dataAtual) || dataFim.isEqual(dataInicio) || dataFim.isEqual(dataAtual)) {
+								FabricaJOptionPane.criarMsgErro("Data Final já passou ou igual a atual/inicial!");
 							}
 							else {
 								try {

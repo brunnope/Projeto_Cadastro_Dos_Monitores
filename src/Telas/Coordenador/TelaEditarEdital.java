@@ -23,6 +23,7 @@ import Excecoes.InscricoesFinalizadaException;
 import Excecoes.InscricoesNaoAbertasException;
 import Telas.FabricaImagens;
 import Telas.TelaPadrao;
+import Telas.TelaVisualizarEditais;
 import Telas.FabricaComponentes.FabricaIcones;
 import Telas.FabricaComponentes.FabricaJButton;
 import Telas.FabricaComponentes.FabricaJLabel;
@@ -139,13 +140,13 @@ public class TelaEditarEdital extends TelaPadrao{
 
 			public void actionPerformed(ActionEvent e) {
 				try {
-					if(!(edital.jaAcabou()) && edital.getStatus().equals("encerradas")){
+					if(!(edital.jaAcabou()) && edital.getStatus().equals("finalizadas")){
 						edital.setResultado("não calculado");
 						edital.setStatus("abertas");
 						FabricaJOptionPane.criarMsgValido("Inscrições Reabertas!");
 						getDados().salvarCentral(getCentral(), "central.xml");
 						dispose();
-						new TelaDetalharEditalAberto(edital);
+						new TelaVisualizarEditais();
 					}else if(edital.getStatus().equals("não abertas")) {
 						FabricaJOptionPane.criarMsgErro("Inscrições não abertas ainda!");
 					}
@@ -187,7 +188,7 @@ public class TelaEditarEdital extends TelaPadrao{
 							if (dataFim.isBefore(dataInicio)) {
 								FabricaJOptionPane.criarMsgErro("Data Final antes que Data Inicial!");
 							}
-							else if(dataInicio.isBefore(dataAtual) || dataFim.isBefore(dataAtual)) {
+							else if(dataInicio.isBefore(dataAtual) || dataFim.isBefore(dataAtual) || dataFim.isEqual(dataAtual)) {
 								FabricaJOptionPane.criarMsgErro("Datas Inválidas!");
 							}
 							else {
@@ -210,7 +211,7 @@ public class TelaEditarEdital extends TelaPadrao{
 									FabricaJOptionPane.criarMsgValido("Edital editado com sucesso!");
 									getDados().salvarCentral(getCentral(), "central.xml");
 									dispose();
-									new TelaDetalharEditalAberto(edital);
+									new TelaVisualizarEditais();
 									
 								} catch(NumberFormatException e1) {
 									FabricaJOptionPane.criarMsgErro("Número de Edital com letra!");
@@ -232,7 +233,12 @@ public class TelaEditarEdital extends TelaPadrao{
 
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				new TelaDetalharEditalAberto(edital);
+				if (edital.getStatus().equals("finalizadas")) {					
+					new TelaDetalharEditalEncerrado(edital);
+				}
+				else {
+					new TelaDetalharEditalAberto(edital);
+				}
 			}
 		});
 	}

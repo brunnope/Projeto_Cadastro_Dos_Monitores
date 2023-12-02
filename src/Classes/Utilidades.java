@@ -95,5 +95,21 @@ public class Utilidades {
 		aluno.setSexo(sexo);
 		aluno.setMatricula(matricula);
 	}	
+	public void editarCoordenador(CentralDeInformacoes central, Coordenador coordenador, String nome, String email, String senha) 
+			throws EmailInvalidoException, SenhaMuitoPequenaException, CamposVaziosException, EmailJaCadastradoException {
+		nome.trim();
+		email.trim();
+		if(nome.isBlank() || email.isBlank() || senha.isBlank()) {
+			throw new CamposVaziosException();
+		}else if(senha.length() < 8){
+			throw new SenhaMuitoPequenaException();
+		}
+		central.emailExiste(email);
+		CentralDeInformacoes.validarEmail(email);
+		coordenador.setEmail(email);
+		coordenador.setNome(nome);
+		coordenador.setSenha(senha);
+	}	
+	
 }
 

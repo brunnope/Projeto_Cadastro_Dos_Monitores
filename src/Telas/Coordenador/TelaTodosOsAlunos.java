@@ -23,6 +23,7 @@ import Telas.FabricaComponentes.FabricaIcones;
 import Telas.FabricaComponentes.FabricaJButton;
 import Telas.FabricaComponentes.FabricaJLabel;
 import Telas.FabricaComponentes.FabricaJMenuBar;
+import Telas.FabricaComponentes.FabricaJOptionPane;
 import Telas.FabricaComponentes.FabricaJTextField;
 import Telas.FabricaComponentes.FabricaTableComFiltro;
 import javax.swing.event.DocumentListener;
@@ -111,20 +112,27 @@ public class TelaTodosOsAlunos extends TelaPadrao{
 		bEditar.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				dispose();
-				Aluno l = getCentral().getTodosOsAlunos().get(tableAlunos.getSelectedRow());
-				new TelaEditarInformacoesAluno(l);
+				if (tableAlunos.getSelectedRow() == -1){
+					FabricaJOptionPane.criarMsgErro("Selecione algum Aluno!");
+				}else {
+					dispose();
+					Aluno l = getCentral().getTodosOsAlunos().get(tableAlunos.getSelectedRow());
+					new TelaEditarInformacoesAluno(l);
+				}
 			}
 		});
 
 		JButton bVisualizar = FabricaJButton.criarJButton("Visualizar", 458, 640, 150, 30, Color.GREEN, Color.WHITE, 12);
 		bVisualizar.addActionListener(new ActionListener() {
 			
-			@Override
 			public void actionPerformed(ActionEvent e) {
-				dispose();
-				Aluno l = getCentral().getTodosOsAlunos().get(tableAlunos.getSelectedRow());
-				new TelaVisualizarAluno(l);
+				if (tableAlunos.getSelectedRow() == -1){
+					FabricaJOptionPane.criarMsgErro("Selecione algum Aluno!");
+				}else {
+					dispose();
+					Aluno l = getCentral().getTodosOsAlunos().get(tableAlunos.getSelectedRow());
+					new TelaVisualizarAluno(l);
+				}
 			}
 		});
 		add(bVisualizar);

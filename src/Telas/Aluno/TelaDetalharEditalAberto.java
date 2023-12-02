@@ -138,8 +138,8 @@ public class TelaDetalharEditalAberto extends TelaPadrao{
 				return false;
 			}
 		};
-		//permite mais de uma seleção
-		tableDisciplinas.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+		//se inscreve em uma por vez
+		tableDisciplinas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		JScrollPane rolagemTabela = new JScrollPane(tableDisciplinas);
 		rolagemTabela.setBounds(295, 420, 315, 100);
 		add(rolagemTabela);

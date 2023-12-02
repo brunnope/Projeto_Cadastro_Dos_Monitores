@@ -20,6 +20,7 @@ import Excecoes.InscricoesNaoAbertasException;
 import Telas.Aluno.TelaDetalharEditalAberto;
 import Telas.Aluno.TelaVisualizarResultado;
 import Telas.Coordenador.TelaDetalharEditalEncerrado;
+import Telas.Coordenador.TelaDetalhesResultado;
 import Telas.FabricaComponentes.FabricaIcones;
 import Telas.FabricaComponentes.FabricaJButton;
 import Telas.FabricaComponentes.FabricaJLabel;
@@ -74,7 +75,7 @@ public class TelaVisualizarEditais extends TelaPadrao{
 			linha[1] = edital.getDataInicio();
 			linha[2] = edital.getDataFim();
 			
-			if ((edital.getStatus() != null) && (edital.getStatus().equals("encerradas"))) {
+			if ((edital.getStatus() != null) && (edital.getStatus().equals("finalizadas"))) {
 				linha[3] = edital.getStatus();
 			}else {
 				try {
@@ -131,12 +132,21 @@ public class TelaVisualizarEditais extends TelaPadrao{
 					if (edital.getResultado().equals("calculado") && edital.getStatus().equals("finalizadas")) {
 						if (getUsuario() instanceof Coordenador) {
 							dispose();
-							new Telas.Coordenador.TelaDetalhesResultado();
+							new TelaDetalharEditalEncerrado(edital);
 						}else {
 							dispose();
 							new TelaVisualizarResultado();
 						}
-					}else {
+					}else if(edital.getResultado().equals("final")) {
+						if (getUsuario() instanceof Coordenador) {
+							dispose();
+							new TelaDetalhesResultado();
+						}else {
+							FabricaJOptionPane.criarMsgErro("Edital encerrado!");
+						}
+					}
+					else {
+						
 						try {						
 							edital.status();
 							dispose();

@@ -18,9 +18,6 @@ import Excecoes.NumeroDoEditalJaExistenteException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.swing.JOptionPane;
-
-
 public class CentralDeInformacoes {
 	private Coordenador coordenador = null;
 	private ArrayList<Aluno> todosOsAlunos = new ArrayList<Aluno>();

@@ -9,13 +9,13 @@ import javax.swing.JMenuItem;
 
 import Classes.Aluno;
 import Telas.FabricaImagens;
-import Telas.TelaEditarInformacoes;
 import Telas.TelaLogin;
 import Telas.TelaPadrao;
 import Telas.TelaVisualizarEditais;
 import Telas.Aluno.TelaEditarInformacoesAluno;
 import Telas.Aluno.TelaHomeAluno;
 import Telas.Coordenador.TelaCadastroEdital;
+import Telas.Coordenador.TelaEditarInformacoesCoordenador;
 import Telas.Coordenador.TelaHomeCoordenador;
 import Telas.Coordenador.TelaTodosOsAlunos;
 
@@ -73,7 +73,7 @@ public class FabricaJMenuBar{
 		editarCadastro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				tela.dispose();
-				new TelaEditarInformacoes();
+				new TelaEditarInformacoesCoordenador();
 			}
 		});
 		
