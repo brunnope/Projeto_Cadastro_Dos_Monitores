@@ -204,7 +204,10 @@ public class TelaDetalharEditalAberto extends TelaPadrao{
 			
 			public void actionPerformed(ActionEvent e) {
 				if (edital.getStatus().equals("abertas")) {
-					//chama o método de calcular rank
+					for (Disciplina disciplina : edital.getDisciplinas()) {
+						disciplina.calcularResultadoDisciplina(edital);
+						disciplina.distribuirVagas();
+					}
 					edital.setResultado("calculado");
 					edital.setStatus("finalizadas");
 					FabricaJOptionPane.criarMsgValido("Resultado Calculado!");

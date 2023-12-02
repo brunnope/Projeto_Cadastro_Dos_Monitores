@@ -181,7 +181,7 @@ public class TelaDetalharEditalAberto extends TelaPadrao{
 								FabricaJOptionPane.criarMsgErro("Você já está inscrito nesta disciplina!");
 							} else {
 								disciplina.getInscricoes().put((Aluno) getUsuario(), new Inscricao((Aluno) getUsuario(), media, cre));
-								
+								FabricaJOptionPane.criarMsgValido("Inscrição realizada com sucesso!");
 								getDados().salvarCentral(getCentral(), "central.xml");
 								dispose();
 								new TelaDetalharEditalAberto(edital);

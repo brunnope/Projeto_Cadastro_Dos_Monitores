@@ -1,7 +1,12 @@
 package Telas.Aluno;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -10,11 +15,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import Classes.Aluno;
 import Classes.Disciplina;
 import Classes.EditalDeMonitoria;
+import Classes.Inscricao;
 import Excecoes.EditalNaoEncontradoException;
-import Persistencia.CentralDeInformacoes;
-import Persistencia.Persistencia;
 import Telas.FabricaImagens;
 import Telas.TelaPadrao;
 import Telas.FabricaComponentes.FabricaIcones;
@@ -24,24 +29,17 @@ import Telas.FabricaComponentes.FabricaJMenuBar;
 
 public class TelaVisualizarResultado extends TelaPadrao{
 
-	private Persistencia dados = new Persistencia();
-	private CentralDeInformacoes central = dados.recuperarCentral("central.xml");
-	//apagar id
+	JTable tableDisciplinas;
 	private EditalDeMonitoria edital;
 	
-	public TelaVisualizarResultado() {
+	public TelaVisualizarResultado(EditalDeMonitoria edital) {
 		super("DETALHES RESULTADO");
+		this.edital = edital;
 		configurarComponentes();
 		setVisible(true);
 	}
 
 	public void configurarComponentes() {
-		try {
-			edital = central.recuperarEditalPeloId(central.getTodosOsEditais().get(0).getId());
-		} catch (EditalNaoEncontradoException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		adicionarMenuBar();
 		adicionarLabels();
 		adicionarTable();
@@ -73,10 +71,23 @@ public class TelaVisualizarResultado extends TelaPadrao{
 		
 		
 		ArrayList<Disciplina> disciplinas = edital.getDisciplinas();
+		for(Disciplina disciplina : disciplinas) {
+			List<Map.Entry<Aluno, Inscricao>> listaOrdenada = disciplina.ordenarInscricoesPorNotaFinal();
+			for(Entry<Aluno, Inscricao> e : listaOrdenada) {
+				Inscricao inscricao = e.getValue();
+				Object[] linha = new Object[4];
+				linha[0] = disciplina.getNome();
+				linha[1] = inscricao.getAluno().getMatricula();
+				linha[2] = inscricao.getNotaFinal();
+				linha[3] = inscricao.getResultado();
+				mResultados.addRow(linha);
+			}
+	}
+		
 		
 
 		// Torna todas as células não editáveis
-		JTable tableDisciplinas = new JTable(mResultados) {
+		tableDisciplinas = new JTable(mResultados) {
 
 			public boolean isCellEditable(int row, int column) {
 		        return false;
@@ -91,6 +102,13 @@ public class TelaVisualizarResultado extends TelaPadrao{
 	
 	private void adicionarButtons() {
 		JButton bDesistir = FabricaJButton.criarJButton("Desistir", 350, 630, 200, 30, Color.GREEN, Color.WHITE, 12);
+		bDesistir.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				
+				
+			}
+		});
 		add(bDesistir);
 	}
 
@@ -103,9 +121,6 @@ public class TelaVisualizarResultado extends TelaPadrao{
 		add(imagemFundo);
 		
 		
-	}
-	public static void main(String[] args) {
-		TelaVisualizarResultado t = new TelaVisualizarResultado();
 	}
 
 }

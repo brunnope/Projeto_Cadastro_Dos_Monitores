@@ -109,7 +109,6 @@ public class Utilidades {
 		coordenador.setEmail(email);
 		coordenador.setNome(nome);
 		coordenador.setSenha(senha);
-	}	
-	
+	}
 }
 
