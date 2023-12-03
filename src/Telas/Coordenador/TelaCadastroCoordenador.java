@@ -4,7 +4,9 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import Excecoes.EmailDiferenteException;
 import Excecoes.EmailInvalidoException;
@@ -23,8 +25,8 @@ public class TelaCadastroCoordenador extends TelaPadrao{
 	private JTextField tNome;
 	private JTextField tEmail;
 	private JTextField tConfirmaEmail;
-	private JTextField tSenha;
-	private JTextField tConfirmaSenha;
+	private JPasswordField tSenha;
+	private JPasswordField tConfirmaSenha;
 	public TelaCadastroCoordenador() {
 		super("CADASTRO COORDENADOR");
 		getContentPane().setBackground(Color.BLACK);
@@ -36,6 +38,7 @@ public class TelaCadastroCoordenador extends TelaPadrao{
 		adicionarLabels();
 		adicionarTextFields();
 		adicionarButtons();
+		adicionarCheckBoxes();
 		adicionarIcones();
 	}
 
@@ -58,7 +61,7 @@ public class TelaCadastroCoordenador extends TelaPadrao{
 		JLabel lSenha = FabricaJLabel.criarJLabel("Senha", 292, 465, 150, 30, Color.BLACK, 12);
 		add(lSenha);
 
-		JLabel lConfirmacaoSenha = FabricaJLabel.criarJLabel("Confirme sua senha", 292, 525, 200, 30, Color.BLACK, 12);
+		JLabel lConfirmacaoSenha = FabricaJLabel.criarJLabel("Confirme sua senha", 292, 545, 200, 30, Color.BLACK, 12);
 		add(lConfirmacaoSenha);
 	}
 
@@ -79,13 +82,13 @@ public class TelaCadastroCoordenador extends TelaPadrao{
 		tSenha.setToolTipText("Exemplo: brunno123");
 		add(tSenha);
 
-		tConfirmaSenha = FabricaJTextField.criarJPasswordField(325, 550, 282, 30, Color.WHITE, Color.BLACK, 12, Color.GRAY);
+		tConfirmaSenha = FabricaJTextField.criarJPasswordField(325, 570, 282, 30, Color.WHITE, Color.BLACK, 12, Color.GRAY);
 		tConfirmaSenha.setToolTipText("Exemplo: brunno123");
 		add(tConfirmaSenha);
 	}
 
 	private void adicionarButtons() {
-		JButton bCadastrar = FabricaJButton.criarJButton("Cadastrar", 372, 610, 155, 30, Color.GREEN, Color.WHITE, 12);
+		JButton bCadastrar = FabricaJButton.criarJButton("Cadastrar", 372, 640, 155, 30, Color.GREEN, Color.WHITE, 12);
 		add(bCadastrar);
 		bCadastrar.addActionListener(new ActionListener() {
 
@@ -108,6 +111,37 @@ public class TelaCadastroCoordenador extends TelaPadrao{
 			}
 		});
 	}
+	
+	private void adicionarCheckBoxes(){
+		
+		JCheckBox boxSenha = new JCheckBox("Visualizar Senha");
+	    boxSenha.setBounds(320, 520, 150, 30);
+	    boxSenha.addActionListener(new ActionListener() {
+	    	
+	        public void actionPerformed(ActionEvent e) {
+	            if (boxSenha.isSelected()) {
+	                tSenha.setEchoChar((char) 0); 
+	            } else {
+	                tSenha.setEchoChar('*'); 
+	            }
+	        }
+	    });
+	    add(boxSenha);
+
+	    JCheckBox boxConfirmaSenha = new JCheckBox("Visualizar Confirmação de Senha");
+	    boxConfirmaSenha.setBounds(320, 600, 250, 30);
+	    boxConfirmaSenha.addActionListener(new ActionListener() {
+	    	
+	        public void actionPerformed(ActionEvent e) {
+	            if (boxConfirmaSenha.isSelected()) {
+	            	tConfirmaSenha.setEchoChar((char) 0);
+	            } else {
+	            	tConfirmaSenha.setEchoChar('*');
+	            }
+	        }
+	    });
+	    add(boxConfirmaSenha);
+	}
 
 	private void adicionarIcones() {
 		JLabel iconeNome = FabricaIcones.criarIcone(FabricaImagens.LOGIN, 283, 310, 50, 30);
@@ -122,7 +156,7 @@ public class TelaCadastroCoordenador extends TelaPadrao{
 		JLabel iconeSenha = FabricaIcones.criarIcone(FabricaImagens.SENHA, 283, 490, 50, 30);
 		add(iconeSenha);
 
-		JLabel iconeConfirmacaoSenha = FabricaIcones.criarIcone(FabricaImagens.SENHA, 283, 550, 50, 30);
+		JLabel iconeConfirmacaoSenha = FabricaIcones.criarIcone(FabricaImagens.SENHA, 283, 570, 50, 30);
 		add(iconeConfirmacaoSenha);
 
 		JLabel iconeIf = FabricaIcones.criarIcone(FabricaImagens.IF, 290, 130, 70, 94);

@@ -19,8 +19,10 @@ import Classes.EditalDeMonitoria;
 import Excecoes.InscricoesFinalizadaException;
 import Excecoes.InscricoesNaoAbertasException;
 import Telas.Aluno.TelaDetalharEditalAberto;
+import Telas.Aluno.TelaHomeAluno;
 import Telas.Aluno.TelaVisualizarResultado;
 import Telas.Coordenador.TelaDetalharEditalEncerrado;
+import Telas.Coordenador.TelaHomeCoordenador;
 import Telas.FabricaComponentes.FabricaIcones;
 import Telas.FabricaComponentes.FabricaJButton;
 import Telas.FabricaComponentes.FabricaJLabel;
@@ -120,7 +122,22 @@ public class TelaVisualizarEditais extends TelaPadrao{
 	}
 	
 	private void adicionarButtons() {
-		JButton bVisualizar = FabricaJButton.criarJButton("Visualizar", 350, 630, 200, 30, Color.GREEN, Color.WHITE, 12);
+		
+		JButton bVoltar = FabricaJButton.criarJButton("Voltar", 250, 630, 190, 30, Color.GREEN, Color.WHITE, 12);
+		bVoltar.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				if (getUsuario() instanceof Coordenador) {
+					new TelaHomeCoordenador();
+				}else {
+					new TelaHomeAluno();
+				}
+			}
+		});
+		add(bVoltar);
+		
+		JButton bVisualizar = FabricaJButton.criarJButton("Visualizar", 460, 630, 190, 30, Color.GREEN, Color.WHITE, 12);
 		add(bVisualizar);
 		bVisualizar.addActionListener(new ActionListener() {
 			
@@ -138,8 +155,8 @@ public class TelaVisualizarEditais extends TelaPadrao{
 							new TelaVisualizarResultado(edital);
 						}
 					}else if(edital.getResultado().equals("final")) {
+						dispose();
 						if (getUsuario() instanceof Coordenador) {
-							dispose();
 							new Telas.Coordenador.TelaDetalhesResultado(edital);
 						}else {
 							new TelaVisualizarResultado(edital);
@@ -185,6 +202,8 @@ public class TelaVisualizarEditais extends TelaPadrao{
 				}
 			}
 		});
+		
+		
 	}
 
 	private void adicionarIcones() {
