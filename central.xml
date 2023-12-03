@@ -9,7 +9,7 @@
     <Classes.Aluno>
       <nome>Guilherme Gay Silva</nome>
       <email>carvalhus026@gmail.com</email>
-      <senha>deus criou adao e eva, e o diabo ele é viadão</senha>
+      <senha>carvalhus123</senha>
       <sexo>MASCULINO</sexo>
       <matricula>696969696969</matricula>
     </Classes.Aluno>
@@ -23,7 +23,7 @@
     <Classes.Aluno>
       <nome>Cicero Brunno das Neves</nome>
       <email>cicero.brunno@academico.ifpb.edu.br</email>
-      <senha>brunno123</senha>
+      <senha>soumuitogaysocorro</senha>
       <sexo>MASCULINO</sexo>
       <matricula>146894689535</matricula>
     </Classes.Aluno>
@@ -40,7 +40,7 @@
       <id>1701541251608</id>
       <numeroEdital>10.0</numeroEdital>
       <dataInicio>2023-11-30</dataInicio>
-      <dataFim>2023-12-30</dataFim>
+      <dataFim>2023-12-02</dataFim>
       <disciplinas>
         <Classes.Disciplina>
           <nome>POO</nome>
@@ -54,7 +54,19 @@
                 <nota>99.0</nota>
                 <CRE>99.0</CRE>
                 <desistiu>false</desistiu>
-                <notaFinal>0.0</notaFinal>
+                <notaFinal>99.0</notaFinal>
+                <resultado>Contemplado em vaga Remunerada</resultado>
+              </Classes.Inscricao>
+            </entry>
+            <entry>
+              <Classes.Aluno reference="../../../../../../../todosOsAlunos/Classes.Aluno"/>
+              <Classes.Inscricao>
+                <aluno reference="../../../../../../../../todosOsAlunos/Classes.Aluno"/>
+                <nota>90.0</nota>
+                <CRE>90.0</CRE>
+                <desistiu>false</desistiu>
+                <notaFinal>90.0</notaFinal>
+                <resultado>Contemplado em vaga Remunerada</resultado>
               </Classes.Inscricao>
             </entry>
           </inscricoes>
@@ -63,14 +75,37 @@
           <nome>Algoritmos</nome>
           <quantDeVagasRemuneradas>2</quantDeVagasRemuneradas>
           <quantDeVagasVoluntarias>3</quantDeVagasVoluntarias>
-          <inscricoes/>
+          <inscricoes>
+            <entry>
+              <Classes.Aluno reference="../../../../../../../todosOsAlunos/Classes.Aluno[2]"/>
+              <Classes.Inscricao>
+                <aluno reference="../../../../../../../../todosOsAlunos/Classes.Aluno[2]"/>
+                <nota>100.0</nota>
+                <CRE>100.0</CRE>
+                <desistiu>false</desistiu>
+                <notaFinal>100.0</notaFinal>
+                <resultado>Contemplado em vaga Remunerada</resultado>
+              </Classes.Inscricao>
+            </entry>
+            <entry>
+              <Classes.Aluno reference="../../../../../../../todosOsAlunos/Classes.Aluno"/>
+              <Classes.Inscricao>
+                <aluno reference="../../../../../../../../todosOsAlunos/Classes.Aluno"/>
+                <nota>90.0</nota>
+                <CRE>90.0</CRE>
+                <desistiu>false</desistiu>
+                <notaFinal>90.0</notaFinal>
+                <resultado>Contemplado em vaga Remunerada</resultado>
+              </Classes.Inscricao>
+            </entry>
+          </inscricoes>
         </Classes.Disciplina>
       </disciplinas>
       <pesoCRE>0.5</pesoCRE>
       <pesoMedia>0.5</pesoMedia>
       <numMaxInscricoes>2</numMaxInscricoes>
-      <resultado>não calculado</resultado>
-      <status>abertas</status>
+      <resultado>calculado</resultado>
+      <status>finalizadas</status>
     </Classes.EditalDeMonitoria>
     <Classes.EditalDeMonitoria>
       <id>1701543944511</id>
@@ -84,6 +119,17 @@
           <quantDeVagasVoluntarias>2</quantDeVagasVoluntarias>
           <inscricoes>
             <entry>
+              <Classes.Aluno reference="../../../../../../../todosOsAlunos/Classes.Aluno[3]"/>
+              <Classes.Inscricao>
+                <aluno reference="../../../../../../../../todosOsAlunos/Classes.Aluno[3]"/>
+                <nota>80.0</nota>
+                <CRE>90.0</CRE>
+                <desistiu>true</desistiu>
+                <notaFinal>85.0</notaFinal>
+                <resultado>desistente</resultado>
+              </Classes.Inscricao>
+            </entry>
+            <entry>
               <Classes.Aluno reference="../../../../../../../todosOsAlunos/Classes.Aluno[2]"/>
               <Classes.Inscricao>
                 <aluno reference="../../../../../../../../todosOsAlunos/Classes.Aluno[2]"/>
@@ -91,7 +137,7 @@
                 <CRE>90.0</CRE>
                 <desistiu>false</desistiu>
                 <notaFinal>85.0</notaFinal>
-                <resultado>Contemplado em vaga Remunerada</resultado>
+                <resultado>Bolsista</resultado>
               </Classes.Inscricao>
             </entry>
             <entry>
@@ -102,18 +148,7 @@
                 <CRE>80.0</CRE>
                 <desistiu>false</desistiu>
                 <notaFinal>85.0</notaFinal>
-                <resultado>Contemplado em vaga Remunerada</resultado>
-              </Classes.Inscricao>
-            </entry>
-            <entry>
-              <Classes.Aluno reference="../../../../../../../todosOsAlunos/Classes.Aluno[3]"/>
-              <Classes.Inscricao>
-                <aluno reference="../../../../../../../../todosOsAlunos/Classes.Aluno[3]"/>
-                <nota>80.0</nota>
-                <CRE>90.0</CRE>
-                <desistiu>false</desistiu>
-                <notaFinal>85.0</notaFinal>
-                <resultado>Contemplado em vaga Remunerada</resultado>
+                <resultado>Bolsista</resultado>
               </Classes.Inscricao>
             </entry>
           </inscricoes>
@@ -124,14 +159,25 @@
           <quantDeVagasVoluntarias>1</quantDeVagasVoluntarias>
           <inscricoes>
             <entry>
+              <Classes.Aluno reference="../../../../../../../todosOsAlunos/Classes.Aluno[3]"/>
+              <Classes.Inscricao>
+                <aluno reference="../../../../../../../../todosOsAlunos/Classes.Aluno[3]"/>
+                <nota>100.0</nota>
+                <CRE>90.0</CRE>
+                <desistiu>true</desistiu>
+                <notaFinal>95.0</notaFinal>
+                <resultado>desistente</resultado>
+              </Classes.Inscricao>
+            </entry>
+            <entry>
               <Classes.Aluno reference="../../../../../../../todosOsAlunos/Classes.Aluno[2]"/>
               <Classes.Inscricao>
                 <aluno reference="../../../../../../../../todosOsAlunos/Classes.Aluno[2]"/>
                 <nota>100.0</nota>
                 <CRE>90.0</CRE>
-                <desistiu>false</desistiu>
+                <desistiu>true</desistiu>
                 <notaFinal>95.0</notaFinal>
-                <resultado>Contemplado em vaga Remunerada</resultado>
+                <resultado>desistente</resultado>
               </Classes.Inscricao>
             </entry>
             <entry>
@@ -142,18 +188,7 @@
                 <CRE>80.0</CRE>
                 <desistiu>false</desistiu>
                 <notaFinal>87.5</notaFinal>
-                <resultado>Não Contemplado</resultado>
-              </Classes.Inscricao>
-            </entry>
-            <entry>
-              <Classes.Aluno reference="../../../../../../../todosOsAlunos/Classes.Aluno[3]"/>
-              <Classes.Inscricao>
-                <aluno reference="../../../../../../../../todosOsAlunos/Classes.Aluno[3]"/>
-                <nota>100.0</nota>
-                <CRE>90.0</CRE>
-                <desistiu>false</desistiu>
-                <notaFinal>95.0</notaFinal>
-                <resultado>Contemplado em vaga voluntária</resultado>
+                <resultado>Bolsista</resultado>
               </Classes.Inscricao>
             </entry>
           </inscricoes>
@@ -164,14 +199,25 @@
           <quantDeVagasVoluntarias>1</quantDeVagasVoluntarias>
           <inscricoes>
             <entry>
+              <Classes.Aluno reference="../../../../../../../todosOsAlunos/Classes.Aluno[3]"/>
+              <Classes.Inscricao>
+                <aluno reference="../../../../../../../../todosOsAlunos/Classes.Aluno[3]"/>
+                <nota>90.0</nota>
+                <CRE>90.0</CRE>
+                <desistiu>true</desistiu>
+                <notaFinal>90.0</notaFinal>
+                <resultado>desistente</resultado>
+              </Classes.Inscricao>
+            </entry>
+            <entry>
               <Classes.Aluno reference="../../../../../../../todosOsAlunos/Classes.Aluno[2]"/>
               <Classes.Inscricao>
                 <aluno reference="../../../../../../../../todosOsAlunos/Classes.Aluno[2]"/>
                 <nota>95.0</nota>
                 <CRE>90.0</CRE>
-                <desistiu>false</desistiu>
+                <desistiu>true</desistiu>
                 <notaFinal>92.5</notaFinal>
-                <resultado>Contemplado em vaga Remunerada</resultado>
+                <resultado>desistente</resultado>
               </Classes.Inscricao>
             </entry>
             <entry>
@@ -182,18 +228,7 @@
                 <CRE>80.0</CRE>
                 <desistiu>false</desistiu>
                 <notaFinal>90.0</notaFinal>
-                <resultado>Contemplado em vaga Remunerada</resultado>
-              </Classes.Inscricao>
-            </entry>
-            <entry>
-              <Classes.Aluno reference="../../../../../../../todosOsAlunos/Classes.Aluno[3]"/>
-              <Classes.Inscricao>
-                <aluno reference="../../../../../../../../todosOsAlunos/Classes.Aluno[3]"/>
-                <nota>90.0</nota>
-                <CRE>90.0</CRE>
-                <desistiu>false</desistiu>
-                <notaFinal>90.0</notaFinal>
-                <resultado>Contemplado em vaga voluntária</resultado>
+                <resultado>Bolsista</resultado>
               </Classes.Inscricao>
             </entry>
           </inscricoes>
@@ -202,39 +237,82 @@
       <pesoCRE>0.5</pesoCRE>
       <pesoMedia>0.5</pesoMedia>
       <numMaxInscricoes>3</numMaxInscricoes>
+      <resultado>final</resultado>
+      <status>finalizadas</status>
+    </Classes.EditalDeMonitoria>
+    <Classes.EditalDeMonitoria>
+      <id>1701575579477</id>
+      <numeroEdital>200.0</numeroEdital>
+      <dataInicio>2023-12-03</dataInicio>
+      <dataFim>2023-12-02</dataFim>
+      <disciplinas>
+        <Classes.Disciplina>
+          <nome>poo</nome>
+          <quantDeVagasRemuneradas>2</quantDeVagasRemuneradas>
+          <quantDeVagasVoluntarias>2</quantDeVagasVoluntarias>
+          <inscricoes>
+            <entry>
+              <Classes.Aluno reference="../../../../../../../todosOsAlunos/Classes.Aluno[2]"/>
+              <Classes.Inscricao>
+                <aluno reference="../../../../../../../../todosOsAlunos/Classes.Aluno[2]"/>
+                <nota>99.0</nota>
+                <CRE>99.0</CRE>
+                <desistiu>true</desistiu>
+                <notaFinal>99.0</notaFinal>
+                <resultado>desistente</resultado>
+              </Classes.Inscricao>
+            </entry>
+          </inscricoes>
+        </Classes.Disciplina>
+        <Classes.Disciplina>
+          <nome>matematica</nome>
+          <quantDeVagasRemuneradas>2</quantDeVagasRemuneradas>
+          <quantDeVagasVoluntarias>2</quantDeVagasVoluntarias>
+          <inscricoes/>
+        </Classes.Disciplina>
+      </disciplinas>
+      <pesoCRE>0.9</pesoCRE>
+      <pesoMedia>0.1</pesoMedia>
+      <numMaxInscricoes>1</numMaxInscricoes>
       <resultado>calculado</resultado>
       <status>finalizadas</status>
     </Classes.EditalDeMonitoria>
     <Classes.EditalDeMonitoria>
-      <id>1701548784656</id>
-      <numeroEdital>12.5</numeroEdital>
-      <dataInicio>2023-12-02</dataInicio>
-      <dataFim>2023-12-25</dataFim>
+      <id>1701577250989</id>
+      <numeroEdital>201.0</numeroEdital>
+      <dataInicio>2023-12-01</dataInicio>
+      <dataFim>2023-12-02</dataFim>
       <disciplinas>
         <Classes.Disciplina>
-          <nome>Matematica Aplicada a Computação</nome>
-          <quantDeVagasRemuneradas>3</quantDeVagasRemuneradas>
-          <quantDeVagasVoluntarias>2</quantDeVagasVoluntarias>
-          <inscricoes/>
-        </Classes.Disciplina>
-        <Classes.Disciplina>
-          <nome>Ingles Instrumental 1</nome>
-          <quantDeVagasRemuneradas>1</quantDeVagasRemuneradas>
-          <quantDeVagasVoluntarias>1</quantDeVagasVoluntarias>
-          <inscricoes/>
-        </Classes.Disciplina>
-        <Classes.Disciplina>
-          <nome>Ingles Instrumental 2</nome>
+          <nome>poo</nome>
           <quantDeVagasRemuneradas>2</quantDeVagasRemuneradas>
-          <quantDeVagasVoluntarias>1</quantDeVagasVoluntarias>
+          <quantDeVagasVoluntarias>2</quantDeVagasVoluntarias>
           <inscricoes/>
         </Classes.Disciplina>
       </disciplinas>
       <pesoCRE>0.5</pesoCRE>
       <pesoMedia>0.5</pesoMedia>
-      <numMaxInscricoes>3</numMaxInscricoes>
+      <numMaxInscricoes>2</numMaxInscricoes>
+      <resultado>calculado</resultado>
+      <status>finalizadas</status>
+    </Classes.EditalDeMonitoria>
+    <Classes.EditalDeMonitoria>
+      <id>1701577517796</id>
+      <numeroEdital>2023.0</numeroEdital>
+      <dataInicio>2023-12-02</dataInicio>
+      <dataFim>2023-12-20</dataFim>
+      <disciplinas>
+        <Classes.Disciplina>
+          <nome>poo</nome>
+          <quantDeVagasRemuneradas>2</quantDeVagasRemuneradas>
+          <quantDeVagasVoluntarias>2</quantDeVagasVoluntarias>
+          <inscricoes/>
+        </Classes.Disciplina>
+      </disciplinas>
+      <pesoCRE>0.5</pesoCRE>
+      <pesoMedia>0.5</pesoMedia>
+      <numMaxInscricoes>2</numMaxInscricoes>
       <resultado>não calculado</resultado>
-      <status>abertas</status>
     </Classes.EditalDeMonitoria>
   </todosOsEditais>
 </Persistencia.CentralDeInformacoes>
