@@ -8,6 +8,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import org.apache.commons.mail.EmailException;
+
 import Excecoes.EmailNaoEncontradoException;
 import Telas.FabricaComponentes.FabricaIcones;
 import Telas.FabricaComponentes.FabricaJButton;
@@ -78,7 +80,7 @@ public class TelaEsqueciSenha extends TelaPadrao{
 					FabricaJOptionPane.criarMsg("Senha Enviada por Email!");
 					dispose();
 					new TelaLogin();
-					} catch (EmailNaoEncontradoException e1) {
+					} catch (EmailNaoEncontradoException | EmailException e1) {
 					FabricaJOptionPane.criarMsgErro(e1.getMessage());
 					}
 				}

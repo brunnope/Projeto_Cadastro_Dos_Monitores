@@ -4,7 +4,7 @@ import Persistencia.Persistencia;
 import Telas.TelaLogin;
 import Telas.Coordenador.TelaCadastroCoordenador;
 
-public class MainCadastro {
+public class Main {
 	public static void main(String[] args) {
 		Persistencia dados = new Persistencia();
 		CentralDeInformacoes central = dados.recuperarCentral("central.xml");

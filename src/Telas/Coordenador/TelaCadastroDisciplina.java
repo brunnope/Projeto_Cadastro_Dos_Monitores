@@ -157,9 +157,4 @@ public class TelaCadastroDisciplina extends TelaPadrao{
 		add(iconeVagaVoluntario);
 		
 	}
-	
-	public static void main(String[] args) {
-		TelaCadastroEdital t = new TelaCadastroEdital();
-	}
-
 }

@@ -174,7 +174,7 @@ public class TelaEditarEdital extends TelaPadrao{
 					if(((pesoCRE + pesoMedia) != 1) || (pesoCRE == 0) || (pesoMedia == 0)){
 						FabricaJOptionPane.criarMsgErro("Peso CRE e Média precisam dar 1 somados e diferentes de 0!");
 					}
-					else if(numMaxInscricoes <= edital.getNumMaxInscricoes()) {
+					else if(numMaxInscricoes < edital.getNumMaxInscricoes()) {
 						FabricaJOptionPane.criarMsgErro("Só pode aumentar o número máximo de inscrições!");
 					}
 					else {

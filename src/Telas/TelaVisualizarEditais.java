@@ -14,6 +14,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 import Classes.Coordenador;
+import Classes.Disciplina;
 import Classes.EditalDeMonitoria;
 import Excecoes.InscricoesFinalizadaException;
 import Excecoes.InscricoesNaoAbertasException;
@@ -142,7 +143,7 @@ public class TelaVisualizarEditais extends TelaPadrao{
 							dispose();
 							new Telas.Coordenador.TelaDetalhesResultado(edital);
 						}else {
-							FabricaJOptionPane.criarMsgErro("Edital encerrado!");
+							new TelaVisualizarResultado(edital);
 						}
 					}
 					else {
@@ -156,7 +157,18 @@ public class TelaVisualizarEditais extends TelaPadrao{
 								new TelaDetalharEditalAberto(edital);
 							}
 						}catch (InscricoesFinalizadaException e2) {
+							
+							//calcula automático os resultados caso tenha finalizado e não calculado!
 							if (getUsuario() instanceof Coordenador) {
+								if ((edital.getResultado().equals("não calculado") )){
+									for (Disciplina disciplina : edital.getDisciplinas()) {
+										disciplina.calcularResultadoDisciplina(edital);
+										disciplina.distribuirVagas();
+									}
+									edital.setResultado("calculado");
+									edital.setStatus("finalizadas");
+									getDados().salvarCentral(getCentral(), "central.xml");
+								}
 								dispose();
 								new TelaDetalharEditalEncerrado(edital);
 							}else {

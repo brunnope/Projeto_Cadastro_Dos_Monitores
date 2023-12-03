@@ -84,7 +84,4 @@ public class TelaHomeCoordenador extends TelaPadrao{
 		JLabel imagemFundo = FabricaIcones.criarIcone(FabricaImagens.TELA_LOGIN, 0, 0, 900, 800);
 		add(imagemFundo);
 	}
-	public static void main(String[] args) {
-		TelaHomeCoordenador t = new TelaHomeCoordenador();
-	}
 }

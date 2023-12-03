@@ -3,6 +3,8 @@ package Telas.Aluno;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +13,7 @@ import java.util.Map.Entry;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -19,20 +22,19 @@ import Classes.Aluno;
 import Classes.Disciplina;
 import Classes.EditalDeMonitoria;
 import Classes.Inscricao;
-import Excecoes.EditalNaoEncontradoException;
 import Telas.FabricaImagens;
 import Telas.TelaPadrao;
+import Telas.TelaVisualizarEditais;
 import Telas.FabricaComponentes.FabricaIcones;
 import Telas.FabricaComponentes.FabricaJButton;
 import Telas.FabricaComponentes.FabricaJLabel;
 import Telas.FabricaComponentes.FabricaJMenuBar;
+import Telas.FabricaComponentes.FabricaJOptionPane;
 
 public class TelaVisualizarResultado extends TelaPadrao{
-
-	private Persistencia dados = new Persistencia();
-	private CentralDeInformacoes central = dados.recuperarCentral("central.xml");
-	//apagar id
+	JTable tableDisciplinas;
 	private EditalDeMonitoria edital;
+	JButton bDesistir;
 	
 	public TelaVisualizarResultado(EditalDeMonitoria edital) {
 		super("DETALHES RESULTADO");
@@ -47,6 +49,11 @@ public class TelaVisualizarResultado extends TelaPadrao{
 		adicionarTable();
 		adicionarButtons();
 		adicionarIcones();
+		
+		//se final, aluno não pode desistir e apenas visualizar o resultado
+		if (edital.getResultado().equals("final")) {
+			bDesistir.setEnabled(false);
+		}
 	}
 	
 	private void adicionarMenuBar() {
@@ -95,24 +102,99 @@ public class TelaVisualizarResultado extends TelaPadrao{
 		        return false;
 		    }
 		};
+		//mostrar por completo a informação da célula selecionada
+		 tableDisciplinas.addMouseMotionListener(new MouseMotionAdapter() {
+	            public void mouseMoved(MouseEvent e) {
+	            	// pega onde o mouse está selecionando
+	                int linha = tableDisciplinas.rowAtPoint(e.getPoint());
+	                int coluna = tableDisciplinas.columnAtPoint(e.getPoint());
+
+	                // Verificar se as coordenadas são válidas
+	                if (linha >= 0 && coluna >= 0) {
+	                    // Obter o valor da célula e configurar o ToolTipText
+	                    Object valorCelula = tableDisciplinas.getValueAt(linha, coluna);
+	                    tableDisciplinas.setToolTipText(valorCelula.toString());
+	                } else {
+	                    // Se o mouse não estiver sobre uma célula válida, limpar o ToolTipText
+	                    tableDisciplinas.setToolTipText(null);
+	                }
+	            }
+	        });
+		
 		//permite apenas uma seleção
 		JScrollPane rolagemTabela = new JScrollPane(tableDisciplinas);
-		rolagemTabela.setBounds(295, 250, 315, 350);
+		rolagemTabela.setBounds(275, 250, 350, 350);
 		add(rolagemTabela);
 		
 	}
 	
 	private void adicionarButtons() {
-		JButton bDesistir = FabricaJButton.criarJButton("Desistir", 350, 630, 200, 30, Color.GREEN, Color.WHITE, 12);
+		JButton bAtualizar = FabricaJButton.criarJButton("Atualizar", 275, 630, 170, 30, Color.GREEN, Color.WHITE, 12);
+		add(bAtualizar);
+		bAtualizar.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new TelaVisualizarResultado(edital);
+			}
+		});
+		
+		bDesistir = FabricaJButton.criarJButton("Desistir", 455, 630, 170, 30, Color.GREEN, Color.WHITE, 12);
+		add(bDesistir);
 		bDesistir.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				
-				
+				if (tableDisciplinas.getSelectedRow() != -1) {
+					
+					String matriculaSelecionada = (String) tableDisciplinas.getValueAt(tableDisciplinas.getSelectedRow(), 1);
+					Aluno aluno = (Aluno) getUsuario();
+					
+					if (matriculaSelecionada.equals(aluno.getMatricula())) {
+					
+						String nomeDisciplina = (String) tableDisciplinas.getValueAt(tableDisciplinas.getSelectedRow(), 0);
+						Disciplina disciplina = edital.recuperarDisciplinaPeloNome(nomeDisciplina);
+						if (disciplina.getInscricoes().containsKey(aluno)) {
+							
+							Inscricao inscricao = disciplina.getInscricoes().get(aluno);
+							
+							if (!(inscricao.getResultado().equals("desistente"))) {
+								int opc = FabricaJOptionPane.criarMsgDeOpcao("Confirmação", "Desistir da vaga?");
+								
+								if(opc == JOptionPane.YES_OPTION) {
+									inscricao.setDesistiu(true);
+									inscricao.setResultado("desistente");
+									disciplina.distribuirVagas();	
+									FabricaJOptionPane.criarMsgAtencao("Você desistiu da sua vaga!");
+									getDados().salvarCentral(getCentral(), "central.xml");
+								}
+								
+							}else{
+								FabricaJOptionPane.criarMsgErro("Você já é desistente!");
+							}
+						} else {
+							FabricaJOptionPane.criarMsgErro("Você ainda não está inscrito nesta disciplina!");
+						}
+					}else {
+						FabricaJOptionPane.criarMsgErro("Selecione sua inscrição!");
+					}
+					
+		        } else {
+		            FabricaJOptionPane.criarMsgErro("Selecione uma disciplina na tabela!");
+		        }
+		    }
+		});	
+		
+		JButton bVoltar = FabricaJButton.criarJButton("Voltar", 275, 670, 350, 30, Color.GREEN, Color.WHITE, 12);
+		add(bVoltar);
+		bVoltar.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new TelaVisualizarEditais();
 			}
 		});
-		add(bDesistir);
 	}
+	
 
 	private void adicionarIcones() {
 		
@@ -123,9 +205,6 @@ public class TelaVisualizarResultado extends TelaPadrao{
 		add(imagemFundo);
 		
 		
-	}
-	public static void main(String[] args) {
-		TelaVisualizarResultado t = new TelaVisualizarResultado();
 	}
 
 }

@@ -1,5 +1,7 @@
 package Classes;
 
+import org.apache.commons.mail.EmailException;
+
 import Excecoes.AlunoJaMatriculadoException;
 import Excecoes.CamposVaziosException;
 import Excecoes.CredenciaisInvalidasException;
@@ -67,10 +69,10 @@ public class Utilidades {
 		}throw new CredenciaisInvalidasException();
 	}
 
-	public void recuperarSenhaPorEmail(CentralDeInformacoes c, String email) throws EmailNaoEncontradoException {
+	public void recuperarSenhaPorEmail(CentralDeInformacoes c, String email) throws EmailNaoEncontradoException, EmailException {
 		CentralDeInformacoes central = c;
 		String senha = central.recuperarSenhaPeloEmail(email);
-		Mensageiro.enviarEmail(email, "Sua senha atual é: " + senha);
+		Mensageiro.enviarEmail(email, "Recuperação de Senha" ,"Sua senha atual é: " + senha);
 	}
 	public void editarAluno(CentralDeInformacoes central, Aluno aluno, String nome, String email, String senha, String matricula, String sex) 
 			throws EmailInvalidoException, SenhaMuitoPequenaException, CamposVaziosException, EmailJaCadastradoException, AlunoJaMatriculadoException {
@@ -109,6 +111,15 @@ public class Utilidades {
 		coordenador.setEmail(email);
 		coordenador.setNome(nome);
 		coordenador.setSenha(senha);
+	}
+	
+	public String recuperarEmailPorMatricula(CentralDeInformacoes central, String matricula) {
+		for(Aluno aluno: central.getTodosOsAlunos()) {
+			if(aluno.getMatricula().equals(matricula)) {
+				return aluno.getEmail();
+			}
+		}
+		return null;
 	}
 }
 

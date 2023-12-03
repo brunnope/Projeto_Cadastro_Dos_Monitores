@@ -72,6 +72,15 @@ public class EditalDeMonitoria {
 		getDisciplinas().add(disciplina);
 	}
 	
+	public Disciplina recuperarDisciplinaPeloNome(String nome) {
+		for(Disciplina disciplina: disciplinas) {
+			if (disciplina.getNome().equals(nome)) {
+				return disciplina;
+			}
+		}
+		return null;
+	}
+	
 	public boolean jaAcabou() throws InscricoesFinalizadaException {
 		LocalDate dataAtual = LocalDate.now();
 		if (dataAtual.isBefore(dataFim)) {

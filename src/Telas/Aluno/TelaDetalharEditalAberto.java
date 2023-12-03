@@ -166,29 +166,42 @@ public class TelaDetalharEditalAberto extends TelaPadrao{
 		JButton bInscrever = FabricaJButton.criarJButton("Inscrever-se", 457, 610, 150, 30, Color.GREEN, Color.WHITE, 12);
 		bInscrever.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (tableDisciplinas.getSelectedRow() == -1) {
-					FabricaJOptionPane.criarMsgErro("Selecione uma disciplina!");
-				} else {
-					try {
-						float cre = Float.parseFloat(fCRE.getText());
-						float media = Float.parseFloat(fMedia.getText());
-
-						if (cre > 100 || media > 100 || cre < 0 || media < 0) {
-							FabricaJOptionPane.criarMsgErro("Valores de CRE ou média inválidos!");
-						} else {
-							disciplina = edital.getDisciplinas().get(tableDisciplinas.getSelectedRow());
-							if (disciplina.getInscricoes().containsKey((Aluno) getUsuario())) {
-								FabricaJOptionPane.criarMsgErro("Você já está inscrito nesta disciplina!");
+				int maximoDeInscritos = edital.getNumMaxInscricoes();
+				int numVezesInscrito = 0;
+				
+				for(Disciplina disciplina: edital.getDisciplinas()) {
+					if(disciplina.getInscricoes().containsKey((Aluno)getUsuario())) {
+						numVezesInscrito++;
+					}
+				}
+				if(numVezesInscrito == maximoDeInscritos) {
+					FabricaJOptionPane.criarMsgErro("Você já atingiu o máximo de inscrições para esse edital!");
+				}else {
+					if (tableDisciplinas.getSelectedRow() == -1) {
+						FabricaJOptionPane.criarMsgErro("Selecione uma disciplina!");
+					} else {
+						try {
+							float cre = Float.parseFloat(fCRE.getText());
+							float media = Float.parseFloat(fMedia.getText());
+							
+							if (cre > 100 || media > 100 || cre < 0 || media < 0) {
+								FabricaJOptionPane.criarMsgErro("Valores de CRE ou média inválidos!");
 							} else {
-								disciplina.getInscricoes().put((Aluno) getUsuario(), new Inscricao((Aluno) getUsuario(), media, cre));
-								FabricaJOptionPane.criarMsgValido("Inscrição realizada com sucesso!");
-								getDados().salvarCentral(getCentral(), "central.xml");
-								dispose();
-								new TelaDetalharEditalAberto(edital);
+								
+								disciplina = edital.getDisciplinas().get(tableDisciplinas.getSelectedRow());
+								if (disciplina.getInscricoes().containsKey((Aluno) getUsuario())) {
+									FabricaJOptionPane.criarMsgErro("Você já está inscrito nesta disciplina!");
+								} else {
+									disciplina.getInscricoes().put((Aluno) getUsuario(), new Inscricao((Aluno) getUsuario(), media, cre));
+									FabricaJOptionPane.criarMsgValido("Inscrição realizada com sucesso!");
+									getDados().salvarCentral(getCentral(), "central.xml");
+									dispose();
+									new TelaDetalharEditalAberto(edital);
+								}
 							}
+						} catch (NumberFormatException ex) {
+							FabricaJOptionPane.criarMsgErro("Preencha os campos vazios!");
 						}
-					} catch (NumberFormatException ex) {
-						FabricaJOptionPane.criarMsgErro("Preencha os campos vazios!");
 					}
 				}
 			}

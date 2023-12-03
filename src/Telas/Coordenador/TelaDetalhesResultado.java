@@ -1,37 +1,46 @@
 package Telas.Coordenador;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.swing.JButton;
-import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+
+import com.itextpdf.text.DocumentException;
 
 import Classes.Aluno;
 import Classes.Disciplina;
 import Classes.EditalDeMonitoria;
+import Classes.GeradorDeRelatorios;
 import Classes.Inscricao;
+import Excecoes.AlunoNaoEncontradoException;
 import Excecoes.EditalNaoEncontradoException;
-import Persistencia.CentralDeInformacoes;
-import Persistencia.Persistencia;
 import Telas.FabricaImagens;
 import Telas.TelaPadrao;
+import Telas.Aluno.TelaEditarInformacoesAluno;
 import Telas.FabricaComponentes.FabricaIcones;
 import Telas.FabricaComponentes.FabricaJButton;
 import Telas.FabricaComponentes.FabricaJLabel;
 import Telas.FabricaComponentes.FabricaJMenuBar;
-import Telas.FabricaComponentes.FabricaJTextField;
+import Telas.FabricaComponentes.FabricaJOptionPane;
 
 public class TelaDetalhesResultado extends TelaPadrao{
 	private EditalDeMonitoria edital;
+	private JButton bFecharEdital;
+	private JTable tableDisciplinas;
 	
 	public TelaDetalhesResultado(EditalDeMonitoria edital) {
 		super("DETALHES RESULTADO");
@@ -46,6 +55,10 @@ public class TelaDetalhesResultado extends TelaPadrao{
 		adicionarTable();
 		adicionarButtons();
 		adicionarIcones();
+		
+		if (edital.getResultado().equals("final")) {
+			bFecharEdital.setEnabled(false);
+		}
 	}
 	
 	private void adicionarMenuBar() {
@@ -86,12 +99,32 @@ public class TelaDetalhesResultado extends TelaPadrao{
 			}
 	}
 		// Torna todas as células não editáveis
-		JTable tableDisciplinas = new JTable(mResultados) {
+		tableDisciplinas = new JTable(mResultados) {
 
 			public boolean isCellEditable(int row, int column) {
 		        return false;
 		    }
 		};
+		
+		//mostrar por completo a informação da célula selecionada
+		 tableDisciplinas.addMouseMotionListener(new MouseMotionAdapter() {
+	            public void mouseMoved(MouseEvent e) {
+	            	// pega onde o mouse está selecionando
+	                int linha = tableDisciplinas.rowAtPoint(e.getPoint());
+	                int coluna = tableDisciplinas.columnAtPoint(e.getPoint());
+
+	                // Verificar se as coordenadas são válidas
+	                if (linha >= 0 && coluna >= 0) {
+	                    // Obter o valor da célula e configurar o ToolTipText
+	                    Object valorCelula = tableDisciplinas.getValueAt(linha, coluna);
+	                    tableDisciplinas.setToolTipText(valorCelula.toString());
+	                } else {
+	                    // Se o mouse não estiver sobre uma célula válida, limpar o ToolTipText
+	                    tableDisciplinas.setToolTipText(null);
+	                }
+	            }
+	        });
+		 
 		//permite apenas uma seleção
 		JScrollPane rolagemTabela = new JScrollPane(tableDisciplinas);
 		rolagemTabela.setBounds(295, 250, 315, 350);
@@ -100,14 +133,70 @@ public class TelaDetalhesResultado extends TelaPadrao{
 	}
 	
 	private void adicionarButtons() {
-		JButton bFecharEdital = FabricaJButton.criarJButton("Fechar Edital", 293, 610, 315, 30, Color.GREEN, Color.WHITE, 12);
+		bFecharEdital = FabricaJButton.criarJButton("Fechar Edital", 293, 610, 315, 30, Color.GREEN, Color.WHITE, 12);
 		add(bFecharEdital);
+		bFecharEdital.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				int opc = FabricaJOptionPane.criarMsgDeOpcao("Confirmação","Fechar Edital?");
+				if (opc == JOptionPane.YES_OPTION) {
+					FabricaJOptionPane.criarMsgValido("Edital finalizado com sucesso!");
+					edital.setResultado("final");
+					getDados().salvarCentral(getCentral(), "central.xml");
+				}
+				
+			}
+		});
 		
 		JButton bEnviarEmail = FabricaJButton.criarJButton("Enviar Email", 293, 650, 150, 30, Color.GREEN, Color.WHITE, 12);
 		add(bEnviarEmail);
+		bEnviarEmail.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				if (tableDisciplinas.getSelectedRow() == -1){
+					FabricaJOptionPane.criarMsgErro("Selecione algum Aluno!");
+				}else {
+					
+					String matricula = (String) tableDisciplinas.getValueAt(tableDisciplinas.getSelectedRow(), 1);
+					Aluno aluno;
+					try {
+						aluno = getCentral().recuperarAlunoPorMatricula(matricula);
+						new TelaEnviarEmail(aluno.getEmail());
+					} catch (AlunoNaoEncontradoException e1) {
+						FabricaJOptionPane.criarMsgErro("Erro ao enviar!");
+					}
+				}
+			}
+		});
 		
 		JButton bGerarPDF = FabricaJButton.criarJButton("Gerar PDF", 458, 650, 150, 30, Color.GREEN, Color.WHITE, 12);
 		add(bGerarPDF);
+		bGerarPDF.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				int opc = FabricaJOptionPane.criarMsgDeOpcao("Confirmação", "Gerar PDF do resultado?");
+				if (opc == JOptionPane.YES_OPTION) {
+					try {
+						String caminho = FabricaJOptionPane.criarInput("Digite o caminho do arquivo: ");
+						
+						if((caminho == null) || (caminho.isBlank())) {
+							FabricaJOptionPane.criarMsgErro("Digite algum caminho!");
+						}
+						else {
+							if (caminho.endsWith(".pdf")) {
+								GeradorDeRelatorios.gerarPDF(caminho, tableDisciplinas, edital);
+								FabricaJOptionPane.criarMsgValido("PDF gerado com sucesso!");
+							} else {
+							    FabricaJOptionPane.criarMsgErro("O arquivo não é um PDF");
+							}
+							
+						}
+					} catch (FileNotFoundException | DocumentException e1) {
+						FabricaJOptionPane.criarMsgErro(e1.getMessage());
+					}
+				}
+			}
+		});
 	}
 
 	private void adicionarIcones() {

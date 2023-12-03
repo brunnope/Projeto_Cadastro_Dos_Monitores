@@ -279,9 +279,4 @@ public class TelaCadastroEdital extends TelaPadrao{
 
 
 	}
-	public static void main(String[] args) {
-		TelaCadastroEdital t = new TelaCadastroEdital();
-	}
-
-
 }

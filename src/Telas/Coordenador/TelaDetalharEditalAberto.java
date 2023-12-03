@@ -22,6 +22,8 @@ import Classes.Disciplina;
 import Classes.EditalDeMonitoria;
 import Excecoes.EditalInvalidoException;
 import Excecoes.EditalNaoEncontradoException;
+import Excecoes.InscricoesFinalizadaException;
+import Excecoes.InscricoesNaoAbertasException;
 import Persistencia.CentralDeInformacoes;
 import Persistencia.Persistencia;
 import Telas.FabricaImagens;

@@ -74,9 +74,4 @@ public class TelaHomeAluno extends TelaPadrao{
 		JLabel imagemFundo = FabricaIcones.criarIcone(FabricaImagens.TELA_LOGIN, 0, 0, 900, 800);
 		add(imagemFundo);
 	}
-	
-	public static void main(String[] args) {
-		TelaHomeAluno t = new TelaHomeAluno();
-	}
-
 }

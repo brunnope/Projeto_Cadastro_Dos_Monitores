@@ -19,6 +19,7 @@ public class Disciplina {
 		quantDeVagasRemuneradas = quantRemuneradas;
 		quantDeVagasVoluntarias = quantVoluntarias;
 	}
+	
 	public void calcularResultadoDisciplina(EditalDeMonitoria edital) {
         float pontuacao = 0;
         for(Disciplina disciplina : edital.getDisciplinas()) {
@@ -29,6 +30,8 @@ public class Disciplina {
 
         }
 	}
+	
+	
 	 public void distribuirVagas() {
         List<Map.Entry<Aluno, Inscricao>> listaOrdenada = ordenarInscricoesPorNotaFinal();
 
@@ -43,10 +46,10 @@ public class Disciplina {
             }
 
             if (vagasRemuneradas > 0) {
-                inscricao.setResultado("Contemplado em vaga Remunerada");
+                inscricao.setResultado("Bolsista");
                 vagasRemuneradas--;
             } else if (vagasVoluntarias > 0) {
-                inscricao.setResultado("Contemplado em vaga voluntária");
+                inscricao.setResultado("Voluntário");
                 vagasVoluntarias--;
             } else {
                 inscricao.setResultado("Não Contemplado");

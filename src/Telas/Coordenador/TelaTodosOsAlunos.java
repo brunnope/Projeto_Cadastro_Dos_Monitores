@@ -13,7 +13,6 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.DocumentEvent;
-import javax.swing.table.DefaultTableModel;
 
 import Classes.Aluno;
 import Telas.FabricaImagens;
@@ -107,7 +106,7 @@ public class TelaTodosOsAlunos extends TelaPadrao{
 	}
 
 	private void adicionarButtons() {		
-		JButton bEditar = FabricaJButton.criarJButton("Editar", 293, 640, 150, 30, Color.GREEN, Color.WHITE, 12);
+		JButton bEditar = FabricaJButton.criarJButton("Editar", 292, 640, 101, 30, Color.GREEN, Color.WHITE, 12);
 		add(bEditar);
 		bEditar.addActionListener(new ActionListener() {
 
@@ -122,7 +121,7 @@ public class TelaTodosOsAlunos extends TelaPadrao{
 			}
 		});
 
-		JButton bVisualizar = FabricaJButton.criarJButton("Visualizar", 458, 640, 150, 30, Color.GREEN, Color.WHITE, 12);
+		JButton bVisualizar = FabricaJButton.criarJButton("Visualizar", 506, 640, 101, 30, Color.GREEN, Color.WHITE, 12);
 		bVisualizar.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
@@ -137,7 +136,20 @@ public class TelaTodosOsAlunos extends TelaPadrao{
 		});
 		add(bVisualizar);
 		
-		JButton bVoltar = FabricaJButton.criarJButton("Voltar", 293, 680, 315, 30, Color.GREEN, Color.WHITE, 12);
+		JButton bEnviarEmail = FabricaJButton.criarJButton("Enviar email", 399, 640, 101, 30, Color.GREEN, Color.WHITE, 12);
+		bEnviarEmail.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				if (tableAlunos.getSelectedRow() == -1){
+					FabricaJOptionPane.criarMsgErro("Selecione algum Aluno!");
+				}else {
+					new TelaEnviarEmail(getCentral().getTodosOsAlunos().get(tableAlunos.getSelectedRow()).getEmail());
+				}
+			}
+		});
+		add(bEnviarEmail);
+		
+		JButton bVoltar = FabricaJButton.criarJButton("Voltar", 292, 680, 315, 30, Color.GREEN, Color.WHITE, 12);
 		add(bVoltar);
 		bVoltar.addActionListener(new ActionListener() {
 			
@@ -159,9 +171,5 @@ public class TelaTodosOsAlunos extends TelaPadrao{
 		JLabel imagemFundo = FabricaIcones.criarIcone(FabricaImagens.TELA_LOGIN, 0, 0, 900, 800);
 		add(imagemFundo);
 
-	}
-
-	public static void main(String[] args) {
-		TelaTodosOsAlunos t = new TelaTodosOsAlunos();
 	}
 }
