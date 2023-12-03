@@ -6,10 +6,12 @@ import java.awt.event.ActionListener;
 import java.text.ParseException;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JMenuBar;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
@@ -37,8 +39,8 @@ public class TelaEditarInformacoesAluno extends TelaPadrao{
 	private JTextField tNome;
 	private JTextField tEmail;
 	private JTextField tNovoEmail;
-	private JTextField tSenha;
-	private JTextField tNovaSenha;
+	private JPasswordField tSenha;
+	private JPasswordField tNovaSenha;
 	private JFormattedTextField fMatricula;
 	private JComboBox<String> cGenero;
 	private Aluno aluno;
@@ -58,6 +60,7 @@ public class TelaEditarInformacoesAluno extends TelaPadrao{
 		adicionarTextFields();
 		adicionarComboBox();
 		adicionarButtons();
+		adicionarCheckBoxes();
 		adicionarIcones();
 		preencherCampos();
 		if (TelaPadrao.getUsuario() instanceof Coordenador) {
@@ -113,7 +116,7 @@ public class TelaEditarInformacoesAluno extends TelaPadrao{
 		JLabel lSenha = FabricaJLabel.criarJLabel("Senha atual", 292, 465, 150, 30, Color.BLACK, 12);
 		add(lSenha);
 
-		JLabel lNovaSenha = FabricaJLabel.criarJLabel("Nova senha", 292, 525, 200, 30, Color.BLACK, 12);
+		JLabel lNovaSenha = FabricaJLabel.criarJLabel("Nova senha", 292, 545, 200, 30, Color.BLACK, 12);
 		add(lNovaSenha);
 	}
 	
@@ -149,7 +152,7 @@ public class TelaEditarInformacoesAluno extends TelaPadrao{
 		tSenha.setEditable(false);
 		add(tSenha);
 
-		tNovaSenha = FabricaJTextField.criarJPasswordField(325, 550, 282, 30, Color.WHITE, Color.BLACK, 12, Color.GRAY);
+		tNovaSenha = FabricaJTextField.criarJPasswordField(325, 570, 282, 30, Color.WHITE, Color.BLACK, 12, Color.GRAY);
 		add(tNovaSenha);
 	}
 
@@ -160,7 +163,7 @@ public class TelaEditarInformacoesAluno extends TelaPadrao{
 
 
 	private void adicionarButtons() {
-		JButton bVoltar = FabricaJButton.criarJButton("Voltar", 293, 610, 155, 30, Color.GREEN, Color.WHITE, 12);
+		JButton bVoltar = FabricaJButton.criarJButton("Voltar", 293, 640, 155, 30, Color.GREEN, Color.WHITE, 12);
 		add(bVoltar);
 		bVoltar.addActionListener(new ActionListener() {
 
@@ -174,7 +177,7 @@ public class TelaEditarInformacoesAluno extends TelaPadrao{
 			}
 		});
 
-		JButton bSalvar = FabricaJButton.criarJButton("Salvar", 452, 610, 155, 30, Color.GREEN, Color.WHITE, 12);
+		JButton bSalvar = FabricaJButton.criarJButton("Salvar", 452, 640, 155, 30, Color.GREEN, Color.WHITE, 12);
 		add(bSalvar);
 		bSalvar.addActionListener(new ActionListener() {
 
@@ -202,6 +205,37 @@ public class TelaEditarInformacoesAluno extends TelaPadrao{
 		});
 
 	}
+	
+	private void adicionarCheckBoxes(){
+		
+		JCheckBox boxVisualizarSenhaAtual = new JCheckBox("Visualizar Senha Atual");
+	    boxVisualizarSenhaAtual.setBounds(320, 520, 150, 30);
+	    boxVisualizarSenhaAtual.addActionListener(new ActionListener() {
+	    	
+	        public void actionPerformed(ActionEvent e) {
+	            if (boxVisualizarSenhaAtual.isSelected()) {
+	                tSenha.setEchoChar((char) 0); 
+	            } else {
+	                tSenha.setEchoChar('*'); 
+	            }
+	        }
+	    });
+	    add(boxVisualizarSenhaAtual);
+
+	    JCheckBox checkBoxVisualizarNovaSenha = new JCheckBox("Visualizar Nova Senha");
+	    checkBoxVisualizarNovaSenha.setBounds(320, 600, 200, 30);
+	    checkBoxVisualizarNovaSenha.addActionListener(new ActionListener() {
+	    	
+	        public void actionPerformed(ActionEvent e) {
+	            if (checkBoxVisualizarNovaSenha.isSelected()) {
+	                tNovaSenha.setEchoChar((char) 0);
+	            } else {
+	                tNovaSenha.setEchoChar('*');
+	            }
+	        }
+	    });
+	    add(checkBoxVisualizarNovaSenha);
+	}
 
 	private void adicionarIcones() {
 		JLabel iconeNome = FabricaIcones.criarIcone(FabricaImagens.LOGIN, 283, 250, 50, 30);
@@ -222,8 +256,8 @@ public class TelaEditarInformacoesAluno extends TelaPadrao{
 		JLabel iconeSenha = FabricaIcones.criarIcone(FabricaImagens.SENHA, 283, 490, 50, 30);
 		add(iconeSenha);
 
-		JLabel iconeConfirmacaoSenha = FabricaIcones.criarIcone(FabricaImagens.SENHA, 283, 550, 50, 30);
-		add(iconeConfirmacaoSenha);
+		JLabel iconeNovaSenha = FabricaIcones.criarIcone(FabricaImagens.SENHA, 283, 570, 50, 30);
+		add(iconeNovaSenha);
 
 		JLabel iconeIf = FabricaIcones.criarIcone(FabricaImagens.IF, 290, 110, 70, 94);
 		add(iconeIf);

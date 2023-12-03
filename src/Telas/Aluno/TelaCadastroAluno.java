@@ -130,6 +130,7 @@ public class TelaCadastroAluno extends TelaPadrao{
 		bVoltar.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
+				dispose();
 				new TelaLogin();
 			}
 		});

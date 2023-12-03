@@ -5,8 +5,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import Classes.Aluno;
@@ -20,7 +22,7 @@ import Telas.FabricaComponentes.*;
 
 public class TelaLogin extends TelaPadrao{
 	public JTextField tLogin;
-	public JTextField tSenha;
+	public JPasswordField tSenha;
 	public TelaLogin() {
 		super("LOGIN");
 		
@@ -32,6 +34,7 @@ public class TelaLogin extends TelaPadrao{
 		adicionarLabels();
 		adicionarTextFields();
 		adicionarButtons();
+		adicionarcheckBox();
 		adicionarIcones();
 	}
 
@@ -60,12 +63,10 @@ public class TelaLogin extends TelaPadrao{
 		tSenha.setToolTipText("Exemplo: brunno123");
 		add(tSenha);
 		
-		
 	}
 	
-	
 	private void adicionarButtons() {
-		JButton bLogin = FabricaJButton.criarJButton("Login", 336, 470, 234, 30, Color.GREEN, Color.WHITE, 12);
+		JButton bLogin = FabricaJButton.criarJButton("Login", 336, 500, 234, 30, Color.GREEN, Color.WHITE, 12);
 		add(bLogin);
 		bLogin.addActionListener(new ActionListener() {
 			
@@ -89,7 +90,7 @@ public class TelaLogin extends TelaPadrao{
 			}
 		});
 		
-		JButton bEsqueciSenha = FabricaJButton.criarJButton("Esqueci a Senha", 336, 530, 115, 30, Color.GREEN, Color.WHITE, 12);
+		JButton bEsqueciSenha = FabricaJButton.criarJButton("Esqueci a Senha", 336, 560, 115, 30, Color.GREEN, Color.WHITE, 12);
 		add(bEsqueciSenha);
 		bEsqueciSenha.addActionListener(new ActionListener() {
 			
@@ -99,7 +100,7 @@ public class TelaLogin extends TelaPadrao{
 			}
 		});
 		
-		JButton bCadastrar = FabricaJButton.criarJButton("Cadastrar-se", 454, 530, 115, 30, Color.GREEN, Color.WHITE, 12);
+		JButton bCadastrar = FabricaJButton.criarJButton("Cadastrar-se", 454, 560, 115, 30, Color.GREEN, Color.WHITE, 12);
 		add(bCadastrar);
 		bCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -107,6 +108,23 @@ public class TelaLogin extends TelaPadrao{
 				new TelaCadastroAluno();
 			}
 		});
+	}
+	
+	private void adicionarcheckBox() {
+		
+		JCheckBox boxVisualizarSenha = new JCheckBox("Visualizar Senha");
+	    boxVisualizarSenha.setBounds(365, 460, 145, 30);
+	    boxVisualizarSenha.addActionListener(new ActionListener() {
+	    	
+	        public void actionPerformed(ActionEvent e) {
+	            if (boxVisualizarSenha.isSelected()) {
+	                tSenha.setEchoChar((char) 0); // Exibe os caracteres
+	            } else {
+	                tSenha.setEchoChar('*'); // Oculta os caracteres
+	            }
+	        }
+	    });
+	    add(boxVisualizarSenha);
 	}
 	
 	private void adicionarIcones() {

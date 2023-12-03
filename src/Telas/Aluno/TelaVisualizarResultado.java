@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -34,6 +35,7 @@ import Telas.FabricaComponentes.FabricaJOptionPane;
 public class TelaVisualizarResultado extends TelaPadrao{
 	JTable tableDisciplinas;
 	private EditalDeMonitoria edital;
+	JButton bAtualizar;
 	JButton bDesistir;
 	
 	public TelaVisualizarResultado(EditalDeMonitoria edital) {
@@ -53,6 +55,7 @@ public class TelaVisualizarResultado extends TelaPadrao{
 		//se final, aluno não pode desistir e apenas visualizar o resultado
 		if (edital.getResultado().equals("final")) {
 			bDesistir.setEnabled(false);
+			bAtualizar.setEnabled(false);
 		}
 	}
 	
@@ -72,6 +75,7 @@ public class TelaVisualizarResultado extends TelaPadrao{
 	
 	private void adicionarTable() {
 		DefaultTableModel mResultados = new DefaultTableModel();
+		DecimalFormat formatoNota = new DecimalFormat("0.##");
 		
 		mResultados.addColumn("Disciplina");
 		mResultados.addColumn("Matrícula");
@@ -87,7 +91,10 @@ public class TelaVisualizarResultado extends TelaPadrao{
 				Object[] linha = new Object[4];
 				linha[0] = disciplina.getNome();
 				linha[1] = inscricao.getAluno().getMatricula();
-				linha[2] = inscricao.getNotaFinal();
+				
+				double notaFinal = inscricao.getNotaFinal();
+				linha[2] = formatoNota.format(notaFinal);
+				
 				linha[3] = inscricao.getResultado();
 				mResultados.addRow(linha);
 			}
@@ -129,7 +136,7 @@ public class TelaVisualizarResultado extends TelaPadrao{
 	}
 	
 	private void adicionarButtons() {
-		JButton bAtualizar = FabricaJButton.criarJButton("Atualizar", 275, 630, 170, 30, Color.GREEN, Color.WHITE, 12);
+		bAtualizar = FabricaJButton.criarJButton("Atualizar", 275, 630, 170, 30, Color.GREEN, Color.WHITE, 12);
 		add(bAtualizar);
 		bAtualizar.addActionListener(new ActionListener() {
 			

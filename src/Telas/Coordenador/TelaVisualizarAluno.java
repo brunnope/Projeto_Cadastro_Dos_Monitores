@@ -5,8 +5,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import Classes.Aluno;
@@ -19,13 +23,14 @@ import Telas.FabricaComponentes.FabricaIcones;
 import Telas.FabricaComponentes.FabricaJButton;
 import Telas.FabricaComponentes.FabricaJComboBox;
 import Telas.FabricaComponentes.FabricaJLabel;
+import Telas.FabricaComponentes.FabricaJMenuBar;
 import Telas.FabricaComponentes.FabricaJTextField;
 
 public class TelaVisualizarAluno extends TelaPadrao{
 	private Aluno aluno;
 	private JTextField tNome;
 	private JTextField tEmail;
-	private JTextField tSenha;
+	private JPasswordField tSenha;
 	private JTextField tMatricula;
 	private JComboBox<String> cGenero;
 	String[] opcoes = {"Masculino","Feminino"};
@@ -40,12 +45,16 @@ public class TelaVisualizarAluno extends TelaPadrao{
 	public void configurarComponentes() {
 		adicionarLabels();
 		adicionarTextFields();
+		adicionarMenuBar();
 		adicionarComboBox();
 		adicionarButtons();
+		adicionarcheckBox();
 		adicionarIcones();
 		preencherCampos();
 		
 	}
+	
+
 	public void preencherCampos() {
 		tNome.setText(aluno.getNome());
 		tMatricula.setText(aluno.getMatricula());
@@ -119,6 +128,27 @@ public class TelaVisualizarAluno extends TelaPadrao{
 			}
 		});
 		add(bVoltar);
+	}
+	
+	private void adicionarcheckBox() {
+		JCheckBox boxVisualizarSenha = new JCheckBox("Visualizar Senha");
+	    boxVisualizarSenha.setBounds(320, 520, 145, 30);
+	    boxVisualizarSenha.addActionListener(new ActionListener() {
+	        @Override
+	        public void actionPerformed(ActionEvent e) {
+	            if (boxVisualizarSenha.isSelected()) {
+	                tSenha.setEchoChar((char) 0); // Exibe os caracteres
+	            } else {
+	                tSenha.setEchoChar('*'); // Oculta os caracteres
+	            }
+	        }
+	    });
+	    add(boxVisualizarSenha);
+	}
+	
+	private void adicionarMenuBar() {
+		JMenuBar menuBar =	FabricaJMenuBar.MenuCoordenador(this);
+		setJMenuBar(menuBar);
 	}
 
 	private void adicionarIcones() {

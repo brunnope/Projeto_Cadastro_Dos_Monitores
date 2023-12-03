@@ -63,7 +63,7 @@ public class TelaVisualizarEditais extends TelaPadrao{
 	private void adicionarTable() {
 		DefaultTableModel mEditais = new DefaultTableModel();
 		
-		mEditais.addColumn("Num. Editais");
+		mEditais.addColumn("Num. Edital");
 		mEditais.addColumn("Data Início");
 		mEditais.addColumn("Data Fim");
 		mEditais.addColumn("Inscrições");

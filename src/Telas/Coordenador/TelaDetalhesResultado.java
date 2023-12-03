@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.io.FileNotFoundException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -77,6 +78,7 @@ public class TelaDetalhesResultado extends TelaPadrao{
 	
 	private void adicionarTable() {
 		DefaultTableModel mResultados = new DefaultTableModel();
+		DecimalFormat formatoNota = new DecimalFormat("0.##");
 		
 		mResultados.addColumn("Disciplina");
 		mResultados.addColumn("Matrícula");
@@ -93,7 +95,10 @@ public class TelaDetalhesResultado extends TelaPadrao{
 				Object[] linha = new Object[4];
 				linha[0] = disciplina.getNome();
 				linha[1] = inscricao.getAluno().getMatricula();
-				linha[2] = inscricao.getNotaFinal();
+				
+				double notaFinal = inscricao.getNotaFinal();
+				linha[2] = formatoNota.format(notaFinal);
+				
 				linha[3] = inscricao.getResultado();
 				mResultados.addRow(linha);
 			}
@@ -127,13 +132,13 @@ public class TelaDetalhesResultado extends TelaPadrao{
 		 
 		//permite apenas uma seleção
 		JScrollPane rolagemTabela = new JScrollPane(tableDisciplinas);
-		rolagemTabela.setBounds(295, 250, 315, 350);
+		rolagemTabela.setBounds(275, 250, 350, 350);
 		add(rolagemTabela);
 		
 	}
 	
 	private void adicionarButtons() {
-		bFecharEdital = FabricaJButton.criarJButton("Fechar Edital", 293, 610, 315, 30, Color.GREEN, Color.WHITE, 12);
+		bFecharEdital = FabricaJButton.criarJButton("Fechar Edital", 273, 610, 352, 30, Color.GREEN, Color.WHITE, 12);
 		add(bFecharEdital);
 		bFecharEdital.addActionListener(new ActionListener() {
 			
@@ -148,7 +153,7 @@ public class TelaDetalhesResultado extends TelaPadrao{
 			}
 		});
 		
-		JButton bEnviarEmail = FabricaJButton.criarJButton("Enviar Email", 293, 650, 150, 30, Color.GREEN, Color.WHITE, 12);
+		JButton bEnviarEmail = FabricaJButton.criarJButton("Enviar Email", 273, 650, 169, 30, Color.GREEN, Color.WHITE, 12);
 		add(bEnviarEmail);
 		bEnviarEmail.addActionListener(new ActionListener() {
 			
@@ -169,7 +174,7 @@ public class TelaDetalhesResultado extends TelaPadrao{
 			}
 		});
 		
-		JButton bGerarPDF = FabricaJButton.criarJButton("Gerar PDF", 458, 650, 150, 30, Color.GREEN, Color.WHITE, 12);
+		JButton bGerarPDF = FabricaJButton.criarJButton("Gerar PDF", 458, 650, 169, 30, Color.GREEN, Color.WHITE, 12);
 		add(bGerarPDF);
 		bGerarPDF.addActionListener(new ActionListener() {
 			

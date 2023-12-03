@@ -104,43 +104,6 @@ public class CentralDeInformacoes {
 		throw new EditalNaoEncontradoException();
 	}
 
-	public ArrayList<Disciplina> recuperarInscriçõesDeUmAlunoEmUmEdital(String matricula, long id) throws AlunoNaoEncontradoException, EditalNaoEncontradoException{
-		boolean existeEdital = false;
-		boolean existeAluno = false;
-		ArrayList<Disciplina> disciplinasAluno = new ArrayList<Disciplina>();
-
-		for (Aluno aluno: todosOsAlunos) {
-			if(aluno.getMatricula().equals(matricula)) {
-				existeAluno = true;
-				break;
-			}
-		}
-
-		if (existeAluno) {
-			for (EditalDeMonitoria edital: todosOsEditais) {
-				if (edital.getId() == id) {
-					for(Disciplina disciplina: edital.getDisciplinas()) {
-						for(Inscricao inscricao: disciplina.getInscricoes().values()) {
-							if (inscricao.getAluno().getMatricula().equals(matricula)) {
-								disciplinasAluno.add(disciplina);
-								break;
-							}
-						}
-					}
-					existeEdital = true;
-					break;
-				}
-			}
-			if (existeEdital == false) {
-				throw new EditalNaoEncontradoException();
-			}
-		}else if (existeAluno && disciplinasAluno.isEmpty()){
-			return new ArrayList<Disciplina>();
-		}else if (existeAluno == false){
-			throw new AlunoNaoEncontradoException();
-		}
-		return  disciplinasAluno;
-	}
 	public boolean verificarMatricula(String matricula) throws AlunoJaMatriculadoException {
 		for (Aluno aluno: todosOsAlunos) {
 			if (aluno.getMatricula().equals(matricula)){
