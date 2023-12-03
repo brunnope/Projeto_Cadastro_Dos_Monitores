@@ -18,7 +18,6 @@ import Excecoes.EmailJaCadastradoException;
 import Excecoes.SenhaMuitoPequenaException;
 import Telas.FabricaImagens;
 import Telas.TelaPadrao;
-import Telas.Aluno.TelaHomeAluno;
 import Telas.FabricaComponentes.FabricaIcones;
 import Telas.FabricaComponentes.FabricaJButton;
 import Telas.FabricaComponentes.FabricaJLabel;

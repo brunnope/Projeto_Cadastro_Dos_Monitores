@@ -4,9 +4,7 @@ import java.util.ArrayList;
 
 import Classes.Aluno;
 import Classes.Coordenador;
-import Classes.Disciplina;
 import Classes.EditalDeMonitoria;
-import Classes.Inscricao;
 import Classes.Pessoa;
 import Excecoes.AlunoJaMatriculadoException;
 import Excecoes.AlunoNaoEncontradoException;

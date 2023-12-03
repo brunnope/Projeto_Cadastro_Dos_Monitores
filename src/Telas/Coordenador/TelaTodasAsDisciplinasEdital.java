@@ -3,7 +3,6 @@ package Telas.Coordenador;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -16,7 +15,6 @@ import javax.swing.table.DefaultTableModel;
 
 import Classes.Disciplina;
 import Classes.EditalDeMonitoria;
-import Excecoes.EditalNaoEncontradoException;
 import Telas.FabricaImagens;
 import Telas.TelaPadrao;
 import Telas.FabricaComponentes.FabricaIcones;

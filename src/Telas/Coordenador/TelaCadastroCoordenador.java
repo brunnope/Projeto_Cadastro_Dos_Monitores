@@ -1,32 +1,20 @@
 package Telas.Coordenador;
 
-
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
-
 import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import javax.swing.text.MaskFormatter;
-
-import Excecoes.AlunoJaMatriculadoException;
 import Excecoes.EmailDiferenteException;
 import Excecoes.EmailInvalidoException;
-import Excecoes.EmailJaCadastradoException;
 import Excecoes.SenhaDiferenteException;
 import Excecoes.SenhaMuitoPequenaException;
-import Persistencia.Persistencia;
 import Telas.FabricaImagens;
 import Telas.TelaLogin;
 import Telas.TelaPadrao;
 import Telas.FabricaComponentes.FabricaIcones;
 import Telas.FabricaComponentes.FabricaJButton;
-import Telas.FabricaComponentes.FabricaJComboBox;
 import Telas.FabricaComponentes.FabricaJLabel;
 import Telas.FabricaComponentes.FabricaJOptionPane;
 import Telas.FabricaComponentes.FabricaJTextField;
@@ -112,7 +100,7 @@ public class TelaCadastroCoordenador extends TelaPadrao{
 						getDados().salvarCentral(getCentral(), "central.xml");
 						FabricaJOptionPane.criarMsgValido("Cadastrado realizado com sucesso!");
 						dispose();
-						TelaLogin t = new TelaLogin();
+						new TelaLogin();
 					} catch (EmailDiferenteException | SenhaDiferenteException | EmailInvalidoException | SenhaMuitoPequenaException e1) {
 						FabricaJOptionPane.criarMsgErro(e1.getMessage());
 					}

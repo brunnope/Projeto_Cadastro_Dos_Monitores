@@ -3,7 +3,6 @@ package Classes;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import Excecoes.AlunoJaInscritoException;
 import Excecoes.DisciplinaJaCadastradaException;
 import Excecoes.InscricoesFinalizadaException;
 import Excecoes.InscricoesNaoAbertasException;

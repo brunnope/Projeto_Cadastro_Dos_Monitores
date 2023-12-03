@@ -21,7 +21,6 @@ import Excecoes.InscricoesNaoAbertasException;
 import Telas.Aluno.TelaDetalharEditalAberto;
 import Telas.Aluno.TelaVisualizarResultado;
 import Telas.Coordenador.TelaDetalharEditalEncerrado;
-import Telas.Coordenador.TelaDetalhesResultado;
 import Telas.FabricaComponentes.FabricaIcones;
 import Telas.FabricaComponentes.FabricaJButton;
 import Telas.FabricaComponentes.FabricaJLabel;

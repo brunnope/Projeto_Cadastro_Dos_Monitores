@@ -16,7 +16,6 @@ import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
 import Classes.EditalDeMonitoria;
-import Excecoes.DisciplinaJaCadastradaException;
 import Excecoes.EditalInvalidoException;
 import Excecoes.NumeroDoEditalJaExistenteException;
 import Telas.FabricaImagens;

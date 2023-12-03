@@ -14,7 +14,6 @@ import javax.swing.text.MaskFormatter;
 import Classes.Disciplina;
 import Classes.EditalDeMonitoria;
 import Excecoes.DisciplinaJaCadastradaException;
-import Excecoes.EditalNaoEncontradoException;
 import Telas.FabricaImagens;
 import Telas.TelaPadrao;
 import Telas.FabricaComponentes.FabricaIcones;

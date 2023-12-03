@@ -109,7 +109,7 @@ public class FabricaJMenuBar{
 		todosAlunos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				tela.dispose();
-				Aluno aluno = (Aluno) tela.getUsuario();
+				Aluno aluno = (Aluno) TelaPadrao.getUsuario();
 				new TelaEditarInformacoesAluno(aluno);
 			}
 		});

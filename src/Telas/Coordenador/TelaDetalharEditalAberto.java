@@ -14,18 +14,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.text.MaskFormatter;
 
 import Classes.Disciplina;
 import Classes.EditalDeMonitoria;
-import Excecoes.EditalInvalidoException;
-import Excecoes.EditalNaoEncontradoException;
-import Excecoes.InscricoesFinalizadaException;
-import Excecoes.InscricoesNaoAbertasException;
-import Persistencia.CentralDeInformacoes;
-import Persistencia.Persistencia;
 import Telas.FabricaImagens;
 import Telas.TelaPadrao;
 import Telas.TelaVisualizarEditais;
