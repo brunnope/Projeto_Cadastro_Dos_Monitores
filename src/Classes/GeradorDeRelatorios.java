@@ -2,7 +2,9 @@ package Classes;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
+import javax.swing.JFileChooser;
 import javax.swing.JTable;
+import javax.swing.filechooser.FileSystemView;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -20,6 +22,16 @@ public class GeradorDeRelatorios{
 	 public static void gerarPDF(String caminho, JTable tabela, EditalDeMonitoria edital) throws FileNotFoundException, DocumentException{
 		Document doc = new Document(PageSize.A4);
 		try {
+			JFileChooser fileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+			fileChooser.setDialogTitle("Selecione o diretório para salvar o PDF");
+			fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+			
+			int userSelection = fileChooser.showSaveDialog(null);
+			
+			if (userSelection == JFileChooser.APPROVE_OPTION) {
+				 caminho = fileChooser.getSelectedFile().getAbsolutePath() + "/" + caminho;
+				
+			}
 			PdfWriter.getInstance(doc, new FileOutputStream(caminho));
 			doc.open();
 			Font f = new Font(FontFamily.TIMES_ROMAN,20,Font.BOLD);
@@ -55,6 +67,8 @@ public class GeradorDeRelatorios{
 		       	}
 		  	}
 		  doc.add(pdfTable);
+		  
+		 
 		  doc.close();
 		}
 		 catch (FileNotFoundException | DocumentException e) {

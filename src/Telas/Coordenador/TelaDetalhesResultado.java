@@ -177,10 +177,10 @@ public class TelaDetalhesResultado extends TelaPadrao{
 				int opc = FabricaJOptionPane.criarMsgDeOpcao("Confirmação", "Gerar PDF do resultado?");
 				if (opc == JOptionPane.YES_OPTION) {
 					try {
-						String caminho = FabricaJOptionPane.criarInput("Digite o caminho do arquivo: ");
+						String caminho = FabricaJOptionPane.criarInput("Digite o título do arquivo: ");
 						
 						if((caminho == null) || (caminho.isBlank())) {
-							FabricaJOptionPane.criarMsgErro("Digite algum caminho!");
+							FabricaJOptionPane.criarMsgErro("Digite algum título!");
 						}
 						else {
 							if (caminho.endsWith(".pdf")) {
