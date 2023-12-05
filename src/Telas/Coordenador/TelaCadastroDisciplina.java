@@ -125,7 +125,7 @@ public class TelaCadastroDisciplina extends TelaPadrao{
 						disciplina.setQuantDeVagasRemuneradas(vagasRemuneradas);
 						disciplina.setQuantDeVagasVoluntarias(vagasVoluntarias);
 						FabricaJOptionPane.criarMsgValido("Disciplina editada com sucesso!");
-						new TelaTodasAsDisciplinasEdital(edital);
+						dispose();
 					}else {
 						
 						try {
